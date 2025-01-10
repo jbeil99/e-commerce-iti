@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/icons/Icon.png" type="image/png">
+    <title>CLICON</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets//icons/Icon.png" alt="">
+            <p>CLICON</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-user"></i>
+        </div>
+    </header>
+    <div class="container">
+        <!-- Form -->
+        <aside>
+            <h2>Category</h2>
+            <ul class="category">
+                <li>
+                    <input type="radio" name="category" value="0" id="all">
+                    <label for="all">All</label>
+                </li>
+                <li>
+                    <input type="radio" name="category" value="1" id="comp">
+                    <label for="comp">Computer & Laptop</label>
+                </li>
+                <li>
+                    <input type="radio" name="category" value="2" id="accessories">
+                    <label for="accessories">Computer Accessories</label>
+                </li>
+            </ul>
+            <h2>Price Range</h2>
+            <div class="price">
+                <input type="number" placeholder="Min price">
+                <input type="number" placeholder="Max price">
+            </div>
+            <ul class="price-options">
+                <li>
+                    <input type="radio" name="price" value="0" id="price" checked>
+                    <label for="price">All Prices</label>
+                </li>
+                <li>
+                    <input type="radio" name="price" value="1" id="under">
+                    <label for="under"> Under $20</label>
+                </li>
+                <li>
+                    <input type="radio" name="price" value="2" id="range">
+                    <label for="range">$25 to $100</label>
+                </li>
+                <li>
+                    <input type="radio" name="price" value="3" id="above">
+                    <label for="above">Above $100</label>
+                </li>
+            </ul>
+            <button class="btn">Apply filters</button>
+        </aside>
+        <main>
+            <div class="filters">
+                <div class="searchbar">
+                    <!-- Make it a form -->
+                    <input type="text" placeholder="Search for anything...">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+                <!-- <div class="sort-options">
+                    Sort by:
+                    <select>
+                        <option>Most Popular</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest Arrivals</option>
+                    </select>
+                </div> -->
+                <div class="results">65,867 Results found.</div>
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card new">
+                    <span class="badge">NEW</span>
+                    <img src="assets/products/1.png" alt="Product Image">
+                    <h3>TOZO T6 True Wireless Earbuds</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (738)</div>
+                    <div class="price">$70</div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/products/2.png" alt="Product Image">
+                    <h3>Samsung Galaxy S21 5G</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (536)</div>
+                    <div class="price">$2,300</div>
+                </div>
+                <div class="product-card best-deals">
+                    <span class="badge">BEST DEALS</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>Amazon High-Speed HDMI Cable</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️ (423)</div>
+                    <div class="price">$20</div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>Portable Washing Machine</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️ (316)</div>
+                    <div class="price">$80</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+                <div class="product-card sale">
+                    <span class="badge">SALE</span>
+                    <img src="assets/products/3.png" alt="Product Image">
+                    <h3>4K UHD Smart TV</h3>
+                    <div class="rating">⭐️⭐️⭐️⭐️⭐️ (583)</div>
+                    <div class="price">$220</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

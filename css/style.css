@@ -1,0 +1,168 @@
+/* Hero Style */
+
+
+.container {
+  display: flex;
+  gap: 20px;
+}
+
+aside {
+  padding: 20px;
+  max-width: 250px;
+}
+
+aside h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+aside h2:nth-child(3) {
+  margin-top: 40px;
+}
+
+aside .btn {
+  margin-top: 20px;
+}
+
+.category,
+.price-options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category li,
+.price-options li {
+  margin: 10px;
+  font-size: 14px;
+  cursor: default;
+  display: flex;
+  gap: 10px;
+}
+
+.category li input,
+.price-options li input {
+  cursor: pointer;
+}
+
+.price input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+/* Main */
+main {
+  width: 80%;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.searchbar {
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.searchbar input {
+  padding: 8px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.searchbar button {
+  padding: 9px;
+  border: none;
+  background-color: #0078d7;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.searchbar button:hover {
+  background-color: #005bb5;
+}
+
+.sort-options select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.results {
+  font-size: 14px;
+  color: #555;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.product-card .rating {
+  font-size: 14px;
+  color: #f39c12;
+  margin-bottom: 10px;
+}
+
+.product-card .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #0078d7;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff6a00;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.new .badge {
+  background-color: #e74c3c;
+}
+
+.best-deals .badge {
+  background-color: #3498db;
+}
+
+.sale .badge {
+  background-color: #2ecc71;
+}
