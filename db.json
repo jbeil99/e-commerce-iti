@@ -4,6 +4,23 @@
             "id": 1,
             "username": "admin",
             "password": "admin",
+            "gender": 0,
+            "email": "admin@clicon.com",
+            "address": {
+                "city": "Zagazig",
+                "country": "Egypt"
+            },
+            "firstName": "Hussin",
+            "lastName": "Soliman",
+            "roles": [
+                "admin"
+            ]
+        },
+        {
+            "id": 2,
+            "username": "hussin",
+            "password": "admin",
+            "gender": 0,
             "email": "admin@clicon.com",
             "address": {
                 "city": "Zagazig",

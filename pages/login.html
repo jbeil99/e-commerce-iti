@@ -9,8 +9,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
-    <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/assets/icons/Icon.png" type="image/png">
 
+    <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
+    <script src="/js/login.js"></script>
     <title>Login</title>
 </head>
 
@@ -34,19 +36,59 @@
     <main>
         <div class="container">
             <div class="tabs">
-                <p class="active">Sign In</p>
-                <p>Sign Up</p>
+                <div class="active">
+                    <p>Sign In</p>
+                </div>
+                <div>
+                    <p>Sign Up</p>
+                </div>
             </div>
-            <form method="post" action="#">
+            <form method="post" action="#" id="signin">
                 <div>
                     <label for="username">Username</label>
-                    <input type="text" id="sername" name="username" required>
+                    <input type="text" id="username" name="username" required>
                 </div>
                 <div>
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" required>
                 </div>
                 <button type="submit" class="btn login-btn">SIGN IN <span>&rarr;</span></button>
+            </form>
+            <form id="signup" method="post" action="#">
+                <div>
+                    <label for="username-up">Username</label>
+                    <input type="text" id="username-up" name="username-up" required>
+                    <p class="error"></p>
+
+                </div>
+                <div class="name">
+                    <div>
+                        <label for="fname">First Name</label>
+                        <input type="text" id="fname" name="fname" required>
+                        <p class="error"></p>
+                    </div>
+                    <div>
+                        <label for="lname">Last Name</label>
+                        <input type="text" id="lname" name="lname" required>
+                        <p class="error"></p>
+                    </div>
+                </div>
+                <div>
+                    <label for="email-up">Email Address</label>
+                    <input type="email" id="email-up" name="email-up" required>
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <label for="password-up">Password</label>
+                    <input type="password" id="password-up" name=" password-up" required>
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <p class="error"></p>
+                </div>
+                <button type="submit" class="btn login-btn">SIGN UP <span>&rarr;</span></button>
             </form>
         </div>
     </main>
