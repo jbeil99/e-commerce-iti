@@ -19,7 +19,7 @@
             "firstName": "Hussin",
             "lastName": "Soliman",
             "roles": [
-                "admin"
+                "seller"
             ]
         }
     ],
@@ -31,11 +31,11 @@
             "price": 200,
             "unit": "Piece",
             "image": "product image url",
-            "discount": 0,
-            "availability": true,
-            "brand": "brand",
+            "availability": false,
+            "quantity": 0,
             "category": "skin care",
-            "rating": 4.5,
+            "rating": 0,
+            "seller_id": 2,
             "reviews": [
                 {
                     "user_id": 1,
@@ -60,7 +60,7 @@
                 }
             ],
             "total_price": 849.97,
-            "status": "Shipped"
+            "status": "Hold"
         }
     ],
     "categories": [],

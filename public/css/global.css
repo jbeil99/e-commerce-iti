@@ -90,4 +90,11 @@ nav a:hover {
     color: #FFFFFF;
 }
 
+#welcome {
+    font-size: 1rem;
+    display: inline;
+    cursor: default;
+    padding-right: 2px;
+}
+
 /* End Header style */

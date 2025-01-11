@@ -1,4 +1,4 @@
-import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword } from "./validation.js";
+import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword } from "./validation/registerValidation.js";
 
 const switchSingUp = (signIn, signUp, formIn, formUp) => {
     signUp.classList.add("active");

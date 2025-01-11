@@ -1,4 +1,4 @@
-"use strict";
+import { getUsers } from "/public/js/api/user.js";
 
 const validatePassword = (e) => {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
@@ -97,11 +97,7 @@ const validateEmail = (e) => {
     return false;
 }
 
-const getUsers = async () => {
-    const json = await fetch("/db.json").then(r => r.json());
-    const users = await json["users"];
-    return users
-}
+
 
 const valdaiteUsername = async (e) => {
     const error = e.target.parentElement.querySelector("p");
@@ -110,7 +106,6 @@ const valdaiteUsername = async (e) => {
     const users = await getUsers()
     users.forEach(user => {
         if (e.target.value === user.username) {
-            console.log("name is in db")
             exists = true;
         }
     });
