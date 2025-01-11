@@ -2,14 +2,9 @@
     "users": [
         {
             "id": 1,
-            "username": "admin",
+            "username": "clicon",
             "password": "admin",
-            "gender": 0,
             "email": "admin@clicon.com",
-            "address": {
-                "city": "Zagazig",
-                "country": "Egypt"
-            },
             "firstName": "Hussin",
             "lastName": "Soliman",
             "roles": [
@@ -20,12 +15,7 @@
             "id": 2,
             "username": "hussin",
             "password": "admin",
-            "gender": 0,
             "email": "admin@clicon.com",
-            "address": {
-                "city": "Zagazig",
-                "country": "Egypt"
-            },
             "firstName": "Hussin",
             "lastName": "Soliman",
             "roles": [

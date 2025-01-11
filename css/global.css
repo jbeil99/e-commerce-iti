@@ -84,4 +84,10 @@ nav a:hover {
     gap: 20px;
 }
 
+.profile>a {
+    cursor: pointer;
+    list-style: none;
+    color: #FFFFFF;
+}
+
 /* End Header style */
