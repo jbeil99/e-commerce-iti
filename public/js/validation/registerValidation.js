@@ -1,31 +1,31 @@
 import { getUsers } from "/public/js/api/user.js";
 
-const validatePassword = (e) => {
+const validatePassword = (password) => {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
-    const error = e.target.parentElement.querySelector("p");
+    const error = password.parentElement.querySelector("p");
 
     const errorMsg = {
         upper: "Password Must Contain atleast 1 Captial letter",
         num: "Password Must Contain atleast 1 number",
         less: "Password Must be atleast 8 characters"
     }
-    if (e.target.value.match(regex)) {
+    if (password.value.match(regex)) {
         error.style.display = "none"
         error.innerText = "";
         return true;
     }
-    if (e.target.value.trim() !== "") {
-        e.target.focus()
+    if (password.value.trim() !== "") {
+        password.focus()
     }
 
-    if (e.target.value === e.target.value.toLowerCase()) {
+    if (password.value === password.value.toLowerCase()) {
         error.innerText = errorMsg.upper;
     }
-    if (!e.target.value.match(/\d/g)) {
+    if (!password.value.match(/\d/g)) {
         error.innerText = errorMsg.num;
     }
 
-    if (e.target.value.length < 8) {
+    if (password.value.length < 8) {
         error.innerText = errorMsg.less;
     }
     error.style.display = "block";
@@ -33,10 +33,11 @@ const validatePassword = (e) => {
     return false;
 }
 
-const validateConfirmPassword = (e, password) => {
-    const error = e.target.parentElement.querySelector("p");
+const validateConfirmPassword = (confirm, password) => {
+    const error = confirm.parentElement.querySelector("p");
     const errorMsg = "Passwords Doesnt Match";
-    if (e.target.value === password.value) {
+    console.log(password)
+    if (confirm.value === password.value && confirm.value.trim() !== "") {
         error.style.display = "none"
         error.innerText = "";
         return true
@@ -50,46 +51,46 @@ const validateConfirmPassword = (e, password) => {
     return false;
 }
 
-const validateName = (e, field = "name", n = 2,) => {
-    const error = e.target.parentElement.querySelector("p");
+const validateName = (target, field = "name", n = 2,) => {
+    const error = target.parentElement.querySelector("p");
     const regex = new RegExp(`[a-zA-z]{${n},}`, 'g');
     const errorMsg = {
         less: `${field} Cant be less than ${n} letters`,
         num: "You cant Enter Numbers as a name"
     }
 
-    if (e.target.value.trim().match(regex)) {
+    if (target.value.trim().match(regex)) {
         error.style.display = "none"
         error.innerText = "";
         return true;
     }
 
     // TODO: Fix bug in firefox
-    if (e.target.value.trim() !== "") {
-        e.target.focus()
+    if (target.value.trim() !== "") {
+        target.focus()
     }
     error.style.display = "block";
     error.innerText = errorMsg.less;
-    if (!isNaN(Number(e.target.value))) {
+    if (!isNaN(Number(target.value))) {
         error.innerText = errorMsg.num;
     }
 
     return false;
 }
 
-const validateEmail = (e) => {
-    const error = e.target.parentElement.querySelector("p");
+const validateEmail = (email) => {
+    const error = email.parentElement.querySelector("p");
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const errorMsg = "Enter a Vaild Email address";
 
-    if (e.target.value.trim().match(regex)) {
+    if (email.value.trim().match(regex)) {
         error.style.display = "none"
         error.innerText = "";
         return true;
     }
     // TODO: Fix bug in firefox
-    if (e.target.value.trim() !== "") {
-        e.target.focus()
+    if (email.value.trim() !== "") {
+        email.focus()
     }
     error.innerText = errorMsg;
     error.style.display = "block";
@@ -99,23 +100,34 @@ const validateEmail = (e) => {
 
 
 
-const valdaiteUsername = async (e) => {
-    const error = e.target.parentElement.querySelector("p");
+const valdaiteUsername = async (username) => {
+    const error = username.parentElement.querySelector("p");
 
     let exists = false;
     const users = await getUsers()
     users.forEach(user => {
-        if (e.target.value === user.username) {
+        if (username.value === user.username) {
             exists = true;
         }
     });
     if (!exists) {
-        return validateName(e, "username", 3)
+        return validateName(username, "username", 3)
     }
     error.innerText = "Username Already Exists";
     error.style.display = "block";
-    e.target.focus()
+    username.focus()
     return false
 }
 
-export { valdaiteUsername, validateConfirmPassword, validateEmail, validateName, getUsers, validatePassword };
+
+const handleRegister = (username, password, firstName, lastName, email, conPassword) => {
+
+    return valdaiteUsername(username) &&
+        validatePassword(password) &&
+        validateEmail(email) &&
+        validateConfirmPassword(conPassword, password) &&
+        validateName(firstName) &&
+        validateName(lastName)
+}
+
+export { valdaiteUsername, validateConfirmPassword, validateEmail, validateName, validatePassword, handleRegister };

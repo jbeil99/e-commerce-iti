@@ -1,4 +1,5 @@
-import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword } from "./validation/registerValidation.js";
+import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword, handleRegister } from "./validation/registerValidation.js";
+import { addUser } from "./api/user.js"
 
 const switchSingUp = (signIn, signUp, formIn, formUp) => {
     signUp.classList.add("active");
@@ -14,6 +15,8 @@ const switchSingIn = (signIn, signUp, formIn, formUp) => {
     formUp.style.display = "none";
 }
 
+
+
 window.addEventListener("load", () => {
     const signIn = document.querySelector(".tabs div:nth-child(1)");
     const signUp = document.querySelector(".tabs div:nth-child(2)");
@@ -26,8 +29,11 @@ window.addEventListener("load", () => {
     const conPassword = document.querySelector("#confirm-password");
     const email = document.querySelector("#email-up")
     const username = document.querySelector("#username-up");
+    const form = document.querySelector("#signup");
+
 
     tabs.addEventListener("click", (e) => {
+
         if (
             e.target === signIn.querySelector("p") ||
             e.target === signIn
@@ -44,16 +50,44 @@ window.addEventListener("load", () => {
     })
 
 
-    lastName.addEventListener("blur", validateName)
-    firstName.addEventListener("blur", validateName)
-
-    password.addEventListener("blur", validatePassword)
-    conPassword.addEventListener("blur", (e) => {
-        validateConfirmPassword(e, password)
+    lastName.addEventListener("blur", (e) => {
+        validateName(e.target)
+    })
+    firstName.addEventListener("blur", (e) => {
+        validateName(e.target)
     })
 
-    email.addEventListener('blur', validateEmail);
+    password.addEventListener("blur", (e) => {
+        validatePassword(e.target)
+    })
+    conPassword.addEventListener("blur", (e) => {
+        validateConfirmPassword(e.target, password)
+    })
+
+    email.addEventListener('blur', (e) => {
+        validateEmail(e.target)
+    });
     username.addEventListener("blur", async (e) => {
-        await valdaiteUsername(e)
+        await valdaiteUsername(e.target)
+    })
+
+    form.addEventListener("submit", (e) => {
+        console.log(handleRegister(username, password, firstName, lastName, email, conPassword))
+
+        if (!handleRegister(username, password, firstName, lastName, email, conPassword)) {
+            e.preventDefault();
+            return false;
+        }
+        addUser(
+            {
+                username: username.value,
+                password: password.value,
+                firstName: firstName.value,
+                lastName: lastName.value,
+                email: email.value,
+            }
+        );
+        e.preventDefault();
+        return false;
     })
 });

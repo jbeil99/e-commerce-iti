@@ -1,83 +1,94 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": "1",
+      "username": "clicon",
+      "password": "admin",
+      "email": "admin@clicon.com",
+      "firstName": "Hussin",
+      "lastName": "Soliman",
+      "roles": [
+        "admin"
+      ]
+    },
+    {
+      "id": "2",
+      "username": "hussin",
+      "password": "admin",
+      "email": "admin@clicon.com",
+      "firstName": "Hussin",
+      "lastName": "Soliman",
+      "roles": [
+        "seller"
+      ]
+    },
+    {
+      "id": "5155",
+      "username": "hussin1",
+      "password": "QuackLEL22",
+      "firstName": "Hussin",
+      "lastName": "Ahmed",
+      "email": "asdasasdasdas@gmail.com"
+    }
+  ],
+  "products": [
+    {
+      "product_id": 1,
+      "name": "Product 1",
+      "description": "Product 1 Description",
+      "price": 200,
+      "unit": "Piece",
+      "image": "product image url",
+      "availability": false,
+      "quantity": 0,
+      "category": "skin care",
+      "rating": 0,
+      "seller_id": 2,
+      "reviews": [
         {
-            "id": 1,
-            "username": "clicon",
-            "password": "admin",
-            "email": "admin@clicon.com",
-            "firstName": "Hussin",
-            "lastName": "Soliman",
-            "roles": [
-                "admin"
-            ]
+          "user_id": 1,
+          "rating": 5,
+          "comment": "comment"
+        }
+      ],
+      "id": "5813"
+    }
+  ],
+  "orders": [
+    {
+      "order_id": 1,
+      "user_id": 1,
+      "items": [
+        {
+          "product_id": 1,
+          "quantity": 2
         },
         {
-            "id": 2,
-            "username": "hussin",
-            "password": "admin",
-            "email": "admin@clicon.com",
-            "firstName": "Hussin",
-            "lastName": "Soliman",
-            "roles": [
-                "seller"
-            ]
+          "product_id": 3,
+          "quantity": 1
         }
-    ],
-    "products": [
+      ],
+      "total_price": 849.97,
+      "status": "Hold",
+      "id": "dd09"
+    }
+  ],
+  "categories": [],
+  "carts": [
+    {
+      "cart_id": 1,
+      "user_id": 1,
+      "items": [
         {
-            "product_id": 1,
-            "name": "Product 1",
-            "description": "Product 1 Description",
-            "price": 200,
-            "unit": "Piece",
-            "image": "product image url",
-            "availability": false,
-            "quantity": 0,
-            "category": "skin care",
-            "rating": 0,
-            "seller_id": 2,
-            "reviews": [
-                {
-                    "user_id": 1,
-                    "rating": 5,
-                    "comment": "comment"
-                }
-            ]
-        }
-    ],
-    "orders": [
+          "product_id": 1,
+          "quantity": 2
+        },
         {
-            "order_id": 1,
-            "user_id": 1,
-            "items": [
-                {
-                    "product_id": 1,
-                    "quantity": 2
-                },
-                {
-                    "product_id": 3,
-                    "quantity": 1
-                }
-            ],
-            "total_price": 849.97,
-            "status": "Hold"
+          "product_id": 3,
+          "quantity": 1
         }
-    ],
-    "categories": [],
-    "carts": [
-        {
-            "cart_id": 1,
-            "user_id": 1,
-            "items": [
-                {
-                    "product_id": 1,
-                    "quantity": 2
-                },
-                {
-                    "product_id": 3,
-                    "quantity": 1
-                }
-            ]
-        }
-    ]
+      ],
+      "id": "8250"
+    }
+  ]
 }

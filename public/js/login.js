@@ -1,5 +1,10 @@
 import { handleLogin, currentUser } from "./validation/loginValidation.js";
 
+if (sessionStorage.getItem("user")) {
+    window.location.href = "/shop.html"
+}
+
+
 window.addEventListener("load", () => {
     const username = document.querySelector("#username");
     const password = document.querySelector("#password");

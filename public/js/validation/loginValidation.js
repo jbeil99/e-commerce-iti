@@ -4,6 +4,7 @@ let currentUser = null;
 
 const checkUsername = (username, users) => {
     const error = document.querySelector("#login-error");
+
     let exists = false;
     users.forEach(user => {
         if (username.value === user.username) {
@@ -11,10 +12,9 @@ const checkUsername = (username, users) => {
             exists = true;
             return;
         }
-        exists = false;
-        currentUser = null;
-        return;
     });
+
+    console.log("from", currentUser, exists)
     if (exists) {
         error.style.display = "none"
         error.innerText = "";
