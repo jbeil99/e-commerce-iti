@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/public/css/admin.css">
     <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
 
+    <script src="/public/js/session.js"></script>
+    <script src="/public/js/dashboard.js" type="module"></script>
     <title>Dashboard</title>
 </head>
 
@@ -41,86 +43,49 @@
             <a href="#products">Manage Products</a>
         </aside>
         <div class="main">
-            <section id="users-sellers">
+            <section id="users-section">
                 <h2>Manage Users & Sellers</h2>
                 <h3>Users</h3>
-                <table>
+                <table id="users">
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Username</th>
                             <th>Full Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>john.doe@example.com</td>
-                            <td>Admin</td>
-                            <td>
-                                <button class="btn">Edit</button>
-                                <button class="btn">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jane Smith</td>
-                            <td>jane.smith@example.com</td>
-                            <td>User</td>
-                            <td>
-                                <button class="btn">Edit</button>
-                                <button class="btn">Delete</button>
-                            </td>
-                        </tr>
+
                     </tbody>
                 </table>
 
                 <h3>Sellers</h3>
-                <table>
+                <table id="sellers">
                     <thead>
                         <tr>
                             <th>ID</th>
+                            <th>Username</th>
                             <th>Seller Name</th>
                             <th>Email</th>
-                            <th>Actions</th>
+                            <th>Role</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Seller A</td>
-                            <td>seller.a@example.com</td>
-                            <td>
-                                <button class="btn">Edit</button>
-                                <button class="btn">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Seller B</td>
-                            <td>seller.b@example.com</td>
-                            <td>
-                                <button class="btn">Edit</button>
-                                <button class="btn">Delete</button>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </section>
 
-            <section id="products">
+            <section id="products-section">
                 <h2>Manage Products</h2>
-                <table>
+                <table id="products">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Product Name</th>
                             <th>Price</th>
                             <th>Seller</th>
-                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,20 +94,12 @@
                             <td>Product A</td>
                             <td>$10.00</td>
                             <td>Seller A</td>
-                            <td>
-                                <button class="btn">Edit</button>
-                                <button class="btn">Delete</button>
-                            </td>
                         </tr>
                         <tr>
                             <td>102</td>
                             <td>Product B</td>
                             <td>$20.00</td>
                             <td>Seller B</td>
-                            <td>
-                                <button class="btn">Edit</button>
-                                <button class="btn">Delete</button>
-                            </td>
                         </tr>
                     </tbody>
                 </table>

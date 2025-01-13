@@ -9,11 +9,13 @@ const validatePassword = (password) => {
         num: "Password Must Contain atleast 1 number",
         less: "Password Must be atleast 8 characters"
     }
+
     if (password.value.match(regex)) {
         error.style.display = "none"
         error.innerText = "";
         return true;
     }
+
     if (password.value.trim() !== "") {
         password.focus()
     }
@@ -36,7 +38,7 @@ const validatePassword = (password) => {
 const validateConfirmPassword = (confirm, password) => {
     const error = confirm.parentElement.querySelector("p");
     const errorMsg = "Passwords Doesnt Match";
-    console.log(password)
+
     if (confirm.value === password.value && confirm.value.trim() !== "") {
         error.style.display = "none"
         error.innerText = "";
@@ -120,9 +122,14 @@ const valdaiteUsername = async (username) => {
 }
 
 
-const handleRegister = (username, password, firstName, lastName, email, conPassword) => {
-
-    return valdaiteUsername(username) &&
+const handleRegister = async (username, password, firstName, lastName, email, conPassword) => {
+    const exists = await valdaiteUsername(username);
+    console.log({
+        username: exists,
+        password: validatePassword(password),
+        email: validateEmail(email)
+    });
+    return exists &&
         validatePassword(password) &&
         validateEmail(email) &&
         validateConfirmPassword(conPassword, password) &&

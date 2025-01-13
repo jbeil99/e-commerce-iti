@@ -23,12 +23,37 @@
       ]
     },
     {
-      "id": "5155",
-      "username": "hussin1",
+      "id": "a050",
+      "username": "jbeil2",
       "password": "QuackLEL22",
       "firstName": "Hussin",
       "lastName": "Ahmed",
-      "email": "asdasasdasdas@gmail.com"
+      "email": "hussin@iti.com",
+      "roles": [
+        "Customer"
+      ]
+    },
+    {
+      "id": "bdf9",
+      "username": "jbeil",
+      "password": "QuackLEL22",
+      "firstName": "Hussin",
+      "lastName": "Ahmed",
+      "email": "hussin1@iti.com",
+      "roles": [
+        "Customer"
+      ]
+    },
+    {
+      "id": "5d58",
+      "username": "test",
+      "password": "QuackLEL22",
+      "firstName": "hussin",
+      "lastName": "hamed",
+      "email": "husin@iti.com",
+      "roles": [
+        "Customer"
+      ]
     }
   ],
   "products": [

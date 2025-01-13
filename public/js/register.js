@@ -1,5 +1,5 @@
 import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword, handleRegister } from "./validation/registerValidation.js";
-import { addUser } from "./api/user.js"
+import { addUser, deleteUser } from "./api/user.js"
 
 const switchSingUp = (signIn, signUp, formIn, formUp) => {
     signUp.classList.add("active");
@@ -17,7 +17,7 @@ const switchSingIn = (signIn, signUp, formIn, formUp) => {
 
 
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
     const signIn = document.querySelector(".tabs div:nth-child(1)");
     const signUp = document.querySelector(".tabs div:nth-child(2)");
     const tabs = document.querySelector(".tabs");
@@ -30,6 +30,7 @@ window.addEventListener("load", () => {
     const email = document.querySelector("#email-up")
     const username = document.querySelector("#username-up");
     const form = document.querySelector("#signup");
+
 
 
     tabs.addEventListener("click", (e) => {
@@ -71,23 +72,27 @@ window.addEventListener("load", () => {
         await valdaiteUsername(e.target)
     })
 
-    form.addEventListener("submit", (e) => {
-        console.log(handleRegister(username, password, firstName, lastName, email, conPassword))
-
-        if (!handleRegister(username, password, firstName, lastName, email, conPassword)) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const vaild = await handleRegister(username, password, firstName, lastName, email, conPassword);
+        console.log(vaild)
+        if (!vaild) {
             e.preventDefault();
             return false;
+        } else {
+            handleRegister(username, password, firstName, lastName, email, conPassword)
+            e.preventDefault();
+            addUser(
+                {
+                    username: username.value,
+                    password: password.value,
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                }
+            );
         }
-        addUser(
-            {
-                username: username.value,
-                password: password.value,
-                firstName: firstName.value,
-                lastName: lastName.value,
-                email: email.value,
-            }
-        );
-        e.preventDefault();
-        return false;
+
+
     })
 });
