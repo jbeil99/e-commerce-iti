@@ -1,59 +1,31 @@
 {
   "users": [
     {
-      "id": "1",
       "username": "clicon",
-      "password": "admin",
-      "email": "admin@clicon.com",
       "firstName": "Hussin",
       "lastName": "Soliman",
-      "roles": [
-        "admin"
-      ]
+      "email": "admin@clicon.com",
+      "password": "admin",
+      "role": "admin",
+      "id": "1"
     },
     {
-      "id": "2",
       "username": "hussin",
-      "password": "admin",
-      "email": "admin@clicon.com",
       "firstName": "Hussin",
       "lastName": "Soliman",
-      "roles": [
-        "seller"
-      ]
+      "email": "admin@clicon.com",
+      "password": "admin",
+      "role": "seller",
+      "id": "2"
     },
     {
-      "id": "a050",
-      "username": "jbeil2",
-      "password": "QuackLEL22",
-      "firstName": "Hussin",
-      "lastName": "Ahmed",
-      "email": "hussin@iti.com",
-      "roles": [
-        "Customer"
-      ]
-    },
-    {
-      "id": "bdf9",
-      "username": "jbeil",
-      "password": "QuackLEL22",
-      "firstName": "Hussin",
-      "lastName": "Ahmed",
-      "email": "hussin1@iti.com",
-      "roles": [
-        "Customer"
-      ]
-    },
-    {
-      "id": "5d58",
       "username": "test",
+      "firstName": "test",
+      "lastName": "test",
+      "email": "asdasd@gmail.com",
       "password": "QuackLEL22",
-      "firstName": "hussin",
-      "lastName": "hamed",
-      "email": "husin@iti.com",
-      "roles": [
-        "Customer"
-      ]
+      "role": "customer",
+      "id": "5d9e"
     }
   ],
   "products": [

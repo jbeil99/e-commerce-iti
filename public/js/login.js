@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
         e.preventDefault();
         const valid = await handleLogin(username, password);
         if (valid) {
-            const userData = { username: currentUser.username, id: currentUser.id, roles: currentUser.roles }
+            const userData = { username: currentUser.username, id: currentUser.id, role: currentUser.role }
             sessionStorage.setItem("user", JSON.stringify(userData));
             window.location.href = "/shop.html";
         }

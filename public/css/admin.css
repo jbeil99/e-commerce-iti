@@ -12,20 +12,30 @@ aside {
     padding: 1rem;
 }
 
-aside a {
-    display: block;
+aside p {
     color: black;
-    text-decoration: none;
     margin: 1rem 0;
+    cursor: pointer;
 }
 
-aside a:hover {
+aside p:hover {
     text-decoration: underline;
 }
 
 .main {
     width: 80%;
     padding: 2rem;
+}
+
+
+
+section div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 4px;
+
 }
 
 table {
@@ -55,4 +65,13 @@ th {
 
 td {
     cursor: pointer;
+}
+
+#products-section {
+    display: none;
+}
+
+.active {
+    text-decoration: underline;
+    color: #FA8232;
 }

@@ -7,7 +7,7 @@ const checkUsername = (username, users) => {
 
     let exists = false;
     users.forEach(user => {
-        if (username.value === user.username) {
+        if (username.value.trim() === user.username) {
             currentUser = user;
             exists = true;
             return;

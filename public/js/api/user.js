@@ -6,6 +6,19 @@ const getUsers = async () => {
     return users
 }
 
+const getUser = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3000/users/${id}`);
+        if (!response.ok) {
+            return null
+        }
+        const user = await response.json();
+        return user
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 const addUser = async (body) => {
     try {
         const response = await fetch("http://localhost:3000/users", {
@@ -23,17 +36,17 @@ const addUser = async (body) => {
     }
 }
 
-const updateUser = async (id) => {
+const updateUser = async (id, body) => {
     try {
         const response = await fetch(`http://localhost:3000/users/${id}`, {
             method: "PUT",
+            body: JSON.stringify(body)
         });
 
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        console.log(json);
     } catch (e) {
         console.log(e)
     }
@@ -49,11 +62,11 @@ const deleteUser = async (id) => {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
-        console.log(json);
+        return json
     } catch (e) {
         console.log(e)
     }
 }
 
 
-export { getUsers, addUser, deleteUser, updateUser };
+export { getUsers, addUser, deleteUser, updateUser, getUser };

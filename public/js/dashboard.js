@@ -1,16 +1,10 @@
 import { getUsers } from "./api/user.js";
+import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 
+const user = checkUserAuth();
 
-const user = JSON.parse(sessionStorage.getItem("user"))
-if (!user) {
-    window.location.href = "/public/pages/login.html"
-}
+addRoleGuard(["admin"], "/shop.html");
 
-if (user) {
-    if (!user.roles.includes("admin")) {
-        window.location.href = "/shop.html"
-    }
-}
 
 
 const addUserRow = (data, table) => {
@@ -30,29 +24,54 @@ const addUserRow = (data, table) => {
     tr.appendChild(email);
     email.innerText = data.email;
     tr.appendChild(role);
-    role.innerText = data.roles.join(",");
+    role.innerText = data.role;
 
     table.appendChild(tr);
 }
 
+const switchSections = (activeSection, ...disabledSections) => {
+    activeSection.style.display = "block";
+    for (const section of disabledSections) {
+        section.style.display = "none";
+    }
+}
 
 
 window.addEventListener("load", async () => {
+    const userNav = document.querySelector("#users-nav");
+    const productNav = document.querySelector("#products-nav");
+    const usersSection = document.querySelector("#users-section");
+    const productsSection = document.querySelector("#products-section");
+
     const usersTable = document.querySelector("#users tbody");
     const sellersTable = document.querySelector("#sellers tbody");
     const productsTable = document.querySelector("#products tbody");
     const users = await getUsers();
 
     users.forEach(user => {
-        if (user.roles.includes("admin")) {
+        if (user.role === "admin") {
             return;
         }
-        if (user.roles.includes("seller")) {
+        if (user.role === "seller") {
             addUserRow(user, sellersTable)
         } else {
             addUserRow(user, usersTable)
         }
     });
+
+    userNav.addEventListener("click", () => {
+        switchSections(usersSection, productsSection);
+        userNav.classList.add("active");
+        productNav.classList.remove("active");
+
+    })
+
+    productNav.addEventListener("click", () => {
+        switchSections(productsSection, usersSection);
+        productNav.classList.add("active");
+        userNav.classList.remove("active");
+
+    })
 
     usersTable.addEventListener("click", (e) => {
         const userID = e.target.parentElement.querySelector("td:nth-child(1)").innerText;

@@ -102,12 +102,15 @@ const validateEmail = (email) => {
 
 
 
-const valdaiteUsername = async (username) => {
+const valdaiteUsername = async (username, skip = "") => {
     const error = username.parentElement.querySelector("p");
 
     let exists = false;
     const users = await getUsers()
     users.forEach(user => {
+        if (user.username === skip) {
+            return
+        }
         if (username.value === user.username) {
             exists = true;
         }
@@ -124,11 +127,6 @@ const valdaiteUsername = async (username) => {
 
 const handleRegister = async (username, password, firstName, lastName, email, conPassword) => {
     const exists = await valdaiteUsername(username);
-    console.log({
-        username: exists,
-        password: validatePassword(password),
-        email: validateEmail(email)
-    });
     return exists &&
         validatePassword(password) &&
         validateEmail(email) &&
@@ -137,4 +135,21 @@ const handleRegister = async (username, password, firstName, lastName, email, co
         validateName(lastName)
 }
 
-export { valdaiteUsername, validateConfirmPassword, validateEmail, validateName, validatePassword, handleRegister };
+const handleSave = async (username, password, firstName, lastName, email, conPassword, skip) => {
+    const exists = await valdaiteUsername(username, skip);
+    if (password.value.trim() === "" && conPassword.value.trim() === "") {
+        return exists &&
+            validateEmail(email) &&
+            validateName(firstName) &&
+            validateName(lastName)
+    }
+
+    return exists &&
+        validatePassword(password) &&
+        validateEmail(email) &&
+        validateConfirmPassword(conPassword, password) &&
+        validateName(firstName) &&
+        validateName(lastName)
+}
+
+export { valdaiteUsername, validateConfirmPassword, validateEmail, validateName, validatePassword, handleRegister, handleSave };

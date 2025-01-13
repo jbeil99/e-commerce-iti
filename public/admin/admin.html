@@ -38,13 +38,16 @@
     </header>
     <div class="container">
         <aside>
-            <h2>Menu</h2>
-            <a href="#users-sellers">Manage Users & Sellers</a>
-            <a href="#products">Manage Products</a>
+            <h2>Models</h2>
+            <p id="users-nav" class="active">Users & Sellers</p>
+            <p id="products-nav">Products</p>
         </aside>
         <div class="main">
             <section id="users-section">
-                <h2>Manage Users & Sellers</h2>
+                <div>
+                    <h2>Manage Users & Sellers</h2>
+                    <a href="/public/admin/user-details.html"><button class="btn"> Add user</button></a>
+                </div>
                 <h3>Users</h3>
                 <table id="users">
                     <thead>
@@ -78,7 +81,10 @@
             </section>
 
             <section id="products-section">
-                <h2>Manage Products</h2>
+                <div>
+                    <h2>Manage Products</h2>
+                    <a href="/public/admin/product-details.html"><button class="btn"> Add Product</button></a>
+                </div>
                 <table id="products">
                     <thead>
                         <tr>
