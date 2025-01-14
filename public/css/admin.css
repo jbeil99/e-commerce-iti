@@ -75,3 +75,11 @@ td {
     text-decoration: underline;
     color: #FA8232;
 }
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

@@ -1,11 +1,14 @@
-import { validateName } from "./registerValidation";
-import { getProdcuts } from "../api/product";
+import { validateName } from "./registerValidation.js";
+import { getProdcuts } from "../api/product.js";
 
-const validateProductName = async (target, seller) => {
+const validateProductName = async (target, seller, skip = "") => {
     const error = target.parentElement.querySelector("p");
     const products = await getProdcuts();
     let exists = false;
     products.forEach(product => {
+        if (product.name === skip) {
+            return
+        }
         if (product.name.trim() === target.value.trim() && product.seller_id === seller.id) {
             exists = true;
         }
@@ -19,7 +22,7 @@ const validateProductName = async (target, seller) => {
     return false
 }
 
-const validatePrice = (price, custPrice = price * 1.2) => {
+const validatePrice = (price, custPrice = price.value * 1.2) => {
     const error = price.parentElement.querySelector("p");
 
     const errorMsg = {
@@ -31,19 +34,19 @@ const validatePrice = (price, custPrice = price * 1.2) => {
     if (!price.value) {
         error.innerText = errorMsg.empty;
         error.style.display = "block";
-        target.focus()
+        price.focus()
         return false
     }
     if (price.value <= 0) {
         error.innerText = errorMsg.less;
         error.style.display = "block";
-        target.focus()
+        price.focus()
         return false
     }
-    if (custPrice <= price) {
+    if (custPrice <= price.value) {
         error.innerText = errorMsg.custLow;
         error.style.display = "block";
-        target.focus()
+        price.focus()
         return false
     }
     return true;
@@ -67,78 +70,48 @@ const validateQuantity = (target) => {
         target.focus()
         return false
     }
+    return true
 }
 
-// Select the form element
-const form = document.getElementById('product-details');
-
-// Add event listener for form submission
-form.addEventListener('submit', (event) => {
-    // Prevent the default form submission
-    event.preventDefault();
-
-    // Clear all previous error messages
-    document.querySelectorAll('.error').forEach((errorElement) => {
-        errorElement.textContent = '';
-    });
-
-    // Validate inputs
-    let isValid = true;
-
-    // Validate Product Name
-    const name = document.getElementById('name');
-    if (!name.value.trim()) {
-        isValid = false;
-        name.nextElementSibling.textContent = 'Product Name is required.';
+const validateImage = (target) => {
+    const error = target.parentElement.querySelector("p");
+    const errorMsg = "Please upload an image (PNG or JPEG).";
+    if (!target.files.length) {
+        error.innerText = errorMsg;
+        error.style.display = "block";
+        return false
     }
+    return true;
+}
 
-    // Validate Price
-    const price = document.getElementById('price');
-    if (!price.value || price.value <= 0) {
-        isValid = false;
-        price.nextElementSibling.textContent = 'Price must be a positive number.';
+const validateDescription = target => {
+    const error = target.parentElement.querySelector("p");
+    const errorMsg = "description must be atleast 20 characters";
+    if (description.value.trim().length < 20) {
+        error.innerText = errorMsg;
+        error.style.display = "block";
+        return false
     }
+    return true;
+}
 
-    // Validate Customer Price
-    const customerPrice = document.getElementById('customerPrice');
-    if (!customerPrice.value || customerPrice.value <= 0) {
-        isValid = false;
-        customerPrice.nextElementSibling.textContent = 'Customer Price must be a positive number.';
-    }
+const handleProduct = async (name, price, custPrice, quantity, image, description, seller, skip = "") => {
+    console.log(validateDescription(description), validateImage(image), validatePrice(price), validatePrice(price, custPrice.value), validateQuantity(quantity), await validateProductName(name, seller, skip))
+    return validateDescription(description) &&
+        validateImage(image) &&
+        validatePrice(price) &&
+        validatePrice(price, custPrice.value) &&
+        validateQuantity(quantity) &&
+        await validateProductName(name, seller, skip)
+}
 
-    // Validate Quantity
-    const quantity = document.getElementById('quantity');
-    if (!quantity.value || quantity.value <= 0) {
-        isValid = false;
-        quantity.nextElementSibling.textContent = 'Quantity must be a positive number.';
-    }
+// const handleSave = (name, price, custPrice, quantity, image, description, seller, skip) => {
+//     return validateDescription(description) &&
+//         validateImage(image) &&
+//         validatePrice(price) &&
+//         validatePrice(price, custPrice.value) &&
+//         validateQuantity(quantity) &&
+//         validateProductName(name, seller, skip)
+// }
 
-    // Validate Image
-    const image = document.getElementById('image');
-    if (!image.files.length) {
-        isValid = false;
-        image.nextElementSibling.textContent = 'Please upload an image (PNG or JPEG).';
-    }
-
-    // Validate Category
-    const category = document.getElementById('category');
-    if (!category.value) {
-        isValid = false;
-        category.nextElementSibling.textContent = 'Please select a category.';
-    }
-
-    // Validate Description
-    const description = document.getElementById('description');
-    if (!description.value.trim()) {
-        isValid = false;
-        description.nextElementSibling.textContent = 'Description is required.';
-    }
-
-    // If the form is valid, proceed
-    if (isValid) {
-        alert('Form submitted successfully!');
-        form.reset();
-    } else {
-        alert('Please fix the errors in the form.');
-    }
-});
+export { validateDescription, validateImage, validatePrice, validateQuantity, validateProductName, handleProduct }

@@ -1,11 +1,12 @@
-import { handleSave, handleRegister } from "./validation/registerValidation.js";
 import { getUser } from "./api/user.js";
-import { addProduct, getProdcuts, updateProduct, deleteProduct, getProduct } from "./api/product.js";
-import { checkUserAuth, editGuard } from "./guards/userGuard.js";
+import { addProduct, getProdcuts, updateProduct, deleteProduct, getProduct, getCategories } from "./api/product.js";
+import { checkUserAuth } from "./guards/userGuard.js";
+import { editGuard, addProductGuard } from "./guards/productGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
+import { handleProduct } from "./validation/productValidation.js";
 
 
-// let currentUser = checkUserAuth();
+let currentUser = checkUserAuth();
 const productID = window.location.search.slice(1,).split("=")[1];
 
 
@@ -35,27 +36,34 @@ window.addEventListener("load", async () => {
     const price = document.querySelector("#price");
     const customerPrice = document.querySelector("#customerPrice");
     const image = document.querySelector("#image");
-    const category = document.querySelector("#category");
+    const categoriesInput = document.querySelector("#category");
     const description = document.querySelector("#description");
     const quantity = document.querySelector("#quantity");
 
     const message = document.querySelector(".message");
     const saveBtn = document.querySelector("#add");
-    const product = await getProduct(productID)
-    console.log(product);
+    const product = productID ? await getProduct(productID) : null;
+    const catergories = await getCategories();
 
-    editGuard(product.seller_id)
+    for (const cat of catergories) {
+        const option = document.createElement("option");
+        option.value = cat.id;
+        option.innerText = cat.name;
+        categoriesInput.appendChild(option)
+    }
 
-    // if (!canEditRole) {
-    //     select.parentElement.style.display = "none";
-    // }
+    if (product) {
+        editGuard(product.seller_id);
+    } else {
+        addProductGuard()
+    }
+
 
     if (!product && productID) {
         displayMessage(message, `productID "${productID}" Doesnt match any Product in the system`, "#FFEB78");
         return false;
     }
 
-    console.log(product)
 
     fillData(name, price, customerPrice, image, category, description, quantity, saveBtn, product)
 
@@ -73,7 +81,7 @@ window.addEventListener("load", async () => {
         }
 
         if (e.submitter.id === "save") {
-            const vaild = await handleSave(username, password, fname, lname, email, conPassword, user.username)
+            const vaild = await handleProduct(name, price, customerPrice, quantity, image, description, currentUser, product.name);
 
             if (vaild) {
                 const role = getRoleSelected(select, user)
@@ -92,33 +100,15 @@ window.addEventListener("load", async () => {
         }
 
         if (e.submitter.id === "add") {
-            const vaild = await handleRegister(username, password, fname, lname, email, conPassword);
+            console.log(image.files)
+            const vaild = await handleProduct(name, price, customerPrice, quantity, image, description, currentUser);
+            console.log(vaild)
             let category;
-            for (let c of category) {
-                if (c.category) {
+            for (let c of categoriesInput) {
+                if (c.selected) {
                     category = c.value;
                 }
             }
-            // {
-            //     "id": 1,
-            //     "name": "Product 1",
-            //     "description": "Product 1 Description",
-            //     "price": 200,
-            //     "unit": "Piece",
-            //     "image": "product image url",
-            //     "availability": false,
-            //     "quantity": 0,
-            //     "category": "skin care",
-            //     "rating": 0,
-            //     "seller_id": 2,
-            //     "reviews": [
-            //       {
-            //         "user_id": 1,
-            //         "rating": 5,
-            //         "comment": "comment"
-            //       }
-            //     ]
-            //   }
 
             if (vaild) {
                 e.preventDefault();
@@ -127,11 +117,11 @@ window.addEventListener("load", async () => {
                         name: name.value,
                         description: description.value,
                         price: price.value,
-                        customerPrice: unit.value,
+                        customerPrice: customerPrice.value,
                         quantity: quantity.value,
                         category: category ?? 1,
                         rating: 0,
-                        seller_id: 1,// cahnge
+                        seller_id: currentUser.id,// cahnge
                         reviews: [],
                         approved: false // check for admin
                     }

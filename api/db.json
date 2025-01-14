@@ -26,11 +26,19 @@
       "password": "QuackLEL22",
       "role": "customer",
       "id": "5d9e"
+    },
+    {
+      "username": "user2",
+      "firstName": "user",
+      "lastName": "user111",
+      "email": "use@clicon.com",
+      "password": "QuackLEL22",
+      "id": "ce4a"
     }
   ],
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Product 1",
       "description": "Product 1 Description",
       "price": 200,
@@ -40,7 +48,7 @@
       "quantity": 0,
       "category": 1,
       "rating": 0,
-      "seller_id": 2,
+      "seller_id": "2",
       "reviews": [
         {
           "user_id": 1,
@@ -48,6 +56,45 @@
           "comment": "comment"
         }
       ]
+    },
+    {
+      "id": "8048",
+      "name": "product 2",
+      "description": "ahahahah what is this ??????????",
+      "price": "10",
+      "customerPrice": "15",
+      "quantity": "15",
+      "category": "1",
+      "rating": 0,
+      "seller_id": 1,
+      "reviews": [],
+      "approved": false
+    },
+    {
+      "id": "ba1d",
+      "name": "asssss",
+      "description": "aaaaaaaaaaaaaaaaaaaa",
+      "price": "10",
+      "customerPrice": "12",
+      "quantity": "12",
+      "category": "2",
+      "rating": 0,
+      "seller_id": 1,
+      "reviews": [],
+      "approved": false
+    },
+    {
+      "id": "3b22",
+      "name": "test Seller",
+      "description": "asssssssssssaaaaaaaaaaaa",
+      "price": "15",
+      "customerPrice": "20",
+      "quantity": "50",
+      "category": "1",
+      "rating": 0,
+      "seller_id": "2",
+      "reviews": [],
+      "approved": false
     }
   ],
   "orders": [
@@ -71,11 +118,11 @@
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Catergory 1"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Catergory 2"
     }
   ],

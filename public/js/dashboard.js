@@ -33,6 +33,7 @@ const addUserRow = (data, table) => {
 const addProductRow = async (data, table) => {
     const seller = await getUser(data.seller_id);
     const tr = document.createElement("tr");
+    const checkbox = document.createElement("td");
     const id = document.createElement("td");
     const productName = document.createElement("td");
     const sellerName = document.createElement("td");
@@ -41,6 +42,10 @@ const addProductRow = async (data, table) => {
     const rating = document.createElement("td");
     const price = document.createElement("td");
     const quantity = document.createElement("td");
+    const status = document.createElement("td");
+    tr.appendChild(checkbox);
+    checkbox.innerHTML = `<input type="checkbox" value=${data.id}>`;
+    checkbox.value = data.id;
     tr.appendChild(id);
     id.innerText = data.id;
     tr.appendChild(productName)
@@ -57,7 +62,8 @@ const addProductRow = async (data, table) => {
     category.innerText = data.category;
     tr.appendChild(rating);
     rating.innerText = data.rating;
-
+    tr.appendChild(status);
+    status.innerText = data.approved ? "Approved" : "Not Approved";
     table.appendChild(tr);
 
 }
@@ -111,21 +117,21 @@ window.addEventListener("load", async () => {
     })
 
     usersTable.addEventListener("click", (e) => {
-        const userID = e.target.parentElement.querySelector("td:nth-child(1)").innerText;
+        const userID = e.target.parentElement.querySelector("td:nth-child(2)").innerText;
         if (userID) {
             window.location.href = `/public/admin/user-details.html?id=${userID}`;
         }
     })
 
     sellersTable.addEventListener("click", (e) => {
-        const sellerID = e.target.parentElement.querySelector("td:nth-child(1)").innerText;
+        const sellerID = e.target.parentElement.querySelector("td:nth-child(2)").innerText;
         if (sellerID) {
             window.location.href = `/public/admin/user-details.html?id=${sellerID}`;
         }
     })
 
     productsTable.addEventListener("click", (e) => {
-        const productID = e.target.parentElement.querySelector("td:nth-child(1)").innerText;
+        const productID = e.target.parentElement.querySelector("td:nth-child(2)").innerText;
         if (productID) {
             window.location.href = `/public/admin/product-details.html?id=${productID}`;
         }

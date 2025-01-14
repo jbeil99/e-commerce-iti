@@ -18,6 +18,9 @@ const addLogout = (profile, currentUser) => {
     if (currentUser.role === "admin") {
         addNav("Dashboard", "/public/admin/admin.html")
     }
+    if (currentUser.role === "seller") {
+        addNav("Add Product", "/public/admin/product-details.html")
+    }
 }
 
 

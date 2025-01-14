@@ -78,5 +78,17 @@ const deleteProduct = async (id) => {
         console.log(e)
     }
 }
+const getCategories = async () => {
+    try {
+        const response = await fetch("http://localhost:3000/categories");
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct };
+export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct, getCategories };

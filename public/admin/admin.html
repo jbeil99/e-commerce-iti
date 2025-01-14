@@ -83,11 +83,15 @@
             <section id="products-section">
                 <div>
                     <h2>Manage Products</h2>
-                    <a href="/public/admin/product-details.html"><button class="btn"> Add Product</button></a>
+                    <div class="cta">
+                        <a href="/public/admin/product-details.html"><button class="btn"> Add Product</button></a>
+                        <button class="btn"> Approve Selected</button>
+                    </div>
                 </div>
                 <table id="products">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>ID</th>
                             <th>Product Name</th>
                             <th>Price</th>
@@ -96,6 +100,7 @@
                             <th>Image</th>
                             <th>category</th>
                             <th>rating</th>
+                            <th>status</th>
                         </tr>
                     </thead>
                     <tbody>
