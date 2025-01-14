@@ -1,4 +1,5 @@
-import { getUsers } from "./api/user.js";
+import { getUsers, getUser } from "./api/user.js";
+import { getProdcuts } from "./api/product.js"
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 
 const user = checkUserAuth();
@@ -29,6 +30,38 @@ const addUserRow = (data, table) => {
     table.appendChild(tr);
 }
 
+const addProductRow = async (data, table) => {
+    const seller = await getUser(data.seller_id);
+    const tr = document.createElement("tr");
+    const id = document.createElement("td");
+    const productName = document.createElement("td");
+    const sellerName = document.createElement("td");
+    const image = document.createElement("td");
+    const category = document.createElement("td");
+    const rating = document.createElement("td");
+    const price = document.createElement("td");
+    const quantity = document.createElement("td");
+    tr.appendChild(id);
+    id.innerText = data.id;
+    tr.appendChild(productName)
+    productName.innerText = data.name;
+    tr.appendChild(price);
+    price.innerText = data.price;
+    tr.appendChild(quantity);
+    quantity.innerText = data.quantity;
+    tr.appendChild(sellerName);
+    sellerName.innerText = `${seller.firstName} ${seller.lastName}`;
+    tr.appendChild(image);
+    image.innerHTML = `<img src="${data.image}" alt="${data.name}" />`;
+    tr.appendChild(category);
+    category.innerText = data.category;
+    tr.appendChild(rating);
+    rating.innerText = data.rating;
+
+    table.appendChild(tr);
+
+}
+
 const switchSections = (activeSection, ...disabledSections) => {
     activeSection.style.display = "block";
     for (const section of disabledSections) {
@@ -47,6 +80,7 @@ window.addEventListener("load", async () => {
     const sellersTable = document.querySelector("#sellers tbody");
     const productsTable = document.querySelector("#products tbody");
     const users = await getUsers();
+    const products = await getProdcuts();
 
     users.forEach(user => {
         if (user.role === "admin") {
@@ -59,6 +93,9 @@ window.addEventListener("load", async () => {
         }
     });
 
+    products.forEach(product => {
+        addProductRow(product, productsTable);
+    })
     userNav.addEventListener("click", () => {
         switchSections(usersSection, productsSection);
         userNav.classList.add("active");

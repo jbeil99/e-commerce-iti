@@ -1,6 +1,7 @@
 import { handleSave, handleRegister } from "./validation/registerValidation.js";
 import { getUser, deleteUser, updateUser, addUser } from "./api/user.js";
 import { checkUserAuth, editGuard } from "./guards/userGuard.js";
+import { displayMessage } from "./helpers/messageHelper.js";
 
 
 
@@ -17,12 +18,7 @@ const getRoleSelected = (select, user) => {
     return user.role;
 }
 
-const displayMessage = (message, text, color, time = 5000) => {
-    message.innerText = text;
-    message.style.display = "block";
-    message.style.backgroundColor = color;
-    setTimeout(() => { message.style.display = "none" }, time)
-}
+
 // `UserID "${userID}" Doesnt match anyuser in the system`
 const fillData = (username, email, fname, lname, select, saveBtn, user) => {
     if (user) {
@@ -128,5 +124,4 @@ window.addEventListener("load", async () => {
             }
         }
     });
-
 })

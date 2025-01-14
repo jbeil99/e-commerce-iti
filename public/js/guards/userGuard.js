@@ -21,7 +21,7 @@ const addRoleGuard = (allowedRoles, redirect) => {
 
 const editGuard = (userID) => {
     if (currentUser.role !== "admin" && currentUser.id !== userID) {
-        window.location.href = window.location.href.split("=")[0] + `=${currentUser.id}`;
+        window.location.href = window.location.href.split("?")[0] + `?id=${currentUser.id}`;
         return false
     }
     return updateRoleGuard(userID);

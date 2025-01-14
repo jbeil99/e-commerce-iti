@@ -4,11 +4,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/public/assets/icons/Icon.png" type="image/png">
+
+    <script src="/public/js/productDetails.js" type="module"></script>
+    <script src="/public/js/session.js"></script>
+    <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
+    <title>Product Details</title>
 </head>
 
 <body>
+    <header>
+        <div class="logo">
+            <img src="/public/assets/icons/Icon.png" alt="">
+            <p>CLICON</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/shop.html">Shop</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="/public/pages/login.html"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </header>
+    <div class="message"></div>
+    <main>
+        <div class="container">
+            <form id="product-details">
+                <div>
+                    <label for="name">Product Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <p class="error"></p>
 
+                </div>
+                <div class="name">
+                    <div>
+                        <label for="unit">Unit</label>
+                        <input type="text" id="unit" name="unit" required>
+                        <p class="error"></p>
+                    </div>
+                    <div>
+                        <label for="price">Price</label>
+                        <input type="number" id="price" name="price" required>
+                        <p class="error"></p>
+                    </div>
+                </div>
+                <div>
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity">
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/png, image/jpeg" required>
+                    <p class="error"></p>
+                </div>
+                <div>
+                    <label for="category">Category</label>
+                    <select id="category" name="roles" required>
+                        <option value="customer">category 1</option>
+                        <option value="seller">category 2</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="description">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" required></textarea>
+                    <p class="error"></p>
+                </div>
+
+                <div class="cta">
+                    <button type="submit" class="btn login-btn" id="add">Add</button>
+                    <button type="submit" class="btn login-btn" id="delete">Delete</button>
+                </div>
+            </form>
+        </div>
+    </main>
 </body>
 
 </html>

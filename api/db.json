@@ -19,9 +19,9 @@
       "id": "2"
     },
     {
-      "username": "test",
-      "firstName": "test",
-      "lastName": "test",
+      "username": "test2222222222222",
+      "firstName": "test222",
+      "lastName": "test22",
       "email": "asdasd@gmail.com",
       "password": "QuackLEL22",
       "role": "customer",
@@ -30,13 +30,13 @@
   ],
   "products": [
     {
-      "product_id": 1,
+      "id": 1,
       "name": "Product 1",
       "description": "Product 1 Description",
       "price": 200,
       "unit": "Piece",
       "image": "product image url",
-      "availability": false,
+      "approved": false,
       "quantity": 0,
       "category": "skin care",
       "rating": 0,
@@ -47,8 +47,7 @@
           "rating": 5,
           "comment": "comment"
         }
-      ],
-      "id": "5813"
+      ]
     }
   ],
   "orders": [

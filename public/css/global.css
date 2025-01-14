@@ -19,6 +19,12 @@ input[type=number] {
     appearance: textfield;
 }
 
+
+textarea {
+    resize: none;
+    width: 100%;
+}
+
 body {
     margin: 0 auto;
     max-width: 1440px;
