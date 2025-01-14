@@ -10,13 +10,13 @@ const productID = window.location.search.slice(1,).split("=")[1];
 
 
 
-const fillData = (name, price, unit, image, category, description, quantity, saveBtn, product) => {
+const fillData = (name, price, customerPrice, image, category, description, quantity, saveBtn, product) => {
     if (product) {
         saveBtn.innerText = "Save";
         saveBtn.id = "save";
         name.value = product.name;
         price.value = product.price;
-        unit.value = product.unit;
+        customerPrice.value = product.customerPrice;
         description.value = product.description;
         quantity.value = product.quantity;
 
@@ -33,7 +33,7 @@ window.addEventListener("load", async () => {
     const form = document.querySelector("#product-details");
     const name = document.querySelector("#name");
     const price = document.querySelector("#price");
-    const unit = document.querySelector("#unit");
+    const customerPrice = document.querySelector("#customerPrice");
     const image = document.querySelector("#image");
     const category = document.querySelector("#category");
     const description = document.querySelector("#description");
@@ -57,7 +57,7 @@ window.addEventListener("load", async () => {
 
     console.log(product)
 
-    fillData(name, price, unit, image, category, description, quantity, saveBtn, product)
+    fillData(name, price, customerPrice, image, category, description, quantity, saveBtn, product)
 
 
     form.addEventListener("submit", async (e) => {
@@ -83,7 +83,7 @@ window.addEventListener("load", async () => {
                     name: name.value,
                     description: description.value,
                     price: price.value,
-                    unit: unit.value, // check for admin
+                    customerPrice: customerPrice.value, // check for admin
                     quantity: quantity.value,
                     category: category ?? 1,
                     approved: false // check for admin
@@ -127,7 +127,7 @@ window.addEventListener("load", async () => {
                         name: name.value,
                         description: description.value,
                         price: price.value,
-                        unit: unit.value,
+                        customerPrice: unit.value,
                         quantity: quantity.value,
                         category: category ?? 1,
                         rating: 0,

@@ -34,11 +34,11 @@
       "name": "Product 1",
       "description": "Product 1 Description",
       "price": 200,
-      "unit": "Piece",
+      "customerPrice": 230,
       "image": "product image url",
       "approved": false,
       "quantity": 0,
-      "category": "skin care",
+      "category": 1,
       "rating": 0,
       "seller_id": 2,
       "reviews": [
@@ -69,7 +69,16 @@
       "id": "dd09"
     }
   ],
-  "categories": [],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Catergory 1"
+    },
+    {
+      "id": 2,
+      "name": "Catergory 2"
+    }
+  ],
   "carts": [
     {
       "cart_id": 1,
