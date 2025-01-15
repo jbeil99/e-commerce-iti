@@ -8,7 +8,7 @@ const manageProductStatus = (data) => {
     return data.approved ? "Approved" : "Not Approved";
 }
 // TODO: Consider Classes HERE
-const addProductRow = async (data, table, user, addCheck = true) => {
+const addProductRow = async (data, table, addCheck = true) => {
     const seller = await getUser(data.seller_id);
     const tr = document.createElement("tr");
 

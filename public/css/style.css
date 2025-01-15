@@ -116,15 +116,28 @@ main {
   border-radius: 4px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   padding: 15px;
-  text-align: center;
-  position: relative;
   border: 1px solid #ccc;
+  position: relative;
+  overflow: hidden;
 }
 
 .product-card img {
-  max-width: 100%;
-  height: auto;
   margin-bottom: 10px;
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+.discount {
+  color: #929FA5;
+  font-weight: 400;
+  text-decoration: line-through;
+  padding-left: 10px;
+}
+
+.stars {
+  font-size: 1.2rem;
 }
 
 .product-card h3 {
@@ -165,4 +178,29 @@ main {
 
 .sale .badge {
   background-color: #2ecc71;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  transition: opacity 0.3s ease-in-out;
+  text-align: center;
+}
+
+.product-card:hover .overlay {
+  opacity: 1;
+}
+
+.product-card:hover img {
+  transform: scale(1.1);
 }

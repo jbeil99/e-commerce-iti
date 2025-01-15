@@ -10,127 +10,65 @@
       "id": "1"
     },
     {
-      "username": "hussin2",
+      "username": "hussin",
+      "firstName": "Manger",
+      "lastName": "Account",
+      "email": "asdasd@gmail.com",
+      "password": "QuackLEL22",
+      "role": "manger",
+      "id": "22a9",
+      "userDeleted": true
+    },
+    {
+      "id": "76f1",
+      "username": "user1",
+      "password": "QuackLEL22",
       "firstName": "Hussin",
-      "lastName": "Soliman",
-      "email": "admin@clicon.com",
-      "password": "admin",
-      "id": "2",
-      "userDeleted": true
-    },
-    {
-      "username": "test2222222222222",
-      "firstName": "test222",
-      "lastName": "test22",
-      "email": "asdasd@gmail.com",
-      "password": "QuackLEL22",
-      "role": "customer",
-      "id": "5d9e"
-    },
-    {
-      "username": "user2",
-      "firstName": "user",
-      "lastName": "user111",
-      "email": "use@clicon.com",
-      "password": "QuackLEL22",
-      "id": "ce4a",
-      "userDeleted": true
-    },
-    {
-      "id": "23e0",
-      "username": "asdas",
-      "password": "QuackLEL22",
-      "firstName": "asd",
-      "lastName": "asda",
-      "email": "dasdas@asd.com",
+      "lastName": "Ahmed",
+      "email": "hussin@cliocn.com",
       "role": "customer"
-    },
-    {
-      "id": "ab1c",
-      "username": "asdas2",
-      "password": "QuackLEL22",
-      "firstName": "asd",
-      "lastName": "asda",
-      "email": "dasdas@asd.com",
-      "role": "customer",
-      "approved": false
-    },
-    {
-      "id": "9cee",
-      "username": "test admin",
-      "password": "QuackLEL22",
-      "firstName": "asdsd",
-      "lastName": "asdasd",
-      "email": "asdasd@gmail.com",
-      "role": "customer"
-    },
-    {
-      "id": "d9bf",
-      "username": "test admin seller",
-      "password": "QuackLEL22",
-      "firstName": "asdas",
-      "lastName": "dasdas",
-      "email": "asdasd@gmail.com",
-      "role": "customer"
-    },
-    {
-      "id": "b8de",
-      "username": "assssssss",
-      "password": "QuackLEL22",
-      "firstName": "as",
-      "lastName": "asdas",
-      "email": "asdasd@gmail.com",
-      "role": "customer"
-    },
-    {
-      "id": "47fb",
-      "username": "assss",
-      "password": "QuackLEL22",
-      "firstName": "asssss",
-      "lastName": "sasdad",
-      "email": "asdasd@gmail.com",
-      "role": "seller",
-      "approved": true
-    },
-    {
-      "id": "98df",
-      "username": "last test",
-      "password": "QuackLEL22",
-      "firstName": "asdas",
-      "lastName": "dasdasd",
-      "email": "asdasd@gmail.com",
-      "role": "seller",
-      "approved": true
     }
   ],
   "products": [
     {
-      "id": "4ad0",
-      "name": "asssssssssss",
-      "description": "assssssssssssassssssssssssss",
-      "price": "100",
-      "customerPrice": "150",
-      "quantity": "150",
-      "category": "1",
-      "rating": 0,
-      "seller_id": "2",
-      "reviews": [],
-      "approved": true,
-      "sellerDeleted": true
-    },
-    {
-      "id": "533c",
-      "name": "asssssssss",
-      "description": "asssssssssaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "price": "20",
-      "customerPrice": "50",
+      "id": "c315",
+      "name": "Prodcuct ",
+      "description": "asssssssssssssssssssss",
+      "price": "15",
+      "customerPrice": "25",
       "quantity": "15",
-      "category": "1",
+      "category": "2",
+      "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
       "rating": 0,
       "seller_id": "1",
       "reviews": [],
-      "approved": true,
-      "sellerDeleted": true
+      "approved": false
+    },
+    {
+      "id": "c315",
+      "name": "Prodcuct ",
+      "description": "asssssssssssssssssssss",
+      "price": "15",
+      "customerPrice": "25",
+      "sale": 0,
+      "quantity": "15",
+      "category": "2",
+      "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
+      "rating": 3,
+      "seller_id": "1",
+      "reviews": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "approved": false,
+      "createdAt": "",
+      "sold": 50
     }
   ],
   "orders": [
@@ -164,15 +102,14 @@
   ],
   "carts": [
     {
-      "cart_id": 1,
-      "user_id": 1,
+      "userID": 1,
       "items": [
         {
-          "product_id": 1,
+          "productID": 1,
           "quantity": 2
         },
         {
-          "product_id": 3,
+          "productID": 3,
           "quantity": 1
         }
       ],

@@ -3,9 +3,9 @@ import { toggleApproveProduct, deleteProduct, getProdcuts, softDeleteProduct } f
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 import { addProductRow, addUserRow } from "./helpers/addRows.js";
 
-const user = checkUserAuth();
+const currentUser = checkUserAuth();
 
-addRoleGuard(["admin"], "/shop.html");
+addRoleGuard(["admin", "manger"], "/shop.html");
 
 
 const switchSections = (activeSection, ...disabledSections) => {
@@ -32,8 +32,10 @@ window.addEventListener("load", async () => {
     const users = await getUsers();
     const products = await getProdcuts();
 
+
+
     users.forEach(user => {
-        if (user.role === "admin") {
+        if (user.role === "admin" || user.role === currentUser.role || user.userDeleted) {
             return;
         }
         if (user.role === "seller" || user.approved !== undefined) {
@@ -45,9 +47,9 @@ window.addEventListener("load", async () => {
 
     products.forEach(product => {
         if (product.sellerDeleted === true) {
-            addProductRow(product, deletedProductsTable, user, false);
+            addProductRow(product, deletedProductsTable, false);
         } else {
-            addProductRow(product, productsTable, user);
+            addProductRow(product, productsTable);
         }
     })
 
@@ -76,6 +78,12 @@ window.addEventListener("load", async () => {
             if (e.target.innerText.toLowerCase() === "disapprove") {
                 toggleApproveSeller(e.target.value, false);
             }
+        }
+    });
+
+    usersTable.addEventListener("click", (e) => {
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
+            SoftDeleteUser(e.target.value);
         }
     });
 

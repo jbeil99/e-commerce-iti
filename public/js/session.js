@@ -11,13 +11,13 @@ const addNav = (name, href) => {
 }
 
 const addLogout = (profile, currentUser) => {
-    profile.href = `/public/admin/user-details.html?id=${currentUser.id}`;
+    profile.href = `/public/pages/profile.html`;
     profile.innerHTML = `<p id="welcome">Welcome,${currentUser.username}</p>
         <i class="fa-solid fa-right-from-bracket"></i>`;
 
     addNav("Profile", "/public/pages/profile.html")
 
-    if (currentUser.role === "admin") {
+    if (currentUser.role === "admin" || currentUser.role === "manger") {
         addNav("Dashboard", "/public/admin/admin.html")
     }
     if (currentUser.role === "seller") {
@@ -40,7 +40,7 @@ window.addEventListener("load", () => {
                 window.location.href = "/public/pages/login.html";
             }
             if (e.target.nodeName === "P") {
-                window.location.href = `/public/admin/user-details.html?id=${currentUser.id}`;
+                window.location.href = "/public/pages/profile.html";
             }
 
         })

@@ -76,7 +76,7 @@ const validateQuantity = (target) => {
 const validateImage = (target) => {
     const error = target.parentElement.querySelector("p");
     const errorMsg = "Please upload an image (PNG or JPEG).";
-    if (!target.files.length) {
+    if (target.value.trim() === "") {
         error.innerText = errorMsg;
         error.style.display = "block";
         return false

@@ -17,9 +17,9 @@ window.addEventListener("load", async () => {
     const phone = document.querySelector("#phone");
     const password = document.querySelector("#password");
     const conPassword = document.querySelector("#confirm-password");
-
     const user = await getUser(currentUser.id);
     const form = document.querySelector("#profile-form");
+    const logOut = document.querySelector("#logout");
 
     if (user) {
         fillUserData(username, email, fname, lname, user)
@@ -27,13 +27,17 @@ window.addEventListener("load", async () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (e.submitter.value === "delete") {
-            await SoftDeleteUser(currentUser.id);
-            sessionStorage.removeItem("user");
+            if (confirm("Are you sure you want to delete the acount ?")) {
+                await SoftDeleteUser(currentUser.id);
+                sessionStorage.removeItem("user");
+            }
             return;
         }
 
-        const vaild = handleSave(username, password, fname, lname, email, conPassword, currentUser.username);
+        const vaild = await handleSave(username, password, fname, lname, email, conPassword, currentUser.username);
+        console.log(vaild);
         if (vaild) {
+            e.preventDefault();
             await updateUser(currentUser.id, {
                 username: username.value,
                 firstName: fname.value,
@@ -43,5 +47,10 @@ window.addEventListener("load", async () => {
             })
         }
 
+    })
+
+    logOut.addEventListener("click", () => {
+        sessionStorage.removeItem("user")
+        window.location.href = "/public/pages/login.html"
     })
 })

@@ -6,7 +6,7 @@ import { handleProduct } from "./validation/productValidation.js";
 
 
 let currentUser = checkUserAuth();
-addRoleGuard(['admin', 'seller'], "/shop.html");
+addRoleGuard(['admin', 'seller', 'manger'], "/shop.html");
 
 const productID = window.location.search.slice(1,).split("=")[1];
 
@@ -97,7 +97,8 @@ window.addEventListener("load", async () => {
                     customerPrice: customerPrice.value, // check for admin
                     quantity: quantity.value,
                     category: category ?? 1,
-                    approved: false // check for admin
+                    approved: false,
+                    image: image.value,
                 })
             }
         }
@@ -123,10 +124,13 @@ window.addEventListener("load", async () => {
                         customerPrice: customerPrice.value,
                         quantity: quantity.value,
                         category: category ?? 1,
+                        image: image.value,
                         rating: 0,
-                        seller_id: currentUser.id,// cahnge
+                        seller_id: currentUser.id,
                         reviews: [],
-                        approved: false // check for admin
+                        approved: false, // check for admin
+                        sold: 0,
+                        sale: 0
                     }
                 );
                 window.location.href = "/public/admin/admin.html";

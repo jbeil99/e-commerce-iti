@@ -1,13 +1,13 @@
 import { handleSave, handleRegister } from "./validation/registerValidation.js";
 import { getUser, deleteUser, updateUser, addUser } from "./api/user.js";
-import { checkUserAuth, editGuard } from "./guards/userGuard.js";
+import { addRoleGuard, checkUserAuth, editGuard } from "./guards/userGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
 import { fillUserData } from "./helpers/fillForms.js";
 
 
 let currentUser = checkUserAuth();
 const userID = window.location.search.slice(1,).split("=")[1];
-const canEditRole = editGuard(userID);
+addRoleGuard(['admin', 'manger'], "/public/pages/profile.html")
 
 const getRoleSelected = (select, user) => {
     for (let r of select) {
@@ -34,7 +34,7 @@ window.addEventListener("load", async () => {
 
     const user = userID ? await getUser(userID) : null;
 
-    if (!canEditRole) {
+    if ((currentUser.role !== "admin" || currentUser.role !== "manger") && currentUser.id === userID) {
         select.parentElement.style.display = "none";
     }
 
@@ -43,6 +43,12 @@ window.addEventListener("load", async () => {
         return false;
     }
 
+    if (currentUser.role === "admin") {
+        const option = document.createElement("option");
+        option.value = "manger";
+        option.innerText = "Manger";
+        select.appendChild(option);
+    }
 
     if (user) {
         fillUserData(username, email, fname, lname, user, select, saveBtn)

@@ -2,22 +2,23 @@
     display: flex;
 }
 
-.sidebar {
+aside {
     width: 200px;
     background-color: #f0f0f0;
     padding: 20px;
     margin-right: 20px;
 }
 
-.sidebar a {
+aside p {
     display: block;
     padding: 10px;
     text-decoration: none;
     color: #333;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.sidebar a:hover {
+aside a:hover {
     background-color: #ddd;
 }
 

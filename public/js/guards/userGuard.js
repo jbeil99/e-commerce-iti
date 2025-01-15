@@ -20,7 +20,7 @@ const addRoleGuard = (allowedRoles, redirect) => {
 }
 
 const editGuard = (userID) => {
-    if (currentUser.role !== "admin" && currentUser.id !== userID) {
+    if ((currentUser.role !== "admin" || currentUser.role !== "manger") && currentUser.id !== userID) {
         window.location.href = window.location.href.split("?")[0] + `?id=${currentUser.id}`;
         return false
     }
@@ -28,7 +28,7 @@ const editGuard = (userID) => {
 }
 
 const updateRoleGuard = (userID) => {
-    if (currentUser.id === userID) {
+    if (currentUser.id !== userID && (currentUser.role !== "admin" || currentUser.role !== "manger")) {
         return false;
     }
     return true
