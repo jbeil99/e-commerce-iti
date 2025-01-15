@@ -1,12 +1,13 @@
-import { getUser } from "./api/user.js";
-import { addProduct, getProdcuts, updateProduct, deleteProduct, getProduct, getCategories } from "./api/product.js";
-import { checkUserAuth } from "./guards/userGuard.js";
+import { addProduct, updateProduct, deleteProduct, getProduct, getCategories } from "./api/product.js";
+import { addRoleGuard, checkUserAuth } from "./guards/userGuard.js";
 import { editGuard, addProductGuard } from "./guards/productGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
 import { handleProduct } from "./validation/productValidation.js";
 
 
 let currentUser = checkUserAuth();
+addRoleGuard(['admin', 'seller'], "/shop.html");
+
 const productID = window.location.search.slice(1,).split("=")[1];
 
 
@@ -82,11 +83,13 @@ window.addEventListener("load", async () => {
 
         if (e.submitter.id === "save") {
             const vaild = await handleProduct(name, price, customerPrice, quantity, image, description, currentUser, product.name);
-
             if (vaild) {
-                const role = getRoleSelected(select, user)
-                console.log(role);
-
+                let category;
+                for (let c of categoriesInput) {
+                    if (c.selected) {
+                        category = c.value;
+                    }
+                }
                 await updateProduct(product.id, {
                     name: name.value,
                     description: description.value,
@@ -100,7 +103,7 @@ window.addEventListener("load", async () => {
         }
 
         if (e.submitter.id === "add") {
-            console.log(image.files)
+
             const vaild = await handleProduct(name, price, customerPrice, quantity, image, description, currentUser);
             console.log(vaild)
             let category;

@@ -1,72 +1,12 @@
-import { getUsers, getUser } from "./api/user.js";
-import { getProdcuts } from "./api/product.js"
+import { toggleApproveSeller, getUsers, SoftDeleteUser } from "./api/user.js";
+import { toggleApproveProduct, deleteProduct, getProdcuts, softDeleteProduct } from "./api/product.js"
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
+import { addProductRow, addUserRow } from "./helpers/addRows.js";
 
 const user = checkUserAuth();
 
 addRoleGuard(["admin"], "/shop.html");
 
-
-
-const addUserRow = (data, table) => {
-    const tr = document.createElement("tr");
-    const id = document.createElement("td");
-    const username = document.createElement("td");
-    const fullname = document.createElement("td");
-    const email = document.createElement("td");
-    const role = document.createElement("td");
-
-    tr.appendChild(id);
-    id.innerText = data.id;
-    tr.appendChild(username)
-    username.innerText = data.username;
-    tr.appendChild(fullname);
-    fullname.innerText = `${data.firstName} ${data.lastName}`;
-    tr.appendChild(email);
-    email.innerText = data.email;
-    tr.appendChild(role);
-    role.innerText = data.role;
-
-    table.appendChild(tr);
-}
-
-const addProductRow = async (data, table) => {
-    const seller = await getUser(data.seller_id);
-    const tr = document.createElement("tr");
-    const checkbox = document.createElement("td");
-    const id = document.createElement("td");
-    const productName = document.createElement("td");
-    const sellerName = document.createElement("td");
-    const image = document.createElement("td");
-    const category = document.createElement("td");
-    const rating = document.createElement("td");
-    const price = document.createElement("td");
-    const quantity = document.createElement("td");
-    const status = document.createElement("td");
-    tr.appendChild(checkbox);
-    checkbox.innerHTML = `<input type="checkbox" value=${data.id}>`;
-    checkbox.value = data.id;
-    tr.appendChild(id);
-    id.innerText = data.id;
-    tr.appendChild(productName)
-    productName.innerText = data.name;
-    tr.appendChild(price);
-    price.innerText = data.price;
-    tr.appendChild(quantity);
-    quantity.innerText = data.quantity;
-    tr.appendChild(sellerName);
-    sellerName.innerText = `${seller.firstName} ${seller.lastName}`;
-    tr.appendChild(image);
-    image.innerHTML = `<img src="${data.image}" alt="${data.name}" />`;
-    tr.appendChild(category);
-    category.innerText = data.category;
-    tr.appendChild(rating);
-    rating.innerText = data.rating;
-    tr.appendChild(status);
-    status.innerText = data.approved ? "Approved" : "Not Approved";
-    table.appendChild(tr);
-
-}
 
 const switchSections = (activeSection, ...disabledSections) => {
     activeSection.style.display = "block";
@@ -85,6 +25,10 @@ window.addEventListener("load", async () => {
     const usersTable = document.querySelector("#users tbody");
     const sellersTable = document.querySelector("#sellers tbody");
     const productsTable = document.querySelector("#products tbody");
+    const deletedProductsTable = document.querySelector("#deleted-products tbody");
+
+    const approveBtn = document.querySelector("#approve");
+    const selectAll = document.querySelector("#all");
     const users = await getUsers();
     const products = await getProdcuts();
 
@@ -92,16 +36,21 @@ window.addEventListener("load", async () => {
         if (user.role === "admin") {
             return;
         }
-        if (user.role === "seller") {
-            addUserRow(user, sellersTable)
+        if (user.role === "seller" || user.approved !== undefined) {
+            addUserRow(user, sellersTable, true)
         } else {
             addUserRow(user, usersTable)
         }
     });
 
     products.forEach(product => {
-        addProductRow(product, productsTable);
+        if (product.sellerDeleted === true) {
+            addProductRow(product, deletedProductsTable, user, false);
+        } else {
+            addProductRow(product, productsTable, user);
+        }
     })
+
     userNav.addEventListener("click", () => {
         switchSections(usersSection, productsSection);
         userNav.classList.add("active");
@@ -116,25 +65,59 @@ window.addEventListener("load", async () => {
 
     })
 
-    usersTable.addEventListener("click", (e) => {
-        const userID = e.target.parentElement.querySelector("td:nth-child(2)").innerText;
-        if (userID) {
-            window.location.href = `/public/admin/user-details.html?id=${userID}`;
-        }
-    })
-
     sellersTable.addEventListener("click", (e) => {
-        const sellerID = e.target.parentElement.querySelector("td:nth-child(2)").innerText;
-        if (sellerID) {
-            window.location.href = `/public/admin/user-details.html?id=${sellerID}`;
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
+            SoftDeleteUser(e.target.value);
         }
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("approve")) {
+            if (e.target.innerText.toLowerCase() === "approve") {
+                toggleApproveSeller(e.target.value, true);
+            }
+            if (e.target.innerText.toLowerCase() === "disapprove") {
+                toggleApproveSeller(e.target.value, false);
+            }
+        }
+    });
+
+    selectAll.addEventListener('change', function () {
+        let checkboxes =
+            document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function (checkbox) {
+            checkbox.checked = this.checked;
+        }, this);
+    });
+
+    approveBtn.addEventListener("click", () => {
+        let checkboxes =
+            document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(async function (checkbox) {
+            if (checkbox.checked) {
+                if (checkbox.value !== "on") {
+                    await approveProduct(checkbox.value);
+                }
+            }
+        }, this);
     })
 
     productsTable.addEventListener("click", (e) => {
-        const productID = e.target.parentElement.querySelector("td:nth-child(2)").innerText;
-        if (productID) {
-            window.location.href = `/public/admin/product-details.html?id=${productID}`;
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
+            softDeleteProduct(e.target.value);
+        }
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("approve")) {
+            if (e.target.innerText.toLowerCase() === "approve") {
+                toggleApproveProduct(e.target.value, true);
+            }
+            if (e.target.innerText.toLowerCase() === "disapprove") {
+                toggleApproveProduct(e.target.value, false);
+            }
+        }
+    })
+
+    deletedProductsTable.addEventListener("click", (e) => {
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
+            deleteProduct(e.target.value);
         }
 
     })
+
 })

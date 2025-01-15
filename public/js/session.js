@@ -13,13 +13,15 @@ const addNav = (name, href) => {
 const addLogout = (profile, currentUser) => {
     profile.href = `/public/admin/user-details.html?id=${currentUser.id}`;
     profile.innerHTML = `<p id="welcome">Welcome,${currentUser.username}</p>
-        <i class="fa-solid fa-right-from-bracket"></i>`
+        <i class="fa-solid fa-right-from-bracket"></i>`;
+
+    addNav("Profile", "/public/pages/profile.html")
 
     if (currentUser.role === "admin") {
         addNav("Dashboard", "/public/admin/admin.html")
     }
     if (currentUser.role === "seller") {
-        addNav("Add Product", "/public/admin/product-details.html")
+        addNav("Your Products", "/public/pages/sellerDashborad.html")
     }
 }
 

@@ -15,6 +15,21 @@ const getProdcuts = async () => {
     return null;
 }
 
+const getSellerProdcuts = async (sellerID) => {
+    try {
+        const response = await fetch("http://localhost:3000/products");
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const products = await response.json()
+
+        return products.filter(product => sellerID === product.seller_id && product.sellerDeleted !== true);;
+    } catch (e) {
+        console.log(e);
+    }
+    return null;
+}
+
 const getProduct = async (id) => {
     try {
         const response = await fetch(`http://localhost:3000/products/${id}`);
@@ -91,4 +106,41 @@ const getCategories = async () => {
     }
 }
 
-export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct, getCategories };
+const toggleApproveProduct = async (id, approve) => {
+    try {
+        const response = await fetch(`http://localhost:3000/products/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                approved: approve
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const softDeleteProduct = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3000/products/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                sellerDeleted: true
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct, getCategories, toggleApproveProduct, getSellerProdcuts, softDeleteProduct };

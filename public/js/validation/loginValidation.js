@@ -7,14 +7,14 @@ const checkUsername = (username, users) => {
 
     let exists = false;
     users.forEach(user => {
-        if (username.value.trim() === user.username) {
+        if (username.value.trim() === user.username && user.userDeleted !== true) {
+            console.log(user.userDeleted);
             currentUser = user;
             exists = true;
             return;
         }
     });
 
-    console.log("from", currentUser, exists)
     if (exists) {
         error.style.display = "none"
         error.innerText = "";

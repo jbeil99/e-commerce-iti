@@ -99,3 +99,8 @@ input:focus {
     max-width: 200px;
     margin-left: auto;
 }
+
+.role {
+    display: flex;
+    gap: 10px;
+}

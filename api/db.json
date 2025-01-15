@@ -10,13 +10,13 @@
       "id": "1"
     },
     {
-      "username": "hussin",
+      "username": "hussin2",
       "firstName": "Hussin",
       "lastName": "Soliman",
       "email": "admin@clicon.com",
       "password": "admin",
-      "role": "seller",
-      "id": "2"
+      "id": "2",
+      "userDeleted": true
     },
     {
       "username": "test2222222222222",
@@ -33,68 +33,104 @@
       "lastName": "user111",
       "email": "use@clicon.com",
       "password": "QuackLEL22",
-      "id": "ce4a"
+      "id": "ce4a",
+      "userDeleted": true
+    },
+    {
+      "id": "23e0",
+      "username": "asdas",
+      "password": "QuackLEL22",
+      "firstName": "asd",
+      "lastName": "asda",
+      "email": "dasdas@asd.com",
+      "role": "customer"
+    },
+    {
+      "id": "ab1c",
+      "username": "asdas2",
+      "password": "QuackLEL22",
+      "firstName": "asd",
+      "lastName": "asda",
+      "email": "dasdas@asd.com",
+      "role": "customer",
+      "approved": false
+    },
+    {
+      "id": "9cee",
+      "username": "test admin",
+      "password": "QuackLEL22",
+      "firstName": "asdsd",
+      "lastName": "asdasd",
+      "email": "asdasd@gmail.com",
+      "role": "customer"
+    },
+    {
+      "id": "d9bf",
+      "username": "test admin seller",
+      "password": "QuackLEL22",
+      "firstName": "asdas",
+      "lastName": "dasdas",
+      "email": "asdasd@gmail.com",
+      "role": "customer"
+    },
+    {
+      "id": "b8de",
+      "username": "assssssss",
+      "password": "QuackLEL22",
+      "firstName": "as",
+      "lastName": "asdas",
+      "email": "asdasd@gmail.com",
+      "role": "customer"
+    },
+    {
+      "id": "47fb",
+      "username": "assss",
+      "password": "QuackLEL22",
+      "firstName": "asssss",
+      "lastName": "sasdad",
+      "email": "asdasd@gmail.com",
+      "role": "seller",
+      "approved": true
+    },
+    {
+      "id": "98df",
+      "username": "last test",
+      "password": "QuackLEL22",
+      "firstName": "asdas",
+      "lastName": "dasdasd",
+      "email": "asdasd@gmail.com",
+      "role": "seller",
+      "approved": true
     }
   ],
   "products": [
     {
-      "id": "1",
-      "name": "Product 1",
-      "description": "Product 1 Description",
-      "price": 200,
-      "customerPrice": 230,
-      "image": "product image url",
-      "approved": false,
-      "quantity": 0,
-      "category": 1,
+      "id": "4ad0",
+      "name": "asssssssssss",
+      "description": "assssssssssssassssssssssssss",
+      "price": "100",
+      "customerPrice": "150",
+      "quantity": "150",
+      "category": "1",
       "rating": 0,
       "seller_id": "2",
-      "reviews": [
-        {
-          "user_id": 1,
-          "rating": 5,
-          "comment": "comment"
-        }
-      ]
+      "reviews": [],
+      "approved": true,
+      "sellerDeleted": true
     },
     {
-      "id": "8048",
-      "name": "product 2",
-      "description": "ahahahah what is this ??????????",
-      "price": "10",
-      "customerPrice": "15",
+      "id": "533c",
+      "name": "asssssssss",
+      "description": "asssssssssaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "price": "20",
+      "customerPrice": "50",
       "quantity": "15",
       "category": "1",
       "rating": 0,
-      "seller_id": 1,
+      "seller_id": "1",
       "reviews": [],
-      "approved": false
-    },
-    {
-      "id": "ba1d",
-      "name": "asssss",
-      "description": "aaaaaaaaaaaaaaaaaaaa",
-      "price": "10",
-      "customerPrice": "12",
-      "quantity": "12",
-      "category": "2",
-      "rating": 0,
-      "seller_id": 1,
-      "reviews": [],
-      "approved": false
-    },
-    {
-      "id": "3b22",
-      "name": "test Seller",
-      "description": "asssssssssssaaaaaaaaaaaa",
-      "price": "15",
-      "customerPrice": "20",
-      "quantity": "50",
-      "category": "1",
-      "rating": 0,
-      "seller_id": "2",
-      "reviews": [],
-      "approved": false
+      "approved": true,
+      "sellerDeleted": true
     }
   ],
   "orders": [

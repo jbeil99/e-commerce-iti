@@ -73,23 +73,29 @@ window.addEventListener("load", async () => {
     })
 
     form.addEventListener("submit", async (e) => {
+        console.log(e.submitter)
         e.preventDefault();
         const vaild = await handleRegister(username, password, firstName, lastName, email, conPassword);
-        console.log(vaild)
         if (!vaild) {
             e.preventDefault();
             return false;
         } else {
             handleRegister(username, password, firstName, lastName, email, conPassword)
             e.preventDefault();
+            const body = {
+                username: username.value,
+                password: password.value,
+                firstName: firstName.value,
+                lastName: lastName.value,
+                email: email.value,
+                role: 'customer'
+            }
+            if (e.submitter.value === "seller") {
+                body["approved"] = false;
+            }
+            console.log(body);
             addUser(
-                {
-                    username: username.value,
-                    password: password.value,
-                    firstName: firstName.value,
-                    lastName: lastName.value,
-                    email: email.value,
-                }
+                body
             );
         }
 

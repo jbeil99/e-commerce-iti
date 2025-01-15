@@ -68,5 +68,43 @@ const deleteUser = async (id) => {
     }
 }
 
+const SoftDeleteUser = async (id) => {
+    try {
+        const response = await fetch(`http://localhost:3000/users/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                userDeleted: true
+            })
+        });
 
-export { getUsers, addUser, deleteUser, updateUser, getUser };
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const toggleApproveSeller = async (id, approve) => {
+    try {
+        const response = await fetch(`http://localhost:3000/users/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                approved: approve,
+                role: approve ? "seller" : "customer"
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export { getUsers, addUser, deleteUser, updateUser, getUser, SoftDeleteUser, toggleApproveSeller };

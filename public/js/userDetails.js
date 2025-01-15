@@ -2,7 +2,7 @@ import { handleSave, handleRegister } from "./validation/registerValidation.js";
 import { getUser, deleteUser, updateUser, addUser } from "./api/user.js";
 import { checkUserAuth, editGuard } from "./guards/userGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
-
+import { fillUserData } from "./helpers/fillForms.js";
 
 
 let currentUser = checkUserAuth();
@@ -19,22 +19,6 @@ const getRoleSelected = (select, user) => {
 }
 
 
-// `UserID "${userID}" Doesnt match anyuser in the system`
-const fillData = (username, email, fname, lname, select, saveBtn, user) => {
-    if (user) {
-        saveBtn.innerText = "Save";
-        saveBtn.id = "save";
-        username.value = user.username;
-        email.value = user.email;
-        fname.value = user.firstName;
-        lname.value = user.lastName;
-        for (let r of select) {
-            if (r.value === user.role) {
-                r.selected = true;
-            }
-        }
-    }
-}
 
 window.addEventListener("load", async () => {
     const form = document.querySelector("#user-details");
@@ -60,8 +44,9 @@ window.addEventListener("load", async () => {
     }
 
 
-    fillData(username, email, fname, lname, select, saveBtn, user)
-
+    if (user) {
+        fillUserData(username, email, fname, lname, user, select, saveBtn)
+    }
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -107,18 +92,23 @@ window.addEventListener("load", async () => {
                     role = r.value;
                 }
             }
+            const body = {
+                username: username.value,
+                password: password.value,
+                firstName: fname.value,
+                lastName: lname.value,
+                email: email.value,
+                role: role ? role : "customer"
+            }
+
+            if (role === "seller") {
+                body["approved"] = true;
+            }
 
             if (vaild) {
                 e.preventDefault();
                 await addUser(
-                    {
-                        username: username.value,
-                        password: password.value,
-                        firstName: fname.value,
-                        lastName: lname.value,
-                        email: email.value,
-                        role: role ?? "customer"
-                    }
+                    body
                 );
                 window.location.href = "/public/admin/admin.html";
             }
