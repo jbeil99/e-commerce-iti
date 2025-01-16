@@ -95,7 +95,7 @@ const addProductToCart = async (cartID, productID, quantity = 1) => {
     if (checkProduct(items, productID)) {
         items.forEach(item => {
             if (item.productID === productID) {
-                item.quantity += quantity;
+                item.quantity = Number(item.quantity) + quantity;
             }
         })
     } else {
@@ -144,12 +144,19 @@ const addProdcutToLocalStorageCart = (productID, quantity = 1) => {
 
 const updateCartItemsQuantity = async (cartID, productID, quantity = 1) => {
     const cart = await getCart(cartID);
+    const newItems = cart.items.map(item => {
+        if (item.productID === productID) {
+            item.quantity = quantity;
+        }
+        return item;
+    });
+    console.log(newItems[0], quantity)
     const body = {
-        items: cart.items.forEach(item => {
+        items: cart.items.map(item => {
             if (item.productID === productID) {
                 item.quantity = quantity;
-                return;
             }
+            return item;
         })
     };
     try {

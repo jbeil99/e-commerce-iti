@@ -27,14 +27,12 @@ window.addEventListener("load", async () => {
     const productGrid = document.querySelector(".product-grid");
     let cart;
     if (currentUser) {
-        console.log(currentUser);
         cart = await getCart(currentUser.cart.id)
     } else {
         localStorage.setItem("cart", JSON.stringify({ items: [] }))
         cart = JSON.parse(localStorage.getItem("cart"));
     }
 
-    console.log(products);
     products.forEach(product => {
         addProdcutCard(productGrid, product)
     });

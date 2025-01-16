@@ -97,8 +97,11 @@
   ],
   "orders": [
     {
-      "order_id": 1,
-      "user_id": 1,
+      "address": {
+        "1": "",
+        "2": ""
+      },
+      "userID": 1,
       "items": [
         {
           "product_id": 1,
@@ -139,11 +142,22 @@
       "id": "415a"
     },
     {
-      "userID": "286e",
       "items": [
         {
+          "productID": "313b",
+          "quantity": 28
+        },
+        {
+          "productID": "02c9",
+          "quantity": 4
+        },
+        {
+          "productID": "c315",
+          "quantity": 3
+        },
+        {
           "productID": "541b",
-          "quantity": 1
+          "quantity": 3
         }
       ],
       "id": "6f1c"

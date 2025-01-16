@@ -116,8 +116,25 @@ nav a:hover {
     border-radius: 4px;
 }
 
+#cart-num {
+    position: relative;
+    top: -15px;
+    left: -15px;
+    z-index: 1;
+    background-color: white;
+    border-radius: 50%;
+    color: #1B6392;
+    font-size: 10px;
+    padding: 6px;
+}
+
 /* End Header style */
 
 input:focus {
     outline: 2px solid #FA8232;
+}
+
+.error {
+    color: #EF5350;
+    font-size: 13px;
 }

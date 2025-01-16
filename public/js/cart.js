@@ -1,7 +1,8 @@
 import { addProdcutCart } from "./helpers/addProduct.js";
-import { getCart } from "./api/cart.js";
+import { deleteCartProduct, getCart, updateCartItemsQuantity } from "./api/cart.js";
 import { calacPrices } from "./helpers/calcPrices.js";
 import { fillCartData } from "./helpers/fillForms.js";
+import { quantityValidation } from "./validation/cartValidation.js";
 
 const currentUser = JSON.parse(sessionStorage.getItem("user"));
 
@@ -11,6 +12,7 @@ window.addEventListener("load", async () => {
     const totalSpan = document.querySelector("#total")
     const discount = document.querySelector("#discount")
     const shipping = document.querySelector("#shipping")
+    const form = document.querySelector("#cart-form");
     let cart;
     if (currentUser) {
         cart = await getCart(currentUser.cart.id)
@@ -26,4 +28,36 @@ window.addEventListener("load", async () => {
             addProdcutCart(cartTable, item);
         })
     }
+    form.addEventListener("click", (e) => {
+        const input = e.target.parentElement.querySelector("input")
+        if (e.target.id === "minusBtn") {
+            input.value -= 1;
+            if (input.value <= 0) {
+                input.value = 1;
+            }
+        }
+        if (e.target.id === "plusBtn") {
+            input.value = Number(input.value) + 1;
+        }
+    })
+    form.addEventListener("submit", async (e) => {
+        const inputs = e.target.querySelectorAll("input");
+        e.preventDefault();
+        if (e.submitter.id === "removeBtn") {
+            await deleteCartProduct(currentUser.cart.id, e.submitter.value)
+        }
+        if (e.submitter.id === "updateBtn") {
+            for (const input of inputs) {
+                const vaild = await quantityValidation(input);
+                if (vaild) {
+                    await updateCartItemsQuantity(currentUser.cart.id, input.id, Number(input.value));
+                } else {
+                    e.preventDefault();
+                    return false;
+                }
+            }
+        }
+        e.preventDefault();
+        return false;
+    })
 })

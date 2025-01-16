@@ -1,4 +1,4 @@
-"use strict";
+import { getCart } from "./api/cart.js";
 
 const addNav = (name, href) => {
     const navUl = document.querySelector("nav ul");
@@ -24,14 +24,27 @@ const addLogout = (profile, currentUser) => {
         addNav("Your Products", "/public/pages/sellerDashborad.html")
     }
 }
+const addCartNum = async (target, id) => {
+    const cart = await getCart(id);
+    const span = document.createElement("span");
+    span.id = "cart-num";
+    span.innerText = cart.items.length;
+    if (cart.items.length > 0) {
+        target.appendChild(span)
+    }
+}
 
 
 
 window.addEventListener("load", () => {
     const currentUser = JSON.parse(sessionStorage.getItem("user"));
     const profile = document.querySelector(".profile a:nth-child(2)");
+    const cart = document.querySelector(".profile a:nth-child(1)");
     if (currentUser) {
         addLogout(profile, currentUser);
+        if (currentUser.cart.items.length > 0) {
+            addCartNum(cart, currentUser.cart.id)
+        }
         // TODO: add message
         profile.addEventListener("click", (e) => {
             e.preventDefault();

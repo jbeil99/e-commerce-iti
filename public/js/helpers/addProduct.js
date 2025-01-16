@@ -79,8 +79,10 @@ const addProdcutCart = async (target, data) => {
     const tr = document.createElement('tr');
 
     const removeBtn = document.createElement('button');
-    removeBtn.classList.add('remove-item');
+    removeBtn.id = 'removeBtn';
+    removeBtn.value = product.id;
     removeBtn.innerText = 'Remove';
+    removeBtn.type = "submit";
     const remove = document.createElement('td');
     remove.appendChild(removeBtn);
     tr.appendChild(remove);
@@ -109,15 +111,20 @@ const addProdcutCart = async (target, data) => {
 
     const minusBtn = document.createElement('button');
     minusBtn.innerText = '-';
+    minusBtn.id = "minusBtn";
+    minusBtn.type = "button";
     quantity.appendChild(minusBtn);
 
     const quantityInput = document.createElement('input');
     quantityInput.type = 'number';
+    quantityInput.id = product.id;
     quantityInput.value = data.quantity;
     quantity.appendChild(quantityInput);
 
     const plusBtn = document.createElement('button');
     plusBtn.innerText = '+';
+    plusBtn.id = "plusBtn";
+    plusBtn.type = "button";
     quantity.appendChild(plusBtn);
     const td = document.createElement('td');
     td.appendChild(quantity);
