@@ -10,22 +10,12 @@
       "id": "1"
     },
     {
+      "id": "286e",
       "username": "hussin",
-      "firstName": "Manger",
-      "lastName": "Account",
-      "email": "asdasd@gmail.com",
-      "password": "QuackLEL22",
-      "role": "manger",
-      "id": "22a9",
-      "userDeleted": true
-    },
-    {
-      "id": "76f1",
-      "username": "user1",
       "password": "QuackLEL22",
       "firstName": "Hussin",
       "lastName": "Ahmed",
-      "email": "hussin@cliocn.com",
+      "email": "hssuin@clicon.com",
       "role": "customer"
     }
   ],
@@ -34,24 +24,10 @@
       "id": "c315",
       "name": "Prodcuct ",
       "description": "asssssssssssssssssssss",
-      "price": "15",
-      "customerPrice": "25",
-      "quantity": "15",
-      "category": "2",
-      "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
-      "rating": 0,
-      "seller_id": "1",
-      "reviews": [],
-      "approved": false
-    },
-    {
-      "id": "c315",
-      "name": "Prodcuct ",
-      "description": "asssssssssssssssssssss",
-      "price": "15",
-      "customerPrice": "25",
-      "sale": 0,
-      "quantity": "15",
+      "price": 15,
+      "customerPrice": 25,
+      "sale": 10,
+      "quantity": 15,
       "category": "2",
       "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
       "rating": 3,
@@ -69,6 +45,54 @@
       "approved": false,
       "createdAt": "",
       "sold": 50
+    },
+    {
+      "id": "02c9",
+      "name": "Brick super deluxe edtition",
+      "description": "Pokemon Goes PRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
+      "price": 25,
+      "customerPrice": 25,
+      "quantity": 25,
+      "category": "1",
+      "image": "https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png",
+      "rating": 0,
+      "seller_id": "1",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
+      "sale": 0
+    },
+    {
+      "id": "313b",
+      "name": "Charazard I dont know",
+      "description": "asddaaaaaaaaaaaaaaaasdsad",
+      "price": 25,
+      "customerPrice": 80,
+      "quantity": 25,
+      "category": "1",
+      "image": "https://media.cnn.com/api/v1/images/stellar/prod/210226041421-02-pokemon-anniversary-design.jpg?q=w_1110,c_fill",
+      "rating": 0,
+      "seller_id": "1",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
+      "sale": 80
+    },
+    {
+      "id": "541b",
+      "name": "assssssss",
+      "description": "asssssssssssssssssssssssssssssssssssssssssssssssssssss",
+      "price": "15",
+      "customerPrice": "25",
+      "quantity": "80",
+      "category": "1",
+      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full//133.png",
+      "rating": 3,
+      "seller_id": "1",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
+      "sale": 18
     }
   ],
   "orders": [
@@ -102,18 +126,27 @@
   ],
   "carts": [
     {
-      "userID": 1,
       "items": [
         {
-          "productID": 1,
+          "productID": "313b",
           "quantity": 2
         },
         {
-          "productID": 3,
+          "productID": "541b",
           "quantity": 1
         }
       ],
-      "id": "8250"
+      "id": "415a"
+    },
+    {
+      "userID": "286e",
+      "items": [
+        {
+          "productID": "541b",
+          "quantity": 1
+        }
+      ],
+      "id": "6f1c"
     }
   ]
 }

@@ -30,7 +30,7 @@ const addUser = async (body) => {
         }
 
         const json = await response.json();
-        console.log(json);
+        return json
     } catch (e) {
         console.log(e)
     }
@@ -106,5 +106,6 @@ const toggleApproveSeller = async (id, approve) => {
         console.log(e)
     }
 }
+
 
 export { getUsers, addUser, deleteUser, updateUser, getUser, SoftDeleteUser, toggleApproveSeller };

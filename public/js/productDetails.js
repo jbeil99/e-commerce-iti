@@ -40,6 +40,7 @@ window.addEventListener("load", async () => {
     const categoriesInput = document.querySelector("#category");
     const description = document.querySelector("#description");
     const quantity = document.querySelector("#quantity");
+    const discount = document.querySelector("#discount");
 
     const message = document.querySelector(".message");
     const saveBtn = document.querySelector("#add");
@@ -82,7 +83,7 @@ window.addEventListener("load", async () => {
         }
 
         if (e.submitter.id === "save") {
-            const vaild = await handleProduct(name, price, customerPrice, quantity, image, description, currentUser, product.name);
+            const vaild = await handleProduct(name, price, customerPrice, quantity, discount, image, description, currentUser, product.name);
             if (vaild) {
                 let category;
                 for (let c of categoriesInput) {
@@ -96,16 +97,17 @@ window.addEventListener("load", async () => {
                     price: price.value,
                     customerPrice: customerPrice.value, // check for admin
                     quantity: quantity.value,
-                    category: category ?? 1,
+                    category: category,
                     approved: false,
                     image: image.value,
+                    sale: Number(discount.value)
                 })
             }
         }
 
         if (e.submitter.id === "add") {
 
-            const vaild = await handleProduct(name, price, customerPrice, quantity, image, description, currentUser);
+            const vaild = await handleProduct(name, price, customerPrice, quantity, discount, image, description, currentUser);
             console.log(vaild)
             let category;
             for (let c of categoriesInput) {
@@ -120,17 +122,17 @@ window.addEventListener("load", async () => {
                     {
                         name: name.value,
                         description: description.value,
-                        price: price.value,
-                        customerPrice: customerPrice.value,
-                        quantity: quantity.value,
-                        category: category ?? 1,
+                        price: Number(price.value),
+                        customerPrice: Number(customerPrice.value),
+                        quantity: Number(quantity.value),
+                        category: category,
                         image: image.value,
                         rating: 0,
                         seller_id: currentUser.id,
                         reviews: [],
-                        approved: false, // check for admin
+                        approved: currentUser.role === "admin" ? true : false,
                         sold: 0,
-                        sale: 0
+                        sale: Number(discount.value)
                     }
                 );
                 window.location.href = "/public/admin/admin.html";

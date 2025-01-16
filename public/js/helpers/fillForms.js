@@ -16,4 +16,10 @@ const fillUserData = (username, email, fname, lname, user, select, saveBtn) => {
     }
 }
 
-export { fillUserData }
+const fillCartData = (subtotalSpan, totalSpan, discount, shipping, prices) => {
+    subtotalSpan.innerText = `$${prices.subtotal}`;
+    totalSpan.innerText = `$${prices.total}`;
+
+}
+
+export { fillUserData, fillCartData }

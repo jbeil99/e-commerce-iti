@@ -1,6 +1,7 @@
 .container {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: start;
     gap: 20px;
 }
 
@@ -8,8 +9,18 @@ header {
     margin-bottom: 50px;
 }
 
+img {
+    width: 50px;
+}
+
+.shopping-cart {
+    width: 80%;
+
+}
+
 table {
     border-collapse: collapse;
+    width: 100%;
 }
 
 
@@ -81,6 +92,7 @@ td {
     margin: 0 10px;
     border: 1px solid #ddd;
     padding: 10px;
+    max-width: 150px;
 }
 
 .quantity button {

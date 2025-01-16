@@ -13,6 +13,8 @@
     <link rel="shortcut icon" href="/public/assets/icons/Icon.png" type="image/png">
     <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
     <script src="/public/js/session.js"></script>
+    <script src="/public/js/cart.js" type="module"></script>
+
 </head>
 
 <body>
@@ -35,7 +37,7 @@
     <div class="container">
         <div class="shopping-cart">
             <h2>Shopping Cart</h2>
-            <table>
+            <table id="cart-table">
                 <thead>
                     <tr>
                         <th></th>
@@ -47,60 +49,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-
-                        <td><button class="remove-item">Remove</button></td>
-                        <td>
-                            <div class="product-info">
-                                <img src="tv.jpg" alt="TV">
-                                <p>4K UHD LED Smart TV with Chromecast Built-in</p>
-                            </div>
-                        </td>
-                        <td>$70</td>
-                        <td>
-                            <div class="quantity">
-                                <button>-</button>
-                                <input type="number" value="1">
-                                <button>+</button>
-                            </div>
-                        </td>
-                        <td class="subtotal">$70</td>
-                    </tr>
-                    <tr>
-                        <td><button class="remove-item">Remove</button></td>
-                        <td>
-                            <div class="product-info">
-                                <img src="headphones.jpg" alt="Headphones">
-                                <p>Wired Over-Ear Gaming Headphones with USB</p>
-                            </div>
-                        </td>
-                        <td>$250</td>
-                        <td>
-                            <div class="quantity">
-                                <button>-</button>
-                                <input type="number" value="3">
-                                <button>+</button>
-                            </div>
-                        </td>
-                        <td class="subtotal">$750</td>
-                    </tr>
                 </tbody>
             </table>
             <div class="cart-actions">
-                <button class="btn"><span>&larr;</span> RETURN TO SHOP</button>
+                <a href="/shop.html"><button class="btn"><span>&larr;</span> RETURN TO
+                        SHOP</button></a>
                 <button class="btn">UPDATE CART</button>
             </div>
         </div>
         <div class="cart-totals">
             <h2>Cart Totals</h2>
             <div class="totals-list">
-                <p>Sub-total: <span>$820</span></p>
-                <p>Shipping: <span>Free</span></p>
-                <p>Discount: <span>$24</span></p>
-                <p>Tax: <span>$61.99</span></p>
-                <p class="total">Total: <span>$857.99 USD</span></p>
+                <p>Sub-total: <span id="subtotol"></span></p>
+                <p>Shipping: <span id="shipping">Free</span></p>
+                <p>Discount: <span id="discount">0</span></p>
+                <p class="total">Total: <span id="total"></span></p>
             </div>
-            <button class="btn">proceed to checkout <span>&rarr;</span></button>
+            <a href="/public/pages/checkout.html">
+                <button class="btn">proceed to checkout
+                    <span>&rarr;</span></button>
+            </a>
         </div>
     </div>
 </body>

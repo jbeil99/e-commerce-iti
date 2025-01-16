@@ -68,9 +68,7 @@ select {
     border-radius: 4px;
 }
 
-input:focus {
-    outline: 2px solid #FA8232;
-}
+
 
 .login-btn {
     width: 100%;

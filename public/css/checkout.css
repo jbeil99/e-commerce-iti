@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+}
+
+header {
+    margin-bottom: 50px;
+}
+
+
+.order-summary,
+.billing-info {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.billing-info {
+    width: 60%;
+}
+
+.billing-info h2 {
+    margin-bottom: 40px;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#cart {
+    max-height: 200px;
+    overflow-y: auto
+}
+
+.checkbox {
+    margin-bottom: 15px;
+}
+
+
+.order-summary .product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    min-width: 400px;
+}
+
+
+
+.product div {
+    display: flex;
+    flex-direction: column;
+}
+
+.product span {
+    color: #2DA5F3;
+}
+
+.order-summary img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+
+.name {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.name div {
+    width: 100%;
+}

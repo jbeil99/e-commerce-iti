@@ -1,5 +1,5 @@
-"use strict";
-
+import { getProduct } from "../api/product.js";
+import { calcProductTotalPriceAfterDiscount } from "./calcPrices.js";
 /* <div class="product-card sale">
 <span class="badge">25%</span>
 <img src="/public/assets/products/2.png" alt="Product Image">
@@ -12,24 +12,24 @@
 
 const addStars = (rate) => {
     let stars = "";
-    console.log(rate)
     for (let i = 0; i < rate; i++) {
         stars += "&starf;"
     }
     for (let i = 0; i < 5 - rate; i++) {
         stars += "&star;"
     }
-    console.log(stars)
     return stars;
 }
 
+// TODO: add DATE
+
 const addProdcutCard = (target, data) => {
     const overlay = `<div class="overlay">
-                        <button class="btn add-to-cart">Add to Cart</button>
-                        <button class="btn add-to-wishlist">Add to Wishlist</button>
+                        <button class="btn cart" value="${data.id}">Add to Cart</button>
+                        <button class="btn wishlist" value="${data.id}">Add to Wishlist</button>
                     </div>`
 
-    const discount = (1 - data.sale) * data.price
+    const discount = calcProductTotalPriceAfterDiscount(data);
     const card = document.createElement("div");
     card.classList.add('product-card');
     const img = document.createElement("img")
@@ -55,16 +55,103 @@ const addProdcutCard = (target, data) => {
     img.src = data.image;
     title.innerText = data.name;
 
-    p.innerText = `$${data.price}`;
-    previousPrice.innerText = (1 - data.sale) * data.price;
-
-    if (discount > data.price) {
-        p.appendChild(previousPrice);
-    }
+    p.innerText = `$${data.customerPrice}`;
     price.appendChild(p);
-    card.append(img, rating, title, price)
+    if (discount < data.customerPrice) {
+        const badge = document.createElement("span");
+        badge.classList.add("badge");
+        badge.innerText = `- ${data.sale}%`
+        p.innerText = `$${discount}`;
+        previousPrice.innerText = `$${data.customerPrice}`;
+        p.appendChild(previousPrice);
+        card.classList.add("sale");
+        card.append(badge, img, rating, title, price)
+    } else {
+        card.append(img, rating, title, price)
+    }
     card.innerHTML += overlay;
     target.appendChild(card)
 }
 
-export { addProdcutCard };
+
+const addProdcutCart = async (target, data) => {
+    const product = await getProduct(data.productID);
+    const tr = document.createElement('tr');
+
+    const removeBtn = document.createElement('button');
+    removeBtn.classList.add('remove-item');
+    removeBtn.innerText = 'Remove';
+    const remove = document.createElement('td');
+    remove.appendChild(removeBtn);
+    tr.appendChild(remove);
+
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+
+    const img = document.createElement('img');
+    img.src = product.image;
+    img.alt = product.name;
+    productInfo.appendChild(img);
+
+    const p = document.createElement('p');
+    p.innerText = product.name;
+    productInfo.appendChild(p);
+    const info = document.createElement('td');
+    info.appendChild(productInfo);
+    tr.appendChild(info);
+
+    const price = document.createElement('td');
+    price.innerText = calcProductTotalPriceAfterDiscount(product);;
+    tr.appendChild(price);
+
+    const quantity = document.createElement('div');
+    quantity.classList.add('quantity');
+
+    const minusBtn = document.createElement('button');
+    minusBtn.innerText = '-';
+    quantity.appendChild(minusBtn);
+
+    const quantityInput = document.createElement('input');
+    quantityInput.type = 'number';
+    quantityInput.value = data.quantity;
+    quantity.appendChild(quantityInput);
+
+    const plusBtn = document.createElement('button');
+    plusBtn.innerText = '+';
+    quantity.appendChild(plusBtn);
+    const td = document.createElement('td');
+    td.appendChild(quantity);
+    tr.appendChild(td);
+
+    const total = document.createElement('td');
+    total.classList.add('subtotal');
+    total.innerText = calcProductTotalPriceAfterDiscount(product, data.quantity);
+    tr.appendChild(total);
+
+    target.appendChild(tr);
+}
+
+
+const addProductCheckout = async (target, data) => {
+    const product = await getProduct(data.productID);
+
+    const productDiv = document.createElement("div");
+    productDiv.classList.add("product")
+    const img = document.createElement("img");
+    img.alt = product.name;
+    const div = document.createElement("div");
+    const price = document.createElement("p");
+    const span = document.createElement("span");
+    const p = document.createElement("p");
+
+    img.src = product.image;
+    p.innerText = product.name;
+    price.innerText = ` ${data.quantity} x `;
+    span.innerText = `$${calcProductTotalPriceAfterDiscount(product)}`
+    price.appendChild(span);
+    div.append(p, price);
+    productDiv.append(img, div)
+    target.appendChild(productDiv)
+}
+
+export { addProdcutCard, addProdcutCart, addProductCheckout };

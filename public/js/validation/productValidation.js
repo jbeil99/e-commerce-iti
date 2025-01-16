@@ -84,7 +84,8 @@ const validateImage = (target) => {
     return true;
 }
 
-const validateDescription = target => {
+const validateDescription = (target) => {
+    console.log(target)
     const error = target.parentElement.querySelector("p");
     const errorMsg = "description must be atleast 20 characters";
     if (description.value.trim().length < 20) {
@@ -95,14 +96,27 @@ const validateDescription = target => {
     return true;
 }
 
-const handleProduct = async (name, price, custPrice, quantity, image, description, seller, skip = "") => {
-    console.log(validateDescription(description), validateImage(image), validatePrice(price), validatePrice(price, custPrice.value), validateQuantity(quantity), await validateProductName(name, seller, skip))
+const validateDiscount = (target) => {
+    const error = target.parentElement.querySelector("p");
+    const errorMsg = "discount cant be more than 100%";
+
+    if (target.value > 100) {
+        error.innerText = errorMsg;
+        error.style.display = "block";
+        return false
+    }
+    return true;
+}
+
+const handleProduct = async (name, price, custPrice, quantity, discount, image, description, seller, skip = "") => {
+    console.log(description)
     return validateDescription(description) &&
         validateImage(image) &&
         validatePrice(price) &&
         validatePrice(price, custPrice.value) &&
         validateQuantity(quantity) &&
-        await validateProductName(name, seller, skip)
+        await validateProductName(name, seller, skip) &&
+        validateDiscount(discount);
 }
 
 // const handleSave = (name, price, custPrice, quantity, image, description, seller, skip) => {

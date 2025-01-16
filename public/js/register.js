@@ -1,5 +1,6 @@
 import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword, handleRegister } from "./validation/registerValidation.js";
-import { addUser, deleteUser } from "./api/user.js"
+import { addUser } from "./api/user.js"
+import { addUserCart } from "./api/cart.js";
 
 const switchSingUp = (signIn, signUp, formIn, formUp) => {
     signUp.classList.add("active");
@@ -80,7 +81,6 @@ window.addEventListener("load", async () => {
             e.preventDefault();
             return false;
         } else {
-            handleRegister(username, password, firstName, lastName, email, conPassword)
             e.preventDefault();
             const body = {
                 username: username.value,
@@ -93,12 +93,11 @@ window.addEventListener("load", async () => {
             if (e.submitter.value === "seller") {
                 body["approved"] = false;
             }
-            console.log(body);
-            addUser(
+            const user = await addUser(
                 body
             );
+            console.log(await addUserCart(user.id)
+            )
         }
-
-
     })
 });

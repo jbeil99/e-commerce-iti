@@ -8,7 +8,6 @@ const checkUsername = (username, users) => {
     let exists = false;
     users.forEach(user => {
         if (username.value.trim() === user.username && user.userDeleted !== true) {
-            console.log(user.userDeleted);
             currentUser = user;
             exists = true;
             return;
@@ -45,7 +44,7 @@ const handleLogin = async (username, password) => {
     if (valid) {
         valid = checkPassword(password, currentUser);
     }
+
     return valid
 }
-
 export { handleLogin, currentUser };

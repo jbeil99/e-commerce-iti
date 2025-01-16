@@ -117,3 +117,7 @@ nav a:hover {
 }
 
 /* End Header style */
+
+input:focus {
+    outline: 2px solid #FA8232;
+}
