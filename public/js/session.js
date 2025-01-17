@@ -35,6 +35,7 @@ const addCartNum = async (target, id) => {
 }
 
 
+// TODO: update session after  user update
 
 window.addEventListener("load", () => {
     const currentUser = JSON.parse(sessionStorage.getItem("user"));

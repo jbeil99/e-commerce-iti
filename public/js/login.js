@@ -15,7 +15,6 @@ window.addEventListener("load", () => {
         const valid = await handleLogin(username, password);
         if (valid) {
             const cart = await getUserCart(currentUser.id);
-            console.log(currentUser, await getUserCart(currentUser.id));
             const userData = { username: currentUser.username, id: currentUser.id, role: currentUser.role, cart }
             sessionStorage.setItem("user", JSON.stringify(userData));
             window.location.href = "/shop.html";

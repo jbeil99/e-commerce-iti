@@ -21,9 +21,9 @@ const getSellerProdcuts = async (sellerID) => {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        const products = await response.json()
+        const products = await response.json();
 
-        return products.filter(product => sellerID === product.seller_id && product.sellerDeleted !== true);;
+        return products.filter(product => sellerID === product.seller_id && product.sellerDeleted !== true);
     } catch (e) {
         console.log(e);
     }

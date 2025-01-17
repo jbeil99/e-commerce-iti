@@ -56,6 +56,7 @@ const addUserCart = async (userID) => {
 const deleteCartProduct = async (cartID, productID) => {
     const cart = await getCart(cartID);
     const body = {
+        userID: cart.userID,
         items: cart.items.filter(item => item.productID !== productID)
     };
 
@@ -75,6 +76,25 @@ const deleteCartProduct = async (cartID, productID) => {
     }
 }
 
+const emptyCart = async (id) => {
+    const body = {
+        items: []
+    };
+    try {
+        const response = await fetch(`http://localhost:3000/carts/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
 
 // const handleCart = async (currentUser) => {
 
@@ -142,7 +162,7 @@ const addProdcutToLocalStorageCart = (productID, quantity = 1) => {
     }))
 }
 
-const updateCartItemsQuantity = async (cartID, productID, quantity = 1) => {
+const updateCartItemsQuantity = async (cartID, productID, quantity = 1, userID) => {
     const cart = await getCart(cartID);
     const newItems = cart.items.map(item => {
         if (item.productID === productID) {
@@ -152,6 +172,7 @@ const updateCartItemsQuantity = async (cartID, productID, quantity = 1) => {
     });
     console.log(newItems[0], quantity)
     const body = {
+        userID,
         items: cart.items.map(item => {
             if (item.productID === productID) {
                 item.quantity = quantity;
@@ -175,4 +196,4 @@ const updateCartItemsQuantity = async (cartID, productID, quantity = 1) => {
     }
 }
 
-export { updateCartItemsQuantity, addProductToCart, addProdcutToLocalStorageCart, addUserCart, deleteCartProduct, getUserCart, getCart, checkProduct };
+export { updateCartItemsQuantity, addProductToCart, addProdcutToLocalStorageCart, addUserCart, deleteCartProduct, getUserCart, getCart, checkProduct, emptyCart };

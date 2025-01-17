@@ -39,8 +39,9 @@
     <div class="container">
         <aside>
             <h2>Models</h2>
-            <p id="users-nav" class="active">Users & Sellers</p>
+            <p id="users-nav" class="active">Users</p>
             <p id="products-nav">Products</p>
+            <p id="orders-nav">Orders</p>
         </aside>
         <div class="main">
             <section id="users-section">
@@ -57,9 +58,8 @@
                             <th>Full Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th></th>
-                            <th></th>
-
+                            <th>Edit</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,10 +77,26 @@
                             <th>Email</th>
                             <th>Role</th>
                             <th>Status</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                             <th></th>
-                            <th></th>
-                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <h3>Deleted User</h3>
 
+                <table id="deleted-users">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Edit</th>
+                            <th>Restore</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,8 +126,8 @@
                             <th>category</th>
                             <th>rating</th>
                             <th>status</th>
-                            <th></th>
-                            <th></th>
+                            <th>Edit</th>
+                            <th>Delete</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -130,6 +146,46 @@
                             <th>Image</th>
                             <th>category</th>
                             <th>rating</th>
+                            <th>status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </section>
+            <section id="orders-section">
+                <div>
+                    <h2>Manage Orders</h2>
+                    <a href="/public/admin/order-details.html"><button class="btn"> Add order</button></a>
+                </div>
+                <h3>orders</h3>
+                <table id="orders">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Total price</th>
+                            <th>Full Name</th>
+                            <th>Number of Products</th>
+                            <th>status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+                <h3>Deleted Orders</h3>
+                <table id="deleted-orders">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Total price</th>
+                            <th>Full Name</th>
+                            <th>Number of Products</th>
                             <th>status</th>
                             <th></th>
                             <th></th>

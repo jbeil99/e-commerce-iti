@@ -34,7 +34,9 @@ window.addEventListener("load", async () => {
     }
 
     products.forEach(product => {
-        addProdcutCard(productGrid, product)
+        if (product.approved && !product.sellerDeleted) {
+            addProdcutCard(productGrid, product)
+        }
     });
 
     productGrid.addEventListener("click", async (e) => {

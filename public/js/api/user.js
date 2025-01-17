@@ -39,7 +39,7 @@ const addUser = async (body) => {
 const updateUser = async (id, body) => {
     try {
         const response = await fetch(`http://localhost:3000/users/${id}`, {
-            method: "PUT",
+            method: "PATCH",
             body: JSON.stringify(body)
         });
 
@@ -47,6 +47,7 @@ const updateUser = async (id, body) => {
             throw new Error(`Response status: ${response.status}`);
         }
         const json = await response.json();
+        return json;
     } catch (e) {
         console.log(e)
     }

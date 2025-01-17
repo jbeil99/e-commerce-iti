@@ -80,3 +80,5 @@ const updateOrderStatus = async (id, status) => {
         console.log(e)
     }
 }
+
+export { getOrder, getOrders, getUserOrders, addOrder };

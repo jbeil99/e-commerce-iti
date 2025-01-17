@@ -3,6 +3,7 @@ import { deleteCartProduct, getCart, updateCartItemsQuantity } from "./api/cart.
 import { calacPrices } from "./helpers/calcPrices.js";
 import { fillCartData } from "./helpers/fillForms.js";
 import { quantityValidation } from "./validation/cartValidation.js";
+import { displayMessage } from "./helpers/messageHelper.js";
 
 const currentUser = JSON.parse(sessionStorage.getItem("user"));
 
@@ -13,6 +14,8 @@ window.addEventListener("load", async () => {
     const discount = document.querySelector("#discount")
     const shipping = document.querySelector("#shipping")
     const form = document.querySelector("#cart-form");
+    const message = document.querySelector(".message");
+
     let cart;
     if (currentUser) {
         cart = await getCart(currentUser.cart.id)
@@ -50,12 +53,19 @@ window.addEventListener("load", async () => {
             for (const input of inputs) {
                 const vaild = await quantityValidation(input);
                 if (vaild) {
-                    await updateCartItemsQuantity(currentUser.cart.id, input.id, Number(input.value));
+                    await updateCartItemsQuantity(currentUser.cart.id, input.id, Number(input.value), currentUser.id);
                 } else {
                     e.preventDefault();
                     return false;
                 }
             }
+        }
+        if (e.submitter.id === "checkOut") {
+            if (cart.items.length > 0) {
+                window.location.href = "/public/pages/checkout.html";
+                return;
+            }
+            displayMessage(message, "Cart is Empty add Products First", "#FFEB78");
         }
         e.preventDefault();
         return false;

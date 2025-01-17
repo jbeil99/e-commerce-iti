@@ -10,13 +10,34 @@
       "id": "1"
     },
     {
-      "id": "286e",
+      "id": "162d",
       "username": "hussin",
       "password": "QuackLEL22",
       "firstName": "Hussin",
-      "lastName": "Ahmed",
-      "email": "hssuin@clicon.com",
-      "role": "customer"
+      "lastName": "Soliman",
+      "email": "hussin@clicon.com",
+      "role": "customer",
+      "userDeleted": false
+    },
+    {
+      "id": "63da",
+      "username": "user",
+      "password": "QuackLEL22",
+      "firstName": "User",
+      "lastName": "user",
+      "email": "user@user.user",
+      "role": "customer",
+      "userDeleted": true
+    },
+    {
+      "id": "41cd",
+      "username": "seller",
+      "password": "QuackLEL22",
+      "firstName": "seller",
+      "lastName": "seller",
+      "email": "seller@seller.sel",
+      "role": "seller",
+      "approved": true
     }
   ],
   "products": [
@@ -30,7 +51,7 @@
       "quantity": 15,
       "category": "2",
       "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
-      "rating": 3,
+      "rating": 0,
       "seller_id": "1",
       "reviews": [
         1,
@@ -42,7 +63,7 @@
         7,
         8
       ],
-      "approved": false,
+      "approved": true,
       "createdAt": "",
       "sold": 50
     },
@@ -55,12 +76,13 @@
       "quantity": 25,
       "category": "1",
       "image": "https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png",
-      "rating": 0,
+      "rating": 5,
       "seller_id": "1",
       "reviews": [],
-      "approved": true,
+      "approved": false,
       "sold": 0,
-      "sale": 0
+      "sale": 0,
+      "sellerDeleted": true
     },
     {
       "id": "313b",
@@ -71,7 +93,7 @@
       "quantity": 25,
       "category": "1",
       "image": "https://media.cnn.com/api/v1/images/stellar/prod/210226041421-02-pokemon-anniversary-design.jpg?q=w_1110,c_fill",
-      "rating": 0,
+      "rating": 4,
       "seller_id": "1",
       "reviews": [],
       "approved": true,
@@ -92,75 +114,80 @@
       "reviews": [],
       "approved": true,
       "sold": 0,
-      "sale": 18
+      "sale": 18,
+      "sellerDeleted": true
+    },
+    {
+      "id": "d452",
+      "name": "saaaaaaaaaaa",
+      "description": "asssssssssssssssssss",
+      "price": 10,
+      "customerPrice": 25,
+      "quantity": 25,
+      "category": "2",
+      "image": "https://yt3.googleusercontent.com/x35Sv5L4alj0Gh1HPOQWRyCAcSrRKwyuNNuDUbPjjrq7GfKX9FVjLCbcXKY6D8WYnB85kzDk6RA=s900-c-k-c0x00ffffff-no-rj",
+      "rating": 0,
+      "seller_id": "1",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
+      "sale": 25
     }
   ],
   "orders": [
     {
-      "address": {
-        "1": "",
-        "2": ""
-      },
-      "userID": 1,
+      "id": "e15c",
+      "userID": "1",
+      "totalPrice": 166,
+      "status": "placed",
       "items": [
         {
-          "product_id": 1,
-          "quantity": 2
+          "productID": "541b",
+          "quantity": 7
         },
         {
-          "product_id": 3,
+          "productID": "c315",
           "quantity": 1
         }
       ],
-      "total_price": 849.97,
-      "status": "Hold",
-      "id": "dd09"
+      "address": {
+        "1": "asdasd",
+        "2": ""
+      },
+      "phone": "01555991822",
+      "firstName": "Clicon",
+      "lastName": "Account"
     }
   ],
   "categories": [
     {
       "id": "1",
-      "name": "Catergory 1"
+      "name": "Fire"
     },
     {
       "id": "2",
-      "name": "Catergory 2"
+      "name": "Water"
+    },
+    {
+      "id": "2",
+      "name": "Earth"
     }
   ],
   "carts": [
     {
-      "items": [
-        {
-          "productID": "313b",
-          "quantity": 2
-        },
-        {
-          "productID": "541b",
-          "quantity": 1
-        }
-      ],
-      "id": "415a"
+      "userID": "1",
+      "items": [],
+      "id": "e8ea"
     },
     {
-      "items": [
-        {
-          "productID": "313b",
-          "quantity": 28
-        },
-        {
-          "productID": "02c9",
-          "quantity": 4
-        },
-        {
-          "productID": "c315",
-          "quantity": 3
-        },
-        {
-          "productID": "541b",
-          "quantity": 3
-        }
-      ],
-      "id": "6f1c"
+      "userID": "63da",
+      "items": [],
+      "id": "0290"
+    },
+    {
+      "id": "51b8",
+      "userID": "41cd",
+      "items": []
     }
   ]
 }

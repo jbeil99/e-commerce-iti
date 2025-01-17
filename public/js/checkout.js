@@ -1,10 +1,12 @@
 import { addProductCheckout } from "./helpers/addProduct.js";
-import { getCart } from "./api/cart.js";
+import { getCart, emptyCart } from "./api/cart.js";
 import { calacPrices } from "./helpers/calcPrices.js";
 import { fillCartData } from "./helpers/fillForms.js"
 import { handleCheckout } from "./validation/checkoutValidation.js";
+import { addOrder } from "./api/order.js";
+import { checkUserAuth } from "./guards/userGuard.js"
 
-const currentUser = JSON.parse(sessionStorage.getItem("user"));
+const currentUser = checkUserAuth();
 
 window.addEventListener("load", async () => {
     const cartTable = document.querySelector("#cart");
@@ -27,8 +29,8 @@ window.addEventListener("load", async () => {
         localStorage.setItem("cart", JSON.stringify({ items: [] }))
         cart = JSON.parse(localStorage.getItem("cart"));
     }
-
-    fillCartData(subtotalSpan, totalSpan, discount, shipping, await calacPrices(cart.items));
+    const { total, subtotal } = await calacPrices(cart.items);
+    fillCartData(subtotalSpan, totalSpan, discount, shipping, { total, subtotal });
 
     if (cart.items.length > 0) {
         cart.items.forEach(item => {
@@ -36,11 +38,34 @@ window.addEventListener("load", async () => {
         })
     }
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const vaild = handleCheckout(fname, lname, zipcode, phone);
         if (vaild) {
-            console.log("valid");
+            e.preventDefault();
+            const alert = await Swal.fire({
+                title: 'Order Placed!',
+                text: 'Thanks For purchasing our pokemons',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                footer: '<a href="/public/pages/profile.html">Track the order</a>'
+            });
+
+            await addOrder({
+                userID: currentUser.id,
+                totalPrice: total,
+                status: "placed",
+                items: cart.items,
+                address: {
+                    1: address1.value,
+                    2: address2.value
+                },
+                phone: phone.value,
+                firstName: fname.value,
+                lastName: lname.value
+            })
+            await emptyCart(cart.id);
+            window.location.href = "/public/pages/cart.html";
         }
     })
 })
