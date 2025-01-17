@@ -125,12 +125,12 @@ const toggleApproveProduct = async (id, approve) => {
     }
 }
 
-const softDeleteProduct = async (id) => {
+const softDeleteProduct = async (id, value = true) => {
     try {
         const response = await fetch(`http://localhost:3000/products/${id}`, {
             method: "PATCH",
             body: JSON.stringify({
-                sellerDeleted: true
+                sellerDeleted: value
             })
         });
 

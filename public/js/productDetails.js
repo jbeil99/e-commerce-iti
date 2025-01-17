@@ -1,4 +1,4 @@
-import { addProduct, updateProduct, deleteProduct, getProduct, getCategories } from "./api/product.js";
+import { addProduct, updateProduct, deleteProduct, getProduct, getCategories, softDeleteProduct } from "./api/product.js";
 import { addRoleGuard, checkUserAuth } from "./guards/userGuard.js";
 import { editGuard, addProductGuard } from "./guards/productGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
@@ -21,7 +21,7 @@ const fillData = (name, price, customerPrice, image, category, description, quan
         customerPrice.value = product.customerPrice;
         description.value = product.description;
         quantity.value = product.quantity;
-
+        image.value = product.image;
         for (let c of category) {
             if (c.value === product.category) {
                 c.selected = true;
@@ -75,8 +75,8 @@ window.addEventListener("load", async () => {
         if (e.submitter.id === "delete") {
             e.preventDefault();
             if (confirm(`Are Your sure You want to delete ${product.name}?`)) {
-                const res = await deleteProduct(user.id);
-                window.location.href = "/public/dashboard/admin.html";
+                const res = await softDeleteProduct(product.id);
+                window.location.href = "/public/dashboard/admin.html?tab=products";
             }
 
             return false
@@ -92,6 +92,7 @@ window.addEventListener("load", async () => {
                     }
                 }
                 await updateProduct(product.id, {
+                    ...product,
                     name: name.value,
                     description: description.value,
                     price: price.value,
@@ -135,7 +136,7 @@ window.addEventListener("load", async () => {
                         sale: Number(discount.value)
                     }
                 );
-                window.location.href = "/public/dashboard/admin.html";
+                window.location.href = "/public/dashboard/admin.html?tab=products";
             }
         }
     });

@@ -3,8 +3,31 @@ import { toggleApproveProduct, deleteProduct, getProdcuts, softDeleteProduct, up
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 import { addOrdersRow, addProductRow, addUserRow } from "./helpers/addRows.js";
 import { getOrders, softDeleteOrder } from "./api/order.js"
-const currentUser = checkUserAuth();
 
+
+const currentUser = checkUserAuth();
+const tab = window.location.search.slice(1,).split("=")[1];
+
+const handleTabs = (tab, usersSection, productsSection, ordersSection, userNav, productNav, orderNav) => {
+    if (!tab || tab === "users") {
+        switchSections(usersSection, productsSection, ordersSection);
+        userNav.classList.add("active");
+        productNav.classList.remove("active");
+        orderNav.classList.remove("active");
+    }
+    if (tab === "products") {
+        switchSections(productsSection, usersSection, ordersSection);
+        productNav.classList.add("active");
+        userNav.classList.remove("active");
+        orderNav.classList.remove("active");
+    }
+    if (tab === "orders") {
+        switchSections(ordersSection, usersSection, productsSection);
+        orderNav.classList.add("active");
+        userNav.classList.remove("active");
+        productNav.classList.remove("active");
+    }
+}
 addRoleGuard(["admin", "manger"], "/shop.html");
 
 
@@ -73,28 +96,20 @@ window.addEventListener("load", async () => {
 
     })
 
-    userNav.addEventListener("click", () => {
-        switchSections(usersSection, productsSection, ordersSection);
-        userNav.classList.add("active");
-        productNav.classList.remove("active");
-        orderNav.classList.remove("active");
+    handleTabs(tab, usersSection, productsSection, ordersSection, userNav, productNav, orderNav)
 
-    })
+    userNav.addEventListener("click", () => {
+        window.location.search = "tab=users";
+
+    });
 
     productNav.addEventListener("click", () => {
-        switchSections(productsSection, usersSection, ordersSection);
-        productNav.classList.add("active");
-        userNav.classList.remove("active");
-        orderNav.classList.remove("active");
-    })
+        window.location.search = "tab=products";
+    });
 
     orderNav.addEventListener("click", () => {
-        switchSections(ordersSection, usersSection, productsSection);
-        orderNav.classList.add("active");
-        userNav.classList.remove("active");
-        productNav.classList.remove("active");
-
-    })
+        window.location.search = "tab=orders";
+    });
 
     sellersTable.addEventListener("click", (e) => {
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
@@ -133,12 +148,15 @@ window.addEventListener("load", async () => {
                 }
             }
         });
+        window.location.search = "tab=products";
     })
 
 
     productsTable.addEventListener("click", async (e) => {
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
             await softDeleteProduct(e.target.value);
+            window.location.search = "tab=products";
+
         }
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("approve")) {
             if (e.target.innerText.toLowerCase() === "approve") {
@@ -147,19 +165,21 @@ window.addEventListener("load", async () => {
             if (e.target.innerText.toLowerCase() === "disapprove") {
                 await toggleApproveProduct(e.target.value, false);
             }
+            window.location.search = "tab=products";
         }
     })
 
     deletedProductsTable.addEventListener("click", async (e) => {
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
             await deleteProduct(e.target.value);
+            window.location.search = "tab=products";
         }
 
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("restore")) {
-            // deleteProduct(e.target.value);
+            await softDeleteProduct(e.target.value, false);
             console.log("hi")
+            window.location.search = "tab=products";
         }
-
     })
 
     deletedUsers.addEventListener("click", async (e) => {
@@ -176,6 +196,7 @@ window.addEventListener("load", async () => {
     ordersTable.addEventListener("click", async (e) => {
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
             await softDeleteOrder(e.target.value);
+            window.location.search = "tab=orders";
         }
     })
 
@@ -185,8 +206,8 @@ window.addEventListener("load", async () => {
 
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("restore")) {
             await softDeleteOrder(e.target.value, false);
+            window.location.search = "tab=orders";
         }
-
     })
 
 })

@@ -39,7 +39,7 @@ const addProductRow = async (data, table, addCheck = true) => {
     tr.appendChild(productName)
     productName.innerText = data.name;
     tr.appendChild(price);
-    price.innerText = data.price;
+    price.innerText = data.customerPrice;
     tr.appendChild(quantity);
     quantity.innerText = data.quantity;
     tr.appendChild(sellerName);

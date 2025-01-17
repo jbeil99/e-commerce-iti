@@ -27,7 +27,7 @@
       "lastName": "user",
       "email": "user@user.user",
       "role": "customer",
-      "userDeleted": false
+      "userDeleted": true
     },
     {
       "id": "41cd",
@@ -53,12 +53,12 @@
   "products": [
     {
       "id": "c315",
-      "name": "Prodcuct ",
+      "name": "Pikachu",
       "description": "asssssssssssssssssssss",
-      "price": 15,
-      "customerPrice": 25,
-      "sale": 10,
-      "quantity": 15,
+      "price": "15",
+      "customerPrice": "25",
+      "sale": 0,
+      "quantity": "15",
       "category": "2",
       "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
       "rating": 0,
@@ -75,7 +75,8 @@
       ],
       "approved": true,
       "createdAt": "",
-      "sold": 50
+      "sold": 50,
+      "sellerDeleted": false
     },
     {
       "id": "02c9",
@@ -89,26 +90,10 @@
       "rating": 5,
       "seller_id": "1",
       "reviews": [],
-      "approved": false,
-      "sold": 0,
-      "sale": 0,
-      "sellerDeleted": true
-    },
-    {
-      "id": "313b",
-      "name": "Charazard I dont know",
-      "description": "asddaaaaaaaaaaaaaaaasdsad",
-      "price": 25,
-      "customerPrice": 80,
-      "quantity": 25,
-      "category": "1",
-      "image": "https://media.cnn.com/api/v1/images/stellar/prod/210226041421-02-pokemon-anniversary-design.jpg?q=w_1110,c_fill",
-      "rating": 4,
-      "seller_id": "1",
-      "reviews": [],
       "approved": true,
       "sold": 0,
-      "sale": 80
+      "sale": 0,
+      "sellerDeleted": false
     },
     {
       "id": "541b",
@@ -125,23 +110,7 @@
       "approved": true,
       "sold": 0,
       "sale": 18,
-      "sellerDeleted": true
-    },
-    {
-      "id": "d452",
-      "name": "saaaaaaaaaaa",
-      "description": "asssssssssssssssssss",
-      "price": 10,
-      "customerPrice": 25,
-      "quantity": 25,
-      "category": "2",
-      "image": "https://yt3.googleusercontent.com/x35Sv5L4alj0Gh1HPOQWRyCAcSrRKwyuNNuDUbPjjrq7GfKX9FVjLCbcXKY6D8WYnB85kzDk6RA=s900-c-k-c0x00ffffff-no-rj",
-      "rating": 0,
-      "seller_id": "1",
-      "reviews": [],
-      "approved": true,
-      "sold": 0,
-      "sale": 25
+      "sellerDeleted": false
     }
   ],
   "orders": [
@@ -149,7 +118,7 @@
       "id": "5c39",
       "userID": "1",
       "totalPrice": 57.25,
-      "status": "packaging",
+      "status": "road",
       "items": [
         {
           "productID": "d452",
