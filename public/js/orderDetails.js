@@ -56,7 +56,7 @@ window.addEventListener("load", async () => {
             e.preventDefault();
             if (confirm(`Are Your sure You want to delete ${order.id}?`)) {
                 const res = await softDeleteOrder(order.id);
-                window.location.href = "/public/admin/admin.html";
+                window.location.href = "/public/dashboard/admin.html";
             }
 
             return false

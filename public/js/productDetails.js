@@ -76,7 +76,7 @@ window.addEventListener("load", async () => {
             e.preventDefault();
             if (confirm(`Are Your sure You want to delete ${product.name}?`)) {
                 const res = await deleteProduct(user.id);
-                window.location.href = "/public/admin/admin.html";
+                window.location.href = "/public/dashboard/admin.html";
             }
 
             return false
@@ -135,7 +135,7 @@ window.addEventListener("load", async () => {
                         sale: Number(discount.value)
                     }
                 );
-                window.location.href = "/public/admin/admin.html";
+                window.location.href = "/public/dashboard/admin.html";
             }
         }
     });

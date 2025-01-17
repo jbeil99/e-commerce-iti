@@ -38,6 +38,16 @@
       "email": "seller@seller.sel",
       "role": "seller",
       "approved": true
+    },
+    {
+      "id": "a84e",
+      "username": "test",
+      "password": "QuackLEL22",
+      "firstName": "Hussin",
+      "lastName": "Ahmed",
+      "email": "asdasd@gmail.com",
+      "role": "seller",
+      "approved": true
     }
   ],
   "products": [

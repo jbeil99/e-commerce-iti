@@ -60,7 +60,7 @@ window.addEventListener("load", async () => {
             e.preventDefault();
             if (confirm(`Are Your sure You want to delete ${user.username}?`)) {
                 const res = await deleteUser(user.id);
-                window.location.href = "/public/admin/admin.html";
+                window.location.href = "/public/dashboard/admin.html";
             }
             // TODO: SEE HOW can you fire and event to handle on the other page ????!!
             // window.onload = () => {
@@ -116,7 +116,7 @@ window.addEventListener("load", async () => {
                 await addUser(
                     body
                 );
-                window.location.href = "/public/admin/admin.html";
+                window.location.href = "/public/dashboard/admin.html";
             }
         }
     });

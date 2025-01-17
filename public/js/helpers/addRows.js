@@ -58,7 +58,7 @@ const addProductRow = async (data, table, addCheck = true) => {
     tr.appendChild(edit);
     edit.appendChild(editUrl);
     editUrl.appendChild(editBtn);
-    editUrl.href = `/public/admin/product-details.html?id=${data.id}`
+    editUrl.href = `/public/dashboard/product-details.html?id=${data.id}`
     editBtn.classList.add("btn");
     editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
     tr.appendChild(deleteTd);
@@ -117,7 +117,7 @@ const addUserRow = (data, table, seller = false) => {
     tr.appendChild(edit);
     edit.appendChild(editUrl);
     editUrl.appendChild(editBtn);
-    editUrl.href = `/public/admin/user-details.html?id=${data.id}`
+    editUrl.href = `/public/dashboard/user-details.html?id=${data.id}`
     editBtn.classList.add("btn");
     editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
     tr.appendChild(deleteTd);
@@ -161,7 +161,7 @@ const addOrdersRow = (data, table) => {
     status.innerText = data.status;
     edit.appendChild(editUrl);
     editUrl.appendChild(editBtn);
-    editUrl.href = `/public/admin/order-details.html?id=${data.id}`
+    editUrl.href = `/public/dashboard/order-details.html?id=${data.id}`
     editBtn.classList.add("btn");
     editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
     if (data.orderDeleted) {

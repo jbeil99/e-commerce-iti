@@ -18,10 +18,10 @@ const addLogout = (profile, currentUser) => {
     addNav("Profile", "/public/pages/profile.html")
 
     if (currentUser.role === "admin" || currentUser.role === "manger") {
-        addNav("Dashboard", "/public/admin/admin.html")
+        addNav("Dashboard", "/public/dashboard/admin.html")
     }
     if (currentUser.role === "seller") {
-        addNav("Your Products", "/public/pages/sellerDashborad.html")
+        addNav("Your Products", "/public/dashboard/seller.html")
     }
 }
 const addCartNum = async (target, id) => {
