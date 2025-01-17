@@ -27,7 +27,7 @@
       "lastName": "user",
       "email": "user@user.user",
       "role": "customer",
-      "userDeleted": true
+      "userDeleted": false
     },
     {
       "id": "41cd",
@@ -136,27 +136,33 @@
   ],
   "orders": [
     {
-      "id": "e15c",
+      "id": "5c39",
       "userID": "1",
-      "totalPrice": 166,
-      "status": "placed",
+      "totalPrice": 57.25,
+      "status": "packaging",
       "items": [
         {
-          "productID": "541b",
-          "quantity": 7
+          "productID": "d452",
+          "quantity": 1
         },
         {
           "productID": "c315",
           "quantity": 1
+        },
+        {
+          "productID": "313b",
+          "quantity": 1
         }
       ],
       "address": {
-        "1": "asdasd",
+        "1": "address",
         "2": ""
       },
-      "phone": "01555991822",
-      "firstName": "Clicon",
-      "lastName": "Account"
+      "phone": "01155991822",
+      "firstName": "Hussin",
+      "lastName": "Account",
+      "zipcode": "44554",
+      "orderDeleted": true
     }
   ],
   "categories": [

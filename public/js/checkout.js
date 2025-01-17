@@ -62,7 +62,8 @@ window.addEventListener("load", async () => {
                 },
                 phone: phone.value,
                 firstName: fname.value,
-                lastName: lname.value
+                lastName: lname.value,
+                zipcode: zipcode.value
             })
             await emptyCart(cart.id);
             window.location.href = "/public/pages/cart.html";

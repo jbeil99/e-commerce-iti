@@ -22,4 +22,19 @@ const fillCartData = (subtotalSpan, totalSpan, discount, shipping, prices) => {
 
 }
 
-export { fillUserData, fillCartData }
+const fillOrderData = (price, phone, zipcode, fname, lname, address, address2, order, select) => {
+    price.value = order.totalPrice;
+    phone.value = order.phone;
+    zipcode.value = order.zipcode
+    fname.value = order.firstName;
+    lname.value = order.lastName;
+    address.value = order.address["1"];
+    address2.value = order.address["2"];
+    for (let status of select) {
+        if (status.value === order.status) {
+            status.selected = true;
+        }
+    }
+}
+
+export { fillUserData, fillCartData, fillOrderData }

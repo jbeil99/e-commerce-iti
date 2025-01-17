@@ -117,7 +117,7 @@ const addUserRow = (data, table, seller = false) => {
     tr.appendChild(edit);
     edit.appendChild(editUrl);
     editUrl.appendChild(editBtn);
-    editUrl.href = `/public/admin/order-details.html?id=${data.id}`
+    editUrl.href = `/public/admin/user-details.html?id=${data.id}`
     editBtn.classList.add("btn");
     editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
     tr.appendChild(deleteTd);
@@ -142,7 +142,7 @@ const addUserRow = (data, table, seller = false) => {
     table.appendChild(tr);
 }
 
-const addOrdersRow = async (data, table) => {
+const addOrdersRow = (data, table) => {
     const tr = document.createElement("tr");
     const id = document.createElement("td");
     const price = document.createElement("td");
@@ -161,11 +161,18 @@ const addOrdersRow = async (data, table) => {
     status.innerText = data.status;
     edit.appendChild(editUrl);
     editUrl.appendChild(editBtn);
-    editUrl.href = `/public/admin/user-details.html?id=${data.id}`
+    editUrl.href = `/public/admin/order-details.html?id=${data.id}`
     editBtn.classList.add("btn");
     editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`;
-    deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
-    deleteBtn.classList.add("btn", "delete");
+    if (data.orderDeleted) {
+        deleteBtn.classList.add("btn", "restore");
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash-can-arrow-up"></i>';
+    } else {
+        deleteBtn.classList.add("btn", "delete");
+        deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
+    }
+    deleteBtn.value = data.id;
+
     deleteTd.appendChild(deleteBtn);
     tr.append(id, price, name, num, status, edit, deleteTd);
     table.appendChild(tr)

@@ -102,3 +102,21 @@ select {
     display: flex;
     gap: 10px;
 }
+
+img {
+    width: 100px;
+}
+
+.product div {
+    display: flex;
+    flex-direction: column;
+}
+
+.product span {
+    color: #2DA5F3;
+}
+
+.products {
+    max-height: 200px;
+    overflow-y: auto;
+}

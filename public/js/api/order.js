@@ -62,6 +62,23 @@ const addOrder = async (body) => {
     }
 }
 
+const updateOrder = async (id, body) => {
+    try {
+        const response = await fetch(`http://localhost:3000/orders/${id}`, {
+            method: "PUT",
+            body: JSON.stringify(body)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 const updateOrderStatus = async (id, status) => {
     try {
         const response = await fetch(`http://localhost:3000/orders/${id}`, {
@@ -81,4 +98,23 @@ const updateOrderStatus = async (id, status) => {
     }
 }
 
-export { getOrder, getOrders, getUserOrders, addOrder };
+const softDeleteOrder = async (id, value = true) => {
+    try {
+        const response = await fetch(`http://localhost:3000/orders/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                orderDeleted: value
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export { getOrder, getOrders, getUserOrders, addOrder, softDeleteOrder, updateOrder };

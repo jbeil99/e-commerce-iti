@@ -2,7 +2,7 @@ import { toggleApproveSeller, getUsers, SoftDeleteUser, deleteUser, updateUser }
 import { toggleApproveProduct, deleteProduct, getProdcuts, softDeleteProduct, updateProduct } from "./api/product.js"
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 import { addOrdersRow, addProductRow, addUserRow } from "./helpers/addRows.js";
-import { getOrders } from "./api/order.js"
+import { getOrders, softDeleteOrder } from "./api/order.js"
 const currentUser = checkUserAuth();
 
 addRoleGuard(["admin", "manger"], "/shop.html");
@@ -26,11 +26,12 @@ window.addEventListener("load", async () => {
 
     const usersTable = document.querySelector("#users tbody");
     const sellersTable = document.querySelector("#sellers tbody");
-    const deletedUsers = document.querySelector("#deleted-users");
+    const deletedUsers = document.querySelector("#deleted-users tbody");
     const productsTable = document.querySelector("#products tbody");
     const ordersTable = document.querySelector("#orders tbody");
 
     const deletedProductsTable = document.querySelector("#deleted-products tbody");
+    const deletedOrdersTable = document.querySelector("#deleted-orders tbody");
 
     const approveBtn = document.querySelector("#approve");
     const selectAll = document.querySelector("#all");
@@ -62,7 +63,14 @@ window.addEventListener("load", async () => {
     })
 
     orders.forEach(order => {
-        addOrdersRow(order, ordersTable);
+        if (order.orderDeleted) {
+            addOrdersRow(order, deletedOrdersTable);
+
+        } else {
+            addOrdersRow(order, ordersTable);
+
+        }
+
     })
 
     userNav.addEventListener("click", () => {
@@ -161,7 +169,22 @@ window.addEventListener("load", async () => {
 
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("restore")) {
             await updateUser(e.target.value, { userDeleted: false })
-            console.log("hi")
+        }
+
+    })
+
+    ordersTable.addEventListener("click", async (e) => {
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
+            await softDeleteOrder(e.target.value);
+        }
+    })
+
+    deletedOrdersTable.addEventListener("click", async (e) => {
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
+        }
+
+        if (e.target.nodeName === "BUTTON" && e.target.classList.contains("restore")) {
+            await softDeleteOrder(e.target.value, false);
         }
 
     })
