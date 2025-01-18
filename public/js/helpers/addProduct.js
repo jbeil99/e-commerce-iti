@@ -141,7 +141,6 @@ const addProdcutCart = async (target, data) => {
 
 const addProductCheckout = async (target, data) => {
     const product = await getProduct(data.productID);
-
     const productDiv = document.createElement("div");
     productDiv.classList.add("product")
     const img = document.createElement("img");

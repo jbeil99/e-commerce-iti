@@ -42,16 +42,20 @@
             <h2>Category</h2>
             <ul class="category">
                 <li>
-                    <input type="radio" name="category" value="0" id="all">
+                    <input type="radio" name="category" value="0" id="all" checked>
                     <label for="all">All</label>
                 </li>
                 <li>
-                    <input type="radio" name="category" value="1" id="comp">
-                    <label for="comp">Computer & Laptop</label>
+                    <input type="radio" name="category" value="1" id="fire">
+                    <label for="fire">Fire</label>
                 </li>
                 <li>
-                    <input type="radio" name="category" value="2" id="accessories">
-                    <label for="accessories">Computer Accessories</label>
+                    <input type="radio" name="category" value="2" id="water">
+                    <label for="water">Water</label>
+                </li>
+                <li>
+                    <input type="radio" name="category" value="3" id="earth">
+                    <label for="earth">Earth</label>
                 </li>
             </ul>
             <h2>Price Range</h2>
@@ -65,25 +69,24 @@
                     <label for="price">All Prices</label>
                 </li>
                 <li>
-                    <input type="radio" name="price" value="1" id="under">
+                    <input type="radio" name="price" value="20" id="under">
                     <label for="under"> Under $20</label>
                 </li>
                 <li>
-                    <input type="radio" name="price" value="2" id="range">
+                    <input type="radio" name="price" value="25-100" id="range">
                     <label for="range">$25 to $100</label>
                 </li>
                 <li>
-                    <input type="radio" name="price" value="3" id="above">
+                    <input type="radio" name="price" value="100" id="above">
                     <label for="above">Above $100</label>
                 </li>
             </ul>
-            <button class="btn">Apply filters</button>
         </aside>
         <main>
             <div class="filters">
                 <div class="searchbar">
                     <!-- Make it a form -->
-                    <input type="text" placeholder="Search for anything...">
+                    <input type="search" placeholder="Search for anything..." id="search">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
                 <!-- <div class="sort-options">

@@ -1,5 +1,5 @@
 import { toggleApproveSeller, getUsers, SoftDeleteUser, deleteUser, updateUser } from "./api/user.js";
-import { toggleApproveProduct, deleteProduct, getProdcuts, softDeleteProduct, updateProduct } from "./api/product.js"
+import { toggleApproveProduct, deleteProduct, getProdcuts, softDeleteProduct } from "./api/product.js"
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 import { addOrdersRow, addProductRow, addUserRow } from "./helpers/addRows.js";
 import { getOrders, softDeleteOrder } from "./api/order.js"
@@ -28,6 +28,8 @@ const handleTabs = (tab, usersSection, productsSection, ordersSection, userNav, 
         productNav.classList.remove("active");
     }
 }
+
+
 addRoleGuard(["admin", "manger"], "/shop.html");
 
 
@@ -42,7 +44,7 @@ const switchSections = (activeSection, ...disabledSections) => {
 window.addEventListener("load", async () => {
     const userNav = document.querySelector("#users-nav");
     const productNav = document.querySelector("#products-nav");
-    const orderNav = document.querySelector("#orders-nav");;
+    const orderNav = document.querySelector("#orders-nav");
     const usersSection = document.querySelector("#users-section");
     const productsSection = document.querySelector("#products-section");
     const ordersSection = document.querySelector("#orders-section");

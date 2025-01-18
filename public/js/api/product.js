@@ -143,4 +143,20 @@ const softDeleteProduct = async (id, value = true) => {
         console.log(e)
     }
 }
+
+const filterPrice = async (filter) => {
+    try {
+        const response = await fetch(`http://localhost:3000/products?price_${filter}`);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const products = await response.json()
+
+        return products;
+    } catch (e) {
+        console.log(e);
+    }
+    return null;
+}
+
 export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct, getCategories, toggleApproveProduct, getSellerProdcuts, softDeleteProduct };

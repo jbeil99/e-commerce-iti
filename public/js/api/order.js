@@ -23,7 +23,7 @@ const getUserOrders = async (userID) => {
         }
         const orders = await response.json()
 
-        return orders.filter(product => sellerID === product.seller_id && product.sellerDeleted !== true);;
+        return orders.filter(product => userID === product.userID && product.sellerDeleted !== true);;
     } catch (e) {
         console.log(e);
     }
@@ -79,24 +79,6 @@ const updateOrder = async (id, body) => {
     }
 }
 
-const updateOrderStatus = async (id, status) => {
-    try {
-        const response = await fetch(`http://localhost:3000/orders/${id}`, {
-            method: "PATCH",
-            body: JSON.stringify({
-                status
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-        }
-        const json = await response.json();
-        return json
-    } catch (e) {
-        console.log(e)
-    }
-}
 
 const softDeleteOrder = async (id, value = true) => {
     try {

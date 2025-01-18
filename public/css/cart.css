@@ -155,3 +155,44 @@ td {
 .total span {
     font-weight: 500;
 }
+
+
+
+.order-card {
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.order-header h2 {
+    font-size: 1.2em;
+}
+
+.status {
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.status.completed {
+    background-color: #28a745;
+}
+
+.status.pending {
+    background-color: #ffc107;
+}
+
+.status.cancelled {
+    background-color: #dc3545;
+}

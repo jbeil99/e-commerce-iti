@@ -16,7 +16,7 @@
 
     <script src="/public/js/session.js" type="module"></script>
     <script src="/public/js/seller.js" type="module"></script>
-    <title>Your Product</title>
+    <title>Dashborad</title>
 </head>
 
 <body>
@@ -39,31 +39,26 @@
     <div class="container">
         <aside>
             <h2>Prodcuts</h2>
-            <div>
-                <input type="radio" name="approved" value="all" id="all" checked>
-                <label for="approved">all</label>
-            </div>
-            <div>
-                <input type="radio" name="approved" value="true" id="approved">
-                <label for="approved">Approved</label>
-            </div>
-            <div>
-                <input type="radio" name="approved" value="false" id="not-approved">
-                <label for="not-approved"> Not Approved</label>
-            </div>
+            <p id="products-nav" class="active">Products</p>
+            <p id="orders-nav">Orders</p>
         </aside>
         <div class="main">
-            <section>
+            <section id="products-section">
                 <div>
                     <h2>Manage Products</h2>
                     <div class="cta">
+                        <select name="filter" id="filter">
+                            <option value="all">All</option>
+                            <option value="true">Approved</option>
+                            <option value="false">Not Approved</option>
+                        </select>
+
                         <a href="/public/dashboard/product-details.html"><button class="btn"> Add Product</button></a>
                     </div>
                 </div>
                 <table id="products">
                     <thead>
                         <tr>
-                            <th><input type="checkbox" name="all" id="all"></th>
                             <th>ID</th>
                             <th>Product Name</th>
                             <th>Price</th>
@@ -75,14 +70,36 @@
                             <th>status</th>
                             <th></th>
                             <th></th>
-
                         </tr>
                     </thead>
                     <tbody>
                     </tbody>
                 </table>
             </section>
+            <section id="orders-section">
+                <div>
+                    <h2>Manage Orders</h2>
+                </div>
+                <h3>orders</h3>
+                <table id="orders">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Total price</th>
+                            <th>Full Name</th>
+                            <th>Number of Products</th>
+                            <th>status</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </section>
         </div>
+    </div>
     </div>
 </body>
 

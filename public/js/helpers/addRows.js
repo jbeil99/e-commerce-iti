@@ -178,4 +178,27 @@ const addOrdersRow = (data, table) => {
     table.appendChild(tr)
 }
 
-export { addProductRow, addUserRow, addOrdersRow }
+const addUserOrderRows = (data, table) => {
+    const tr = document.createElement("tr");
+    const id = document.createElement("td");
+    const price = document.createElement("td");
+    const name = document.createElement("td");
+    const num = document.createElement("td");
+    const status = document.createElement("td");
+    const view = document.createElement("td");
+    const viewBtn = document.createElement("button");
+    const viewUrl = document.createElement("a");
+    id.innerText = data.id;
+    price.innerText = data.totalPrice;
+    num.innerText = data.items.length;
+    status.innerText = data.status;
+    view.appendChild(viewUrl);
+    viewUrl.appendChild(viewBtn);
+    viewUrl.href = `/public/pages/order-details.html?id=${data.id}`
+    viewBtn.classList.add("btn");
+    viewBtn.innerHTML = "View Details";
+    tr.append(id, status, num, price, view);
+    table.appendChild(tr)
+}
+
+export { addProductRow, addUserRow, addOrdersRow, addUserOrderRows }

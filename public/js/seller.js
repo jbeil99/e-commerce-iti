@@ -5,53 +5,72 @@ import { addProductRow } from "./helpers/addRows.js";
 const user = checkUserAuth();
 
 addRoleGuard(["seller"], "/shop.html");
+const tab = window.location.search.slice(1,).split("=")[1];
+console.log(tab);
+const switchSections = (activeSection, ...disabledSections) => {
+    activeSection.style.display = "block";
+    for (const section of disabledSections) {
+        section.style.display = "none";
+    }
+}
 
-
-
+const handleTabs = (tab, productsSection, ordersSection, productNav, orderNav) => {
+    if (tab === "products" || !tab) {
+        switchSections(productsSection, ordersSection);
+        productNav.classList.add("active");
+        orderNav.classList.remove("active");
+    }
+    if (tab === "orders") {
+        switchSections(ordersSection, productsSection);
+        orderNav.classList.add("active");
+        productNav.classList.remove("active");
+    }
+}
 
 window.addEventListener("load", async () => {
     const productsTable = document.querySelector("#products tbody");
-
+    const productNav = document.querySelector("#products-nav");
+    const orderNav = document.querySelector("#orders-nav");
+    const productsSection = document.querySelector("#products-section");
+    const ordersSection = document.querySelector("#orders-section");
     const products = await getSellerProdcuts(user.id);
-    console.log(products);
+
     if (products.length === 0) {
         displayNothingFound(productsTable, "products")
     }
-
+    handleTabs(tab, productsSection, ordersSection, productNav, orderNav)
     products.forEach(product => {
-        addProductRow(product, productsTable);
+        addProductRow(product, productsTable, false);
     })
 
-    document.querySelectorAll("input[type='radio']").forEach(c => {
-        c.addEventListener("change", function (e) {
-            if (this.checked) {
-                productsTable.innerHTML = "";
-                if (this.value === "all") {
-                    products.forEach(product => {
-                        addProductRow(product, productsTable);
-                    })
+    productNav.addEventListener("click", () => {
+        window.location.search = "tab=products";
+    });
+
+    orderNav.addEventListener("click", () => {
+        window.location.search = "tab=orders";
+    });
+
+    document.querySelector("select").addEventListener("change", (e) => {
+        productsTable.innerHTML = "";
+        if (e.target.value === "all") {
+            products.forEach(product => {
+                addProductRow(product, productsTable, false);
+            })
+        }
+        if (e.target.value) {
+            products.forEach(product => {
+                if (String(product.approved) === e.target.value) {
+                    addProductRow(product, productsTable, false);
                 }
-                if (this.value === "true") {
-                    products.forEach(product => {
-                        if (product.approved) {
-                            addProductRow(product, productsTable);
-                        }
-                    })
-                }
-                if (this.value === "false") {
-                    products.forEach(product => {
-                        if (!product.approved) {
-                            addProductRow(product, productsTable);
-                        }
-                    })
-                }
-            }
-        })
+            })
+        }
+
     })
 
     productsTable.addEventListener("click", (e) => {
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("delete")) {
             softDeleteProduct(e.target.value);
         }
-    })
+    });
 })

@@ -66,7 +66,6 @@ window.addEventListener("load", async () => {
 
             if (vaild) {
                 const status = getStatusSelected(select, order)
-                console.log(status);
 
                 await updateOrder(order.id, {
                     ...order,

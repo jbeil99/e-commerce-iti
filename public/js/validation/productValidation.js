@@ -22,9 +22,9 @@ const validateProductName = async (target, seller, skip = "") => {
     return false
 }
 
-const validatePrice = (price, custPrice = price.value * 1.2) => {
+const validatePrice = (price, custPrice = Number(price.value) * 1.2) => {
     const error = price.parentElement.querySelector("p");
-
+    console.log(custPrice, "cust", price.value, custPrice <= price.value);
     const errorMsg = {
         empty: "price cant be empty",
         less: "price cant be less than 1",
@@ -43,7 +43,7 @@ const validatePrice = (price, custPrice = price.value * 1.2) => {
         price.focus()
         return false
     }
-    if (custPrice <= price.value) {
+    if (custPrice <= Number(price.value)) {
         error.innerText = errorMsg.custLow;
         error.style.display = "block";
         price.focus()
@@ -85,7 +85,6 @@ const validateImage = (target) => {
 }
 
 const validateDescription = (target) => {
-    console.log(target)
     const error = target.parentElement.querySelector("p");
     const errorMsg = "description must be atleast 20 characters";
     if (description.value.trim().length < 20) {
@@ -109,7 +108,6 @@ const validateDiscount = (target) => {
 }
 
 const handleProduct = async (name, price, custPrice, quantity, discount, image, description, seller, skip = "") => {
-    console.log(description)
     return validateDescription(description) &&
         validateImage(image) &&
         validatePrice(price) &&

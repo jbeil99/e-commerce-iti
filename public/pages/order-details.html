@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/public/css/global.css">
+    <link rel="stylesheet" href="/public/css/cart.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/public/assets/icons/Icon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
+    <script src="/public/js/session.js" type="module"></script>
+    <!-- <script src="/public/js/cart.js" type="module"></script> -->
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="/public/assets/icons/Icon.png" alt="">
+            <p>CLICON</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/shop.html">Shop</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <a href="/public/pages/cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="/public/pages/login.html"><i class="fa-solid fa-user"></i></a>
+        </div>
+    </header>
+    <div class="message"></div>
+    <div class="container">
+
+        <div class="shopping-cart">
+
+            <div class="order-card">
+                <div class="order-header">
+                    <h2>Order #12345</h2>
+                    <span class="status completed">Completed</span>
+                </div>
+            </div>
+
+            <table id="cart-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <div class="cart-actions">
+                <a href="/public/pages/profile.html?tab=orders"><button class="btn"><span>&larr;</span> RETURN TO
+                        History</button></a>
+                <button class="btn" type="submit" id="updateBtn">Cancel Order</button>
+            </div>
+        </div>
+        <div class="cart-totals">
+            <h2>Order Details</h2>
+            <div class="totals-list">
+                <p>Sub-total: <span id="subtotol"></span></p>
+                <p>Shipping: <span id="shipping">Free</span></p>
+                <p>Discount: <span id="discount">0</span></p>
+                <p class="total">Total: <span id="total"></span></p>
+            </div>
+            <h3>Info</h3>
+            <div class="totals-list">
+                <p>Address: <span id="addressCard"></span></p>
+                <p>Date: <span id="date">12 jan 1999</span></p>
+                <p>Phone Number: <span id="discount">0</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

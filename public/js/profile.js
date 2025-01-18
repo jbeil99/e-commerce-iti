@@ -3,8 +3,8 @@ import { getUser, updateUser, SoftDeleteUser } from "./api/user.js";
 import { checkUserAuth, editGuard } from "./guards/userGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
 import { fillUserData } from "./helpers/fillForms.js";
-
-
+import { getUserOrders } from "./api/order.js";
+import { addUserOrderRows } from "./helpers/addRows.js";
 
 let currentUser = checkUserAuth();
 
@@ -14,16 +14,18 @@ window.addEventListener("load", async () => {
     const fname = document.querySelector("#fname");
     const lname = document.querySelector("#lname");
     const email = document.querySelector("#email");
-    const phone = document.querySelector("#phone");
     const password = document.querySelector("#password");
     const conPassword = document.querySelector("#confirm-password");
     const user = await getUser(currentUser.id);
     const form = document.querySelector("#profile-form");
     const logOut = document.querySelector("#logout");
+    const orderTable = document.querySelector("#order-table");
+    const orders = await getUserOrders(user.id);
 
-    if (user) {
-        fillUserData(username, email, fname, lname, user)
-    }
+    orders.forEach(order => {
+        addUserOrderRows(order, orderTable)
+    });
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (e.submitter.value === "delete") {
@@ -35,7 +37,7 @@ window.addEventListener("load", async () => {
         }
 
         const vaild = await handleSave(username, password, fname, lname, email, conPassword, currentUser.username);
-        console.log(vaild);
+
         if (vaild) {
             e.preventDefault();
             await updateUser(currentUser.id, {

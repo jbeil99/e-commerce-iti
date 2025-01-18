@@ -21,7 +21,7 @@ const addLogout = (profile, currentUser) => {
         addNav("Dashboard", "/public/dashboard/admin.html")
     }
     if (currentUser.role === "seller") {
-        addNav("Your Products", "/public/dashboard/seller.html")
+        addNav("Dashboard", "/public/dashboard/seller.html")
     }
 }
 const addCartNum = async (target, id) => {
@@ -43,9 +43,8 @@ window.addEventListener("load", () => {
     const cart = document.querySelector(".profile a:nth-child(1)");
     if (currentUser) {
         addLogout(profile, currentUser);
-        if (currentUser.cart.items.length > 0) {
-            addCartNum(cart, currentUser.cart.id)
-        }
+        addCartNum(cart, currentUser.cart.id)
+
         // TODO: add message
         profile.addEventListener("click", (e) => {
             e.preventDefault();
