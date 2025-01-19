@@ -5,6 +5,7 @@ import { fillCartData } from "./helpers/fillForms.js"
 import { handleCheckout } from "./validation/checkoutValidation.js";
 import { addOrder } from "./api/order.js";
 import { checkUserAuth } from "./guards/userGuard.js"
+import { updateProdcutQuantity } from "./api/product.js";
 
 const currentUser = checkUserAuth();
 
@@ -63,10 +64,16 @@ window.addEventListener("load", async () => {
                 phone: phone.value,
                 firstName: fname.value,
                 lastName: lname.value,
-                zipcode: zipcode.value
-            })
+                zipcode: zipcode.value,
+                date: new Date()
+            });
             await emptyCart(cart.id);
-            window.location.href = "/public/pages/cart.html";
+            cart.items.forEach(async (item) => {
+                const test = await updateProdcutQuantity(item.productID, item.quantity);
+                console.log(test);
+            });
+
+            // window.location.href = "/public/pages/cart.html";
         }
     })
 })

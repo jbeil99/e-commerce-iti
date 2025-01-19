@@ -159,4 +159,24 @@ const filterPrice = async (filter) => {
     return null;
 }
 
-export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct, getCategories, toggleApproveProduct, getSellerProdcuts, softDeleteProduct };
+const updateProdcutQuantity = async (id, quantity) => {
+    const product = await getProduct(id);
+    try {
+        const response = await fetch(`http://localhost:3000/products/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                quantity: product.quantity - quantity
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export { getProdcuts, getProduct, addProduct, updateProduct, deleteProduct, getCategories, toggleApproveProduct, getSellerProdcuts, softDeleteProduct, updateProdcutQuantity };

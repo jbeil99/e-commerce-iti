@@ -1,4 +1,4 @@
-
+import { calacPrices } from "./calcPrices.js";
 
 const fillUserData = (username, email, fname, lname, user, select, saveBtn) => {
     username.value = user.username;
@@ -36,5 +36,30 @@ const fillOrderData = (price, phone, zipcode, fname, lname, address, address2, o
         }
     }
 }
+const fillOrderHistory = async (subtotalSpan, totalSpan, status, title, address, phone, date, order) => {
+    fillCartData(subtotalSpan, totalSpan, "", "", await calacPrices(order.items))
+    title.innerText = `#${order.id}`
+    status.innerText = order.status;
+    status.classList.add("pending")
+    const orderDate = new Date(order.date);
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+    address.innerText = order.address["1"];
+    phone.innerText = order.phone;
+    date.innerText = orderDate.toLocaleDateString(undefined, options);
+    if (order.status === "deliverd") {
+        status.innerText = "completed";
+        status.classList.remove("pending")
+        status.classList.add("completed")
+    } else if (order.orderCanceld) {
+        status.innerText = "cancelled";
+        status.classList.remove("pending")
+        status.classList.add("cancelled")
+    }
+}
 
-export { fillUserData, fillCartData, fillOrderData }
+export { fillUserData, fillCartData, fillOrderData, fillOrderHistory }

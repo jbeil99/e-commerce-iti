@@ -101,7 +101,7 @@ window.addEventListener("load", async () => {
                     category: category,
                     approved: false,
                     image: image.value,
-                    sale: Number(discount.value)
+                    sale: Number(discount.value),
                 })
             }
         }
@@ -133,7 +133,8 @@ window.addEventListener("load", async () => {
                         reviews: [],
                         approved: currentUser.role === "admin" ? true : false,
                         sold: 0,
-                        sale: Number(discount.value)
+                        sale: Number(discount.value),
+                        createdAt: new Date()
                     }
                 );
                 window.location.href = "/public/dashboard/admin.html?tab=products";

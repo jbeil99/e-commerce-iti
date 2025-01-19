@@ -158,7 +158,7 @@ const addOrdersRow = (data, table) => {
     price.innerText = data.totalPrice;
     name.innerText = `${data.firstName} ${data.lastName}`;
     num.innerText = data.items.length;
-    status.innerText = data.status;
+    status.innerText = data.orderCanceld ? "Cancelled" : data.status;
     edit.appendChild(editUrl);
     editUrl.appendChild(editBtn);
     editUrl.href = `/public/dashboard/order-details.html?id=${data.id}`
@@ -181,23 +181,33 @@ const addOrdersRow = (data, table) => {
 const addUserOrderRows = (data, table) => {
     const tr = document.createElement("tr");
     const id = document.createElement("td");
+    const date = document.createElement("td");
     const price = document.createElement("td");
-    const name = document.createElement("td");
-    const num = document.createElement("td");
     const status = document.createElement("td");
     const view = document.createElement("td");
     const viewBtn = document.createElement("button");
     const viewUrl = document.createElement("a");
+
+    const orderDate = new Date(data.date);
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    };
+
+    date.innerText = orderDate.toLocaleDateString(undefined, options);
+
     id.innerText = data.id;
-    price.innerText = data.totalPrice;
-    num.innerText = data.items.length;
-    status.innerText = data.status;
+    price.innerText = `${data.items.reduce((t, q) => t += q.quantity, 0)} x $${data.totalPrice}`;
+    status.innerText = data.orderCanceld ? "Canceld" : data.status;
     view.appendChild(viewUrl);
     viewUrl.appendChild(viewBtn);
     viewUrl.href = `/public/pages/order-details.html?id=${data.id}`
     viewBtn.classList.add("btn");
     viewBtn.innerHTML = "View Details";
-    tr.append(id, status, num, price, view);
+    tr.append(id, status, date, price, view);
     table.appendChild(tr)
 }
 

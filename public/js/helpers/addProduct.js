@@ -1,14 +1,6 @@
 import { getProduct } from "../api/product.js";
 import { calcProductTotalPriceAfterDiscount } from "./calcPrices.js";
-/* <div class="product-card sale">
-<span class="badge">25%</span>
-<img src="/public/assets/products/2.png" alt="Product Image">
-<div class="rating">
-    <span class="stars">&starf;&starf;&starf;&starf;&starf;</span> <span class="num">(536)</span>
-</div>
-<h3>Samsung Galaxy S21 5G</h3>
-<div class="price">$2,300 <span class="discount">$2500</span></div>
-</div> */
+
 
 const addStars = (rate) => {
     let stars = "";
@@ -24,10 +16,25 @@ const addStars = (rate) => {
 // TODO: add DATE
 
 const addProdcutCard = (target, data) => {
-    const overlay = `<div class="overlay">
-                        <button class="btn cart" value="${data.id}">Add to Cart</button>
-                        <button class="btn wishlist" value="${data.id}">Add to Wishlist</button>
-                    </div>`
+    const orverly = document.createElement('div');
+    orverly.classList.add("overlay");
+    const cartBtn = document.createElement("button");
+    cartBtn.value = data.id;
+    const whishBtn = document.createElement("button");
+    whishBtn.value = data.id;
+    cartBtn.innerText = "Add to Cart";
+    whishBtn.innerText = "Add to Wishlist";
+
+    cartBtn.classList.add("btn", "cart");
+    whishBtn.classList.add("btn", "wishlist");
+    orverly.append(cartBtn, whishBtn);
+    if (data.quantity <= 0) {
+        cartBtn.innerText = "Out of Stock";
+        cartBtn.style.backgroundColor = "gray";
+        cartBtn.disabled = true;
+    }
+
+
 
     const discount = calcProductTotalPriceAfterDiscount(data);
     const card = document.createElement("div");
@@ -57,6 +64,10 @@ const addProdcutCard = (target, data) => {
 
     p.innerText = `$${data.customerPrice}`;
     price.appendChild(p);
+
+    const now = new Date();
+    const productDate = new Date(data.createdAt);
+    const days = Math.floor((now - productDate) / (1000 * 60 * 60 * 24));
     if (discount < data.customerPrice) {
         const badge = document.createElement("span");
         badge.classList.add("badge");
@@ -65,11 +76,17 @@ const addProdcutCard = (target, data) => {
         previousPrice.innerText = `$${data.customerPrice}`;
         p.appendChild(previousPrice);
         card.classList.add("sale");
-        card.append(badge, img, rating, title, price)
-    } else {
-        card.append(img, rating, title, price)
+        card.append(badge, img, rating, title, price, orverly)
+    } else if (days < 5) {
+        const badge = document.createElement("span");
+        badge.classList.add("badge");
+        badge.innerText = "new"
+        card.classList.add("new");
+        card.append(badge, img, rating, title, price, orverly)
     }
-    card.innerHTML += overlay;
+    else {
+        card.append(img, rating, title, price, orverly)
+    }
     target.appendChild(card)
 }
 
@@ -138,6 +155,42 @@ const addProdcutCart = async (target, data) => {
     target.appendChild(tr);
 }
 
+const addProdcutOrder = async (target, data) => {
+    const product = await getProduct(data.productID);
+    const tr = document.createElement('tr');
+
+
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+
+    const img = document.createElement('img');
+    img.src = product.image;
+    img.alt = product.name;
+    productInfo.appendChild(img);
+
+    const p = document.createElement('p');
+    p.innerText = product.name;
+    productInfo.appendChild(p);
+    const info = document.createElement('td');
+    info.appendChild(productInfo);
+    tr.appendChild(info);
+
+    const price = document.createElement('td');
+    price.innerText = calcProductTotalPriceAfterDiscount(product);;
+    tr.appendChild(price);
+
+
+    const quantity = document.createElement('td');
+    quantity.innerText = data.quantity;
+    tr.appendChild(quantity);
+
+    const total = document.createElement('td');
+    total.classList.add('subtotal');
+    total.innerText = calcProductTotalPriceAfterDiscount(product, data.quantity);
+    tr.appendChild(total);
+
+    target.appendChild(tr);
+}
 
 const addProductCheckout = async (target, data) => {
     const product = await getProduct(data.productID);
@@ -160,4 +213,4 @@ const addProductCheckout = async (target, data) => {
     target.appendChild(productDiv)
 }
 
-export { addProdcutCard, addProdcutCart, addProductCheckout };
+export { addProdcutCard, addProdcutCart, addProductCheckout, addProdcutOrder };

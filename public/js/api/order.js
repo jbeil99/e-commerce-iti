@@ -98,5 +98,23 @@ const softDeleteOrder = async (id, value = true) => {
         console.log(e)
     }
 }
+const cancelOrder = async (id, value = true) => {
+    try {
+        const response = await fetch(`http://localhost:3000/orders/${id}`, {
+            method: "PATCH",
+            body: JSON.stringify({
+                orderCanceld: value
+            })
+        });
 
-export { getOrder, getOrders, getUserOrders, addOrder, softDeleteOrder, updateOrder };
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        const json = await response.json();
+        return json
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+export { getOrder, getOrders, getUserOrders, addOrder, softDeleteOrder, updateOrder, cancelOrder };

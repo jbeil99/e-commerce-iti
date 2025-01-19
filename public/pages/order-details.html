@@ -11,9 +11,10 @@
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
     <link rel="shortcut icon" href="/public/assets/icons/Icon.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
     <script src="/public/js/session.js" type="module"></script>
-    <!-- <script src="/public/js/cart.js" type="module"></script> -->
+    <script src="/public/js/orderHisotry.js" type="module"></script>
 
 </head>
 
@@ -46,10 +47,9 @@
                 </div>
             </div>
 
-            <table id="cart-table">
+            <table id="order-table">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
@@ -76,8 +76,8 @@
             <h3>Info</h3>
             <div class="totals-list">
                 <p>Address: <span id="addressCard"></span></p>
-                <p>Date: <span id="date">12 jan 1999</span></p>
-                <p>Phone Number: <span id="discount">0</span></p>
+                <p>Date: <span id="date"></span></p>
+                <p>Phone Number: <span id="phone">0</span></p>
             </div>
         </div>
     </div>

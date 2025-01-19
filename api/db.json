@@ -58,7 +58,7 @@
       "price": "15",
       "customerPrice": "25",
       "sale": 0,
-      "quantity": "15",
+      "quantity": 0,
       "category": "2",
       "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
       "rating": 0,
@@ -84,7 +84,7 @@
       "description": "Pokemon Goes PRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
       "price": 25,
       "customerPrice": 25,
-      "quantity": 25,
+      "quantity": 0,
       "category": "1",
       "image": "https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png",
       "rating": 5,
@@ -127,6 +127,23 @@
       "approved": true,
       "sold": 0,
       "sale": 0
+    },
+    {
+      "id": "071c",
+      "name": "Venusaur",
+      "description": "Venusaur (Japanese: フシギバナ, Hepburn: Fushigibana) (VEE-nuh-sore[1]) is a Grass/Poison-type Pokémon introduced in Generation I. It is the mascot for Pokémon Green and Pokémon LeafGreen Version and the final form of Bulbasaur",
+      "price": 15,
+      "customerPrice": 50,
+      "quantity": 80,
+      "category": "2",
+      "image": "https://static.wikia.nocookie.net/pokemon/images/6/6b/0003Venusaur.png/revision/latest?cb=20240714092555",
+      "rating": 0,
+      "seller_id": "1",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
+      "sale": 0,
+      "createdAt": "2025-01-15T01:14:52.179Z"
     }
   ],
   "orders": [
@@ -150,6 +167,70 @@
       "lastName": "Account",
       "zipcode": "44554",
       "orderDeleted": false
+    },
+    {
+      "id": "21d1",
+      "userID": "1",
+      "totalPrice": 625,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "02c9",
+          "quantity": 25
+        }
+      ],
+      "address": {
+        "1": "zagazig",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "Hussin ",
+      "lastName": "Ahmed",
+      "zipcode": "44554",
+      "date": "2025-01-19T01:00:52.521Z",
+      "orderCanceld": true
+    },
+    {
+      "id": "d5fc",
+      "userID": "1",
+      "totalPrice": 625,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "02c9",
+          "quantity": 25
+        }
+      ],
+      "address": {
+        "1": "asdasd",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "sadas",
+      "lastName": "dasdasd",
+      "zipcode": "14546",
+      "date": "2025-01-19T01:02:00.779Z"
+    },
+    {
+      "id": "7ac1",
+      "userID": "1",
+      "totalPrice": 375,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "c315",
+          "quantity": 15
+        }
+      ],
+      "address": {
+        "1": "asdasd",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "asdas",
+      "lastName": "asdasd",
+      "zipcode": "44554",
+      "date": "2025-01-19T01:13:00.140Z"
     }
   ],
   "categories": [

@@ -8,6 +8,15 @@ import { getOrders, softDeleteOrder } from "./api/order.js"
 const currentUser = checkUserAuth();
 const tab = window.location.search.slice(1,).split("=")[1];
 
+
+
+const switchSections = (activeSection, ...disabledSections) => {
+    activeSection.style.display = "block";
+    for (const section of disabledSections) {
+        section.style.display = "none";
+    }
+}
+
 const handleTabs = (tab, usersSection, productsSection, ordersSection, userNav, productNav, orderNav) => {
     if (!tab || tab === "users") {
         switchSections(usersSection, productsSection, ordersSection);
@@ -33,12 +42,7 @@ const handleTabs = (tab, usersSection, productsSection, ordersSection, userNav, 
 addRoleGuard(["admin", "manger"], "/shop.html");
 
 
-const switchSections = (activeSection, ...disabledSections) => {
-    activeSection.style.display = "block";
-    for (const section of disabledSections) {
-        section.style.display = "none";
-    }
-}
+
 
 
 window.addEventListener("load", async () => {

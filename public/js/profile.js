@@ -8,6 +8,27 @@ import { addUserOrderRows } from "./helpers/addRows.js";
 
 let currentUser = checkUserAuth();
 
+const switchSections = (activeSection, ...disabledSections) => {
+    activeSection.style.display = "block";
+    for (const section of disabledSections) {
+        section.style.display = "none";
+    }
+}
+
+const tab = window.location.search.slice(1,).split("=")[1];
+
+const handleTabs = (tab, ordersSection, profileSection, profileNav, orderNav) => {
+    if (!tab || tab === "setting") {
+        switchSections(profileSection, ordersSection);
+        profileNav.classList.add("active");
+        orderNav.classList.remove("active");
+    }
+    if (tab === "orders") {
+        switchSections(ordersSection, profileSection);
+        orderNav.classList.add("active");
+        profileNav.classList.remove("active");
+    }
+}
 
 window.addEventListener("load", async () => {
     const username = document.querySelector("#username");
@@ -21,9 +42,23 @@ window.addEventListener("load", async () => {
     const logOut = document.querySelector("#logout");
     const orderTable = document.querySelector("#order-table");
     const orders = await getUserOrders(user.id);
+    const profileNav = document.querySelector("#profile");
+    const orderNav = document.querySelector("#orders-history");
+    const profileSection = document.querySelector("#profile-section");
+    const orderSection = document.querySelector("#order-section");
 
     orders.forEach(order => {
         addUserOrderRows(order, orderTable)
+    });
+
+    handleTabs(tab, orderSection, profileSection, profileNav, orderNav);
+
+    profileNav.addEventListener("click", () => {
+        window.location.search = "tab=setting";
+    });
+
+    orderNav.addEventListener("click", () => {
+        window.location.search = "tab=orders";
     });
 
     form.addEventListener("submit", async (e) => {
