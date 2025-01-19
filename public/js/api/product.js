@@ -161,6 +161,7 @@ const filterPrice = async (filter) => {
 
 const updateProdcutQuantity = async (id, quantity) => {
     const product = await getProduct(id);
+    console.log(product)
     try {
         const response = await fetch(`http://localhost:3000/products/${id}`, {
             method: "PATCH",

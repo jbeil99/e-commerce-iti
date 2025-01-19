@@ -99,14 +99,13 @@ window.addEventListener("load", async () => {
             if (e.target.classList.contains("wishlist")) {
                 if (currentUser) {
                     await addProductToWishlist(currentUser.wish.id, e.target.value);
+                } else {
+                    window.location.href = "/public/pages/login.html"
                 }
             }
         }
 
-        if (e.target.nodeName === "BUTTON") {
-            if (e.target.classList.contains("wishlist")) {
-            }
-        }
+
     });
 
     search.addEventListener("input", (e) => {

@@ -67,12 +67,13 @@ window.addEventListener("load", async () => {
                 zipcode: zipcode.value,
                 date: new Date()
             });
-            await emptyCart(cart.id);
             cart.items.forEach(async (item) => {
                 const test = await updateProdcutQuantity(item.productID, item.quantity);
+                console.log(test)
             });
+            await emptyCart(cart.id);
 
-            // window.location.href = "/public/pages/cart.html";
+            window.location.href = "/public/pages/profile.html?tab=orders";
         }
     })
 })

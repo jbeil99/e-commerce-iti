@@ -45,7 +45,7 @@
       "description": "Pikachu is renowned for being the most well-known and recognizable Pokémon. Over the years, Pikachu has become so popular that it serves as the Pokémon mascot. In the games, Pikachu is the version mascsssot and first partner Pokémon of Pokémon Yellow Special Pikachu Edition and its remake Pokémon: Let's Go, Pikachu!. In the anime, Pikachu appeared regularly as the main travel companion and partner to Ash Ketchum; while another variant, partners alongside Professor Friede in Pokémon Horizons: The Series. ",
       "price": "25",
       "customerPrice": "50",
-      "quantity": "49",
+      "quantity": 0,
       "category": "1",
       "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcThAQv6vUm8jpXKR_kNbs4hus2u8LVIK8TxohBKPmZehRCEvDrgaxin25ZQAt4ZBobSzAMmjNFApcGHDykX5hrVDVxeD_7yGnKr4Lwq2Qs",
       "rating": 0,
@@ -55,7 +55,7 @@
       "sold": 0,
       "sale": 0,
       "createdAt": "2025-01-19T04:29:09.343Z",
-      "sellerDeleted": true
+      "sellerDeleted": false
     },
     {
       "id": "d7ca",
@@ -63,7 +63,7 @@
       "description": "Pik pia pikasdasdasd asd",
       "price": 20,
       "customerPrice": 80,
-      "quantity": 49,
+      "quantity": 24,
       "category": "1",
       "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
       "rating": 0,
@@ -80,13 +80,13 @@
       "description": "Quacasdasdasdasdasdassssssssss",
       "price": 20,
       "customerPrice": 25,
-      "quantity": 19,
+      "quantity": 16,
       "category": "3",
       "image": "https://media.tenor.com/53miymrFe_UAAAAM/hold-on.gif",
       "rating": 0,
       "seller_id": "2e61",
       "reviews": [],
-      "approved": false,
+      "approved": true,
       "sold": 0,
       "sale": 0,
       "createdAt": "2025-01-19T04:38:54.683Z"
@@ -114,7 +114,7 @@
       "description": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpAZFFum2NF4unRJWrgJWH9RpJ7N-gjiKaA&shttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpAZFFum2NF4unRJWrgJWH9RpJ7N-gjiKaA&s",
       "price": 15,
       "customerPrice": 280,
-      "quantity": 10,
+      "quantity": 3,
       "category": "1",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpAZFFum2NF4unRJWrgJWH9RpJ7N-gjiKaA&s",
       "rating": 0,
@@ -173,6 +173,211 @@
       "lastName": "asdasd",
       "zipcode": "44554",
       "date": "2025-01-19T04:43:18.029Z"
+    },
+    {
+      "id": "b769",
+      "userID": "1",
+      "totalPrice": 1959,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "e78f",
+          "quantity": 1
+        },
+        {
+          "productID": "d7ca",
+          "quantity": 25
+        },
+        {
+          "productID": "953a",
+          "quantity": 3
+        },
+        {
+          "productID": "6292",
+          "quantity": 7
+        }
+      ],
+      "address": {
+        "1": "asdasda",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "dadasd",
+      "lastName": "asdasd",
+      "zipcode": "44554",
+      "date": "2025-01-19T10:58:10.030Z"
+    },
+    {
+      "id": "b30a",
+      "userID": "1",
+      "totalPrice": 150,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "953a",
+          "quantity": 2
+        },
+        {
+          "productID": "e78f",
+          "quantity": 2
+        }
+      ],
+      "address": {
+        "1": "asdasd",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "asdasd",
+      "lastName": "adsd",
+      "zipcode": "45541",
+      "date": "2025-01-19T10:58:55.928Z"
+    },
+    {
+      "id": "e4a3",
+      "userID": "1",
+      "totalPrice": 2200,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "953a",
+          "quantity": 44
+        }
+      ],
+      "address": {
+        "1": "asdasd",
+        "2": "asdasd"
+      },
+      "phone": "01155991822",
+      "firstName": "sdsad",
+      "lastName": "asdsad",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:01:01.352Z"
+    },
+    {
+      "id": "00ec",
+      "userID": "1",
+      "totalPrice": 2200,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "953a",
+          "quantity": 44
+        }
+      ],
+      "address": {
+        "1": "adas",
+        "2": "asd"
+      },
+      "phone": "01155991822",
+      "firstName": "asdasda",
+      "lastName": "dasd",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:01:59.144Z"
+    },
+    {
+      "id": "073c",
+      "userID": "1",
+      "totalPrice": 2200,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "953a",
+          "quantity": 44
+        }
+      ],
+      "address": {
+        "1": "sdfsdf",
+        "2": "sdfsdf"
+      },
+      "phone": "01155991822",
+      "firstName": "fsdfs",
+      "lastName": "dfsdf",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:04:26.993Z"
+    },
+    {
+      "id": "7e75",
+      "userID": "1",
+      "totalPrice": 50,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "e78f",
+          "quantity": 2
+        }
+      ],
+      "address": {
+        "1": "dgdfg",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "gdfgdf",
+      "lastName": "gdg",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:05:52.250Z"
+    },
+    {
+      "id": "8bb9",
+      "userID": "1",
+      "totalPrice": 100,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "953a",
+          "quantity": 2
+        }
+      ],
+      "address": {
+        "1": "asdasd",
+        "2": "dgfd"
+      },
+      "phone": "01155991822",
+      "firstName": "trtgdf",
+      "lastName": "fdgdf",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:06:21.163Z"
+    },
+    {
+      "id": "a5d6",
+      "userID": "1",
+      "totalPrice": 2200,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "953a",
+          "quantity": 44
+        }
+      ],
+      "address": {
+        "1": "zxcc",
+        "2": "zxczx"
+      },
+      "phone": "01155991822",
+      "firstName": "zcxxcz",
+      "lastName": "zxcxz",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:07:54.211Z"
+    },
+    {
+      "id": "6c1d",
+      "userID": "1",
+      "totalPrice": 50,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "e78f",
+          "quantity": 2
+        }
+      ],
+      "address": {
+        "1": "dasdasd",
+        "2": "adas"
+      },
+      "phone": "01155991822",
+      "firstName": "fnbvn",
+      "lastName": "asdas",
+      "zipcode": "44554",
+      "date": "2025-01-19T11:08:40.796Z"
     }
   ],
   "categories": [
@@ -192,20 +397,7 @@
   "carts": [
     {
       "userID": "1",
-      "items": [
-        {
-          "productID": "e78f",
-          "quantity": 1
-        },
-        {
-          "productID": "d7ca",
-          "quantity": 1
-        },
-        {
-          "productID": "953a",
-          "quantity": 1
-        }
-      ],
+      "items": [],
       "id": "1"
     },
     {
@@ -232,14 +424,6 @@
       "items": [
         {
           "productID": "d7ca",
-          "quantity": 2
-        },
-        {
-          "productID": "e78f",
-          "quantity": 1
-        },
-        {
-          "productID": "e75c",
           "quantity": 1
         },
         {
@@ -253,7 +437,16 @@
   "wishlists": [
     {
       "userID": "1",
-      "items": [],
+      "items": [
+        {
+          "productID": "e75c",
+          "quantity": 1
+        },
+        {
+          "productID": "6292",
+          "quantity": 1
+        }
+      ],
       "id": "1"
     },
     {
@@ -277,16 +470,7 @@
     },
     {
       "userID": "be4b",
-      "items": [
-        {
-          "productID": "d7ca",
-          "quantity": 2
-        },
-        {
-          "productID": "953a",
-          "quantity": 1
-        }
-      ],
+      "items": [],
       "id": "d7e6"
     }
   ]
