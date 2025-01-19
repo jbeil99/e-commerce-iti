@@ -16,7 +16,7 @@ const addLogout = (profile, currentUser) => {
         <i class="fa-solid fa-right-from-bracket"></i>`;
 
     addNav("Profile", "/public/pages/profile.html")
-
+    addNav("WishList", "/public/pages/wishlist.html")
     if (currentUser.role === "admin" || currentUser.role === "manger") {
         addNav("Dashboard", "/public/dashboard/admin.html")
     }

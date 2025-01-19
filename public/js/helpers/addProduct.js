@@ -93,6 +93,11 @@ const addProdcutCard = (target, data) => {
 
 const addProdcutCart = async (target, data) => {
     const product = await getProduct(data.productID);
+
+    if (product.sellerDeleted || !product.approved) {
+        return false
+    }
+
     const tr = document.createElement('tr');
 
     const removeBtn = document.createElement('button');
@@ -213,4 +218,52 @@ const addProductCheckout = async (target, data) => {
     target.appendChild(productDiv)
 }
 
-export { addProdcutCard, addProdcutCart, addProductCheckout, addProdcutOrder };
+const addProductWishlist = async (target, data) => {
+    const product = await getProduct(data.productID);
+    if (product.sellerDeleted || !product.approved) {
+        return false
+    }
+
+    const tr = document.createElement('tr');
+    const removeBtn = document.createElement('button');
+    removeBtn.id = 'removeBtn';
+    removeBtn.value = product.id;
+    removeBtn.innerText = 'Remove';
+    removeBtn.type = "submit";
+    const remove = document.createElement('td');
+    remove.appendChild(removeBtn);
+    tr.appendChild(remove);
+
+
+    const productInfo = document.createElement('div');
+    productInfo.classList.add('product-info');
+
+    const img = document.createElement('img');
+    img.src = product.image;
+    img.alt = product.name;
+    productInfo.appendChild(img);
+
+    const p = document.createElement('p');
+    p.innerText = product.name;
+    productInfo.appendChild(p);
+    const info = document.createElement('td');
+    info.appendChild(productInfo);
+    tr.appendChild(info);
+
+    const price = document.createElement('td');
+    price.innerText = calcProductTotalPriceAfterDiscount(product);;
+    tr.appendChild(price);
+
+    const add = document.createElement("td");
+    const addBtn = document.createElement("button");
+    addBtn.classList.add("btn");
+    addBtn.innerText = "Add to cart";
+    add.appendChild(addBtn)
+    addBtn.value = product.id;
+    addBtn.id = "add";
+    tr.appendChild(add)
+
+    target.appendChild(tr);
+}
+
+export { addProdcutCard, addProdcutCart, addProductCheckout, addProdcutOrder, addProductWishlist };

@@ -4,101 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wishlist</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="/public/css/global.css">
+    <link rel="stylesheet" href="/public/css/cart.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="/public/assets/icons/Icon.png" type="image/png">
+    <script src="https://kit.fontawesome.com/694a1c2830.js" crossorigin="anonymous"></script>
+    <script src="/public/js/session.js" type="module"></script>
+    <script src="/public/js/wishlist.js" type="module"></script>
 
-        header {
-            background-color: #6200ea;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            margin: 0 0 20px;
-            font-size: 24px;
-            color: #333;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #fafafa;
-        }
-
-        li:nth-child(even) {
-            background-color: #f0f0f5;
-        }
-
-        button {
-            background-color: #6200ea;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #4500a3;
-        }
-    </style>
 </head>
 
 <body>
     <header>
-        <h1>My Wishlist</h1>
+        <div class="logo">
+            <img src="/public/assets/icons/Icon.png" alt="">
+            <p>CLICON</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="/index.html">Shop</a></li>
+            </ul>
+        </nav>
+        <div class="profile">
+            <a href="/public/pages/cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="/public/pages/login.html"><i class="fa-solid fa-user"></i></a>
+        </div>
     </header>
-
+    <div class="message"></div>
     <div class="container">
-        <h1>Things I Want</h1>
-        <ul id="wishlist">
-            <li>
-                New Laptop
-                <button onclick="removeItem(this)">Remove</button>
-            </li>
-            <li>
-                Headphones
-                <button onclick="removeItem(this)">Remove</button>
-            </li>
-            <li>
-                A Trip to Japan
-                <button onclick="removeItem(this)">Remove</button>
-            </li>
-        </ul>
+        <div class="shopping-cart">
+            <h2>wishlist</h2>
+            <form id="wish-form">
+                <table id="wish-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>add to cart</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </form>
+            <div class="cart-actions">
+                <a href="/index.html"><button class="btn"><span>&larr;</span> RETURN TO
+                        SHOP</button></a>
+            </div>
+        </div>
     </div>
-
-    <script>
-        function removeItem(button) {
-            const listItem = button.parentElement;
-            listItem.remove();
-        }
-    </script>
 </body>
 
 </html>

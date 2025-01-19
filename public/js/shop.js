@@ -1,7 +1,7 @@
 import { addProdcutCard } from "./helpers/addProduct.js";
 import { getProdcuts } from "./api/product.js";
 import { getCart, addProductToCart, addProdcutToLocalStorageCart } from "./api/cart.js";
-
+import { addProductToWishlist } from "./api/wishlist.js";
 
 const currentUser = JSON.parse(sessionStorage.getItem("user"));
 
@@ -94,6 +94,11 @@ window.addEventListener("load", async () => {
                     await addProductToCart(currentUser.cart.id, e.target.value);
                 } else {
                     addProdcutToLocalStorageCart(e.target.value)
+                }
+            }
+            if (e.target.classList.contains("wishlist")) {
+                if (currentUser) {
+                    await addProductToWishlist(currentUser.wish.id, e.target.value);
                 }
             }
         }

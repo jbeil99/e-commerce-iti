@@ -4,6 +4,7 @@ import { addRoleGuard, checkUserAuth, editGuard } from "./guards/userGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
 import { fillUserData } from "./helpers/fillForms.js";
 import { addUserCart } from "./api/cart.js";
+import { addUserWishlist } from "./api/wishlist.js";
 
 let currentUser = checkUserAuth();
 const userID = window.location.search.slice(1,).split("=")[1];
@@ -109,8 +110,8 @@ window.addEventListener("load", async () => {
                 const user = await addUser(
                     body
                 );
-                confirm.log(await addUserCart(user.id)
-                )
+                await addUserCart(user.id);
+                await addUserWishlist(user.id)
                 window.location.href = "/public/dashboard/admin.html";
             }
         }

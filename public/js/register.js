@@ -1,6 +1,7 @@
 import { valdaiteUsername, validateConfirmPassword, validateName, validateEmail, validatePassword, handleRegister } from "./validation/registerValidation.js";
 import { addUser } from "./api/user.js"
 import { addUserCart } from "./api/cart.js";
+import { addUserWishlist, getUserWishlist } from "./api/wishlist.js";
 
 const switchSingUp = (signIn, signUp, formIn, formUp) => {
     signUp.classList.add("active");
@@ -97,6 +98,7 @@ window.addEventListener("load", async () => {
                 body
             );
             await addUserCart(user.id)
+            await addUserWishlist(user.id);
         }
     })
 });

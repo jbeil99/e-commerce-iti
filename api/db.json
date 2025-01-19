@@ -27,6 +27,15 @@
       "email": "huss@hu.com",
       "role": "seller",
       "approved": true
+    },
+    {
+      "id": "be4b",
+      "username": "hosny",
+      "password": "QuackLEL22",
+      "firstName": "mohamed",
+      "lastName": "hosny",
+      "email": "hosn@clicon.com",
+      "role": "manger"
     }
   ],
   "products": [
@@ -45,7 +54,8 @@
       "approved": true,
       "sold": 0,
       "sale": 0,
-      "createdAt": "2025-01-19T04:29:09.343Z"
+      "createdAt": "2025-01-19T04:29:09.343Z",
+      "sellerDeleted": true
     },
     {
       "id": "d7ca",
@@ -76,7 +86,7 @@
       "rating": 0,
       "seller_id": "2e61",
       "reviews": [],
-      "approved": true,
+      "approved": false,
       "sold": 0,
       "sale": 0,
       "createdAt": "2025-01-19T04:38:54.683Z"
@@ -182,6 +192,67 @@
   "carts": [
     {
       "userID": "1",
+      "items": [
+        {
+          "productID": "e78f",
+          "quantity": 1
+        },
+        {
+          "productID": "d7ca",
+          "quantity": 1
+        },
+        {
+          "productID": "953a",
+          "quantity": 1
+        }
+      ],
+      "id": "1"
+    },
+    {
+      "userID": "20bd",
+      "items": [],
+      "id": "2c8f"
+    },
+    {
+      "userID": "2e61",
+      "items": [
+        {
+          "productID": "e75c",
+          "quantity": 1
+        },
+        {
+          "productID": "6292",
+          "quantity": 1
+        }
+      ],
+      "id": "dc10"
+    },
+    {
+      "userID": "be4b",
+      "items": [
+        {
+          "productID": "d7ca",
+          "quantity": 2
+        },
+        {
+          "productID": "e78f",
+          "quantity": 1
+        },
+        {
+          "productID": "e75c",
+          "quantity": 1
+        },
+        {
+          "productID": "953a",
+          "quantity": 1
+        }
+      ],
+      "id": "20af"
+    }
+  ],
+  "wishlists": [
+    {
+      "userID": "1",
       "items": [],
       "id": "1"
     },
@@ -192,8 +263,31 @@
     },
     {
       "userID": "2e61",
-      "items": [],
+      "items": [
+        {
+          "productID": "d7ca",
+          "quantity": 1
+        },
+        {
+          "productID": "e78f",
+          "quantity": 1
+        }
+      ],
       "id": "dc10"
+    },
+    {
+      "userID": "be4b",
+      "items": [
+        {
+          "productID": "d7ca",
+          "quantity": 2
+        },
+        {
+          "productID": "953a",
+          "quantity": 1
+        }
+      ],
+      "id": "d7e6"
     }
   ]
 }
