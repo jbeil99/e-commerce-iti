@@ -66,8 +66,9 @@ window.addEventListener("load", async () => {
         validateConfirmPassword(e.target, password)
     })
 
-    email.addEventListener('blur', (e) => {
-        validateEmail(e.target)
+    email.addEventListener('blur', async (e) => {
+        await validateEmail(e.target)
+        console.log(await validateEmail(e.target))
     });
     username.addEventListener("blur", async (e) => {
         await valdaiteUsername(e.target)

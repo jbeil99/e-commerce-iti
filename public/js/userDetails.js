@@ -73,7 +73,7 @@ window.addEventListener("load", async () => {
         }
 
         if (e.submitter.id === "save") {
-            const vaild = await handleSave(username, password, fname, lname, email, conPassword, user.username)
+            const vaild = await handleSave(username, password, fname, lname, email, conPassword, user.username, user.email)
 
             if (vaild) {
                 const role = getRoleSelected(select, user)

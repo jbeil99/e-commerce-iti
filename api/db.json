@@ -48,6 +48,24 @@
       "email": "asdasd@gmail.com",
       "role": "seller",
       "approved": true
+    },
+    {
+      "id": "0ac3",
+      "username": "Hussin",
+      "password": "QuackLEL22",
+      "firstName": "asdas",
+      "lastName": "asdasd",
+      "email": "asd@asd.com",
+      "role": "customer"
+    },
+    {
+      "id": "70ee",
+      "username": "Hussin1",
+      "password": "QuackLEL22",
+      "firstName": "asdas",
+      "lastName": "asdasd",
+      "email": "asd@asd.com",
+      "role": "customer"
     }
   ],
   "products": [
@@ -291,6 +309,16 @@
       "userID": "41cd",
       "items": [],
       "id": "51b8"
+    },
+    {
+      "id": "319c",
+      "userID": "0ac3",
+      "items": []
+    },
+    {
+      "id": "46f3",
+      "userID": "70ee",
+      "items": []
     }
   ]
 }

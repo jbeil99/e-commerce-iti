@@ -80,16 +80,34 @@ const validateName = (target, field = "name", n = 2,) => {
     return false;
 }
 
-const validateEmail = (email) => {
+const validateEmail = async (email, skip) => {
     const error = email.parentElement.querySelector("p");
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     const errorMsg = "Enter a Vaild Email address";
+    const users = await getUsers()
+    let exists = false;
+
+    users.forEach(user => {
+        if (user.email === skip) {
+            return
+        }
+
+        if (email.value === user.email) {
+            exists = true;
+        }
+    });
+    if (exists) {
+        error.style.display = "block"
+        error.innerText = "Email is Already used";
+        return false;
+    }
 
     if (email.value.trim().match(regex)) {
         error.style.display = "none"
         error.innerText = "";
         return true;
     }
+
     // TODO: Fix bug in firefox
     if (email.value.trim() !== "") {
         email.focus()
@@ -129,24 +147,24 @@ const handleRegister = async (username, password, firstName, lastName, email, co
     const exists = await valdaiteUsername(username);
     return exists &&
         validatePassword(password) &&
-        validateEmail(email) &&
+        await validateEmail(email) &&
         validateConfirmPassword(conPassword, password) &&
         validateName(firstName) &&
         validateName(lastName)
 }
 
-const handleSave = async (username, password, firstName, lastName, email, conPassword, skip) => {
+const handleSave = async (username, password, firstName, lastName, email, conPassword, skip, skipEmail) => {
     const exists = await valdaiteUsername(username, skip);
     if (password.value.trim() === "" && conPassword.value.trim() === "") {
         return exists &&
-            validateEmail(email) &&
+            await validateEmail(email, skipEmail) &&
             validateName(firstName) &&
             validateName(lastName)
     }
 
     return exists &&
         validatePassword(password) &&
-        validateEmail(email) &&
+        await validateEmail(email, skipEmail) &&
         validateConfirmPassword(conPassword, password) &&
         validateName(firstName) &&
         validateName(lastName)

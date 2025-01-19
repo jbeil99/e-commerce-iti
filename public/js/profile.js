@@ -71,7 +71,7 @@ window.addEventListener("load", async () => {
             return;
         }
 
-        const vaild = await handleSave(username, password, fname, lname, email, conPassword, currentUser.username);
+        const vaild = await handleSave(username, password, fname, lname, email, conPassword, currentUser.username, currentUser.email);
 
         if (vaild) {
             e.preventDefault();

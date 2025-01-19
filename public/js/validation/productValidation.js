@@ -117,13 +117,6 @@ const handleProduct = async (name, price, custPrice, quantity, discount, image, 
         validateDiscount(discount);
 }
 
-// const handleSave = (name, price, custPrice, quantity, image, description, seller, skip) => {
-//     return validateDescription(description) &&
-//         validateImage(image) &&
-//         validatePrice(price) &&
-//         validatePrice(price, custPrice.value) &&
-//         validateQuantity(quantity) &&
-//         validateProductName(name, seller, skip)
-// }
+
 
 export { validateDescription, validateImage, validatePrice, validateQuantity, validateProductName, handleProduct }
