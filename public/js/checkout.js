@@ -70,7 +70,6 @@ window.addEventListener("load", async () => {
             await emptyCart(cart.id);
             cart.items.forEach(async (item) => {
                 const test = await updateProdcutQuantity(item.productID, item.quantity);
-                console.log(test);
             });
 
             // window.location.href = "/public/pages/cart.html";

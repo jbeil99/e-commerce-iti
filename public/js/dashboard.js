@@ -39,7 +39,7 @@ const handleTabs = (tab, usersSection, productsSection, ordersSection, userNav, 
 }
 
 
-addRoleGuard(["admin", "manger"], "/shop.html");
+addRoleGuard(["admin", "manger"], "/index.html");
 
 
 
@@ -183,7 +183,6 @@ window.addEventListener("load", async () => {
 
         if (e.target.nodeName === "BUTTON" && e.target.classList.contains("restore")) {
             await softDeleteProduct(e.target.value, false);
-            console.log("hi")
             window.location.search = "tab=products";
         }
     })

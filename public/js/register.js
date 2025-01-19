@@ -68,14 +68,13 @@ window.addEventListener("load", async () => {
 
     email.addEventListener('blur', async (e) => {
         await validateEmail(e.target)
-        console.log(await validateEmail(e.target))
+        await validateEmail(e.target)
     });
     username.addEventListener("blur", async (e) => {
         await valdaiteUsername(e.target)
     })
 
     form.addEventListener("submit", async (e) => {
-        console.log(e.submitter)
         e.preventDefault();
         const vaild = await handleRegister(username, password, firstName, lastName, email, conPassword);
         if (!vaild) {

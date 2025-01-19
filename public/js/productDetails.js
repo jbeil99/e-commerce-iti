@@ -6,7 +6,7 @@ import { handleProduct } from "./validation/productValidation.js";
 
 
 let currentUser = checkUserAuth();
-addRoleGuard(['admin', 'seller', 'manger'], "/shop.html");
+addRoleGuard(['admin', 'seller', 'manger'], "/index.html");
 
 const productID = window.location.search.slice(1,).split("=")[1];
 
@@ -99,7 +99,6 @@ window.addEventListener("load", async () => {
                     customerPrice: customerPrice.value, // check for admin
                     quantity: quantity.value,
                     category: category,
-                    approved: false,
                     image: image.value,
                     sale: Number(discount.value),
                 })
@@ -109,7 +108,6 @@ window.addEventListener("load", async () => {
         if (e.submitter.id === "add") {
 
             const vaild = await handleProduct(name, price, customerPrice, quantity, discount, image, description, currentUser);
-            console.log(vaild)
             let category;
             for (let c of categoriesInput) {
                 if (c.selected) {

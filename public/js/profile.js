@@ -50,7 +50,7 @@ window.addEventListener("load", async () => {
     orders.forEach(order => {
         addUserOrderRows(order, orderTable)
     });
-    fillUserData(username, fname, email, lname, user)
+    fillUserData(username, email, fname, lname, user)
     handleTabs(tab, orderSection, profileSection, profileNav, orderNav);
 
     profileNav.addEventListener("click", () => {
@@ -71,7 +71,7 @@ window.addEventListener("load", async () => {
             return;
         }
 
-        const vaild = await handleSave(username, password, fname, lname, email, conPassword, currentUser.username, currentUser.email);
+        const vaild = await handleSave(username, password, fname, lname, email, conPassword, user.username, user.email);
 
         if (vaild) {
             e.preventDefault();

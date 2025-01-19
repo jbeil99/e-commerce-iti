@@ -1,7 +1,7 @@
 import { handleLogin, currentUser } from "./validation/loginValidation.js";
 import { getUserCart } from "./api/cart.js";
 if (sessionStorage.getItem("user")) {
-    window.location.href = "/shop.html"
+    window.location.href = "/index.html"
 }
 
 
@@ -17,7 +17,7 @@ window.addEventListener("load", () => {
             const cart = await getUserCart(currentUser.id);
             const userData = { username: currentUser.username, id: currentUser.id, role: currentUser.role, cart }
             sessionStorage.setItem("user", JSON.stringify(userData));
-            window.location.href = "/shop.html";
+            window.location.href = "/index.html";
         }
     });
 })

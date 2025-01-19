@@ -2,7 +2,7 @@
   "users": [
     {
       "username": "clicon",
-      "firstName": "Hussin",
+      "firstName": "Hussi",
       "lastName": "Soliman",
       "email": "admin@clicon.com",
       "password": "admin",
@@ -10,274 +10,159 @@
       "id": "1"
     },
     {
-      "id": "162d",
-      "username": "hussin",
-      "password": "QuackLEL22",
-      "firstName": "Hussin",
-      "lastName": "Soliman",
-      "email": "hussin@clicon.com",
-      "role": "customer",
-      "userDeleted": false
-    },
-    {
-      "id": "63da",
-      "username": "user",
-      "password": "QuackLEL22",
-      "firstName": "User",
-      "lastName": "user",
-      "email": "user@user.user",
-      "role": "customer",
-      "userDeleted": true
-    },
-    {
-      "id": "41cd",
-      "username": "seller",
-      "password": "QuackLEL22",
-      "firstName": "seller",
-      "lastName": "seller",
-      "email": "seller@seller.sel",
-      "role": "seller",
-      "approved": true
-    },
-    {
-      "id": "a84e",
+      "id": "20bd",
       "username": "test",
       "password": "QuackLEL22",
-      "firstName": "Hussin",
-      "lastName": "Ahmed",
-      "email": "asdasd@gmail.com",
+      "firstName": "sdasd",
+      "lastName": "asdas",
+      "email": "asdasds2@gmail.com",
+      "role": "customer"
+    },
+    {
+      "id": "2e61",
+      "username": "hussin",
+      "password": "QuackLEL22",
+      "firstName": "hussin",
+      "lastName": "ahmed",
+      "email": "huss@hu.com",
       "role": "seller",
       "approved": true
-    },
-    {
-      "id": "0ac3",
-      "username": "Hussin",
-      "password": "QuackLEL22",
-      "firstName": "asdas",
-      "lastName": "asdasd",
-      "email": "asd@asd.com",
-      "role": "customer"
-    },
-    {
-      "id": "70ee",
-      "username": "Hussin1",
-      "password": "QuackLEL22",
-      "firstName": "asdas",
-      "lastName": "asdasd",
-      "email": "asd@asd.com",
-      "role": "customer"
     }
   ],
   "products": [
     {
-      "id": "c315",
+      "id": "953a",
       "name": "Pikachu",
-      "description": "asssssssssssssssssssss",
-      "price": "15",
-      "customerPrice": "25",
+      "description": "Pikachu is renowned for being the most well-known and recognizable Pokémon. Over the years, Pikachu has become so popular that it serves as the Pokémon mascot. In the games, Pikachu is the version mascsssot and first partner Pokémon of Pokémon Yellow Special Pikachu Edition and its remake Pokémon: Let's Go, Pikachu!. In the anime, Pikachu appeared regularly as the main travel companion and partner to Ash Ketchum; while another variant, partners alongside Professor Friede in Pokémon Horizons: The Series. ",
+      "price": "25",
+      "customerPrice": "50",
+      "quantity": "49",
+      "category": "1",
+      "image": "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcThAQv6vUm8jpXKR_kNbs4hus2u8LVIK8TxohBKPmZehRCEvDrgaxin25ZQAt4ZBobSzAMmjNFApcGHDykX5hrVDVxeD_7yGnKr4Lwq2Qs",
+      "rating": 0,
+      "seller_id": "1",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
       "sale": 0,
-      "quantity": 0,
-      "category": "2",
+      "createdAt": "2025-01-19T04:29:09.343Z"
+    },
+    {
+      "id": "d7ca",
+      "name": "pika supder deluxe",
+      "description": "Pik pia pikasdasdasd asd",
+      "price": 20,
+      "customerPrice": 80,
+      "quantity": 49,
+      "category": "1",
       "image": "https://i.pinimg.com/550x/cb/33/49/cb3349b86ca661ca61ae9a36d88d70d4.jpg",
       "rating": 0,
-      "seller_id": "1",
-      "reviews": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
+      "seller_id": "2e61",
+      "reviews": [],
       "approved": true,
-      "createdAt": "",
-      "sold": 50,
-      "sellerDeleted": false
+      "sold": 0,
+      "sale": 50,
+      "createdAt": "2025-01-19T04:34:13.656Z"
     },
     {
-      "id": "02c9",
-      "name": "Brick super deluxe edtition",
-      "description": "Pokemon Goes PRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
-      "price": 25,
+      "id": "e78f",
+      "name": "pika 5th (the retarded one)",
+      "description": "Quacasdasdasdasdasdassssssssss",
+      "price": 20,
       "customerPrice": 25,
-      "quantity": -1,
-      "category": "1",
-      "image": "https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png",
-      "rating": 5,
-      "seller_id": "1",
-      "reviews": [],
-      "approved": true,
-      "sold": 0,
-      "sale": 0,
-      "sellerDeleted": false
-    },
-    {
-      "id": "541b",
-      "name": "assssssss",
-      "description": "asssssssssssssssssssssssssssssssssssssssssssssssssssss",
-      "price": "15",
-      "customerPrice": "25",
-      "quantity": 79,
-      "category": "1",
-      "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full//133.png",
-      "rating": 3,
-      "seller_id": "1",
-      "reviews": [],
-      "approved": false,
-      "sold": 0,
-      "sale": 18,
-      "sellerDeleted": false
-    },
-    {
-      "id": "a087",
-      "name": "Charmander",
-      "description": "Charmander is a Fire-type Pokémon. It evolves into a Charmeleon starting at level 16. It is one of the three Starter Pokémon that can be chosen in the Kanto region.",
-      "price": 90,
-      "customerPrice": 105,
       "quantity": 19,
-      "category": "1",
-      "image": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png",
+      "category": "3",
+      "image": "https://media.tenor.com/53miymrFe_UAAAAM/hold-on.gif",
       "rating": 0,
-      "seller_id": "41cd",
+      "seller_id": "2e61",
       "reviews": [],
       "approved": true,
       "sold": 0,
-      "sale": 0
+      "sale": 0,
+      "createdAt": "2025-01-19T04:38:54.683Z"
     },
     {
-      "id": "071c",
-      "name": "Venusaur",
-      "description": "Venusaur (Japanese: フシギバナ, Hepburn: Fushigibana) (VEE-nuh-sore[1]) is a Grass/Poison-type Pokémon introduced in Generation I. It is the mascot for Pokémon Green and Pokémon LeafGreen Version and the final form of Bulbasaur",
-      "price": 15,
-      "customerPrice": 50,
-      "quantity": 80,
-      "category": "2",
-      "image": "https://static.wikia.nocookie.net/pokemon/images/6/6b/0003Venusaur.png/revision/latest?cb=20240714092555",
+      "id": "e75c",
+      "name": "asdasdasd",
+      "description": "asdasdassadasdasdasdasdsaaaaaaaaaaa",
+      "price": 100,
+      "customerPrice": 180,
+      "quantity": 20,
+      "category": "3",
+      "image": "https://i.pinimg.com/736x/53/8d/e5/538de5e0da2fc61c6bddb5304bbbc71e.jpg",
       "rating": 0,
-      "seller_id": "1",
+      "seller_id": "2e61",
       "reviews": [],
-      "approved": false,
+      "approved": true,
       "sold": 0,
-      "sale": 0,
-      "createdAt": "2025-01-15T01:14:52.179Z"
+      "sale": 10,
+      "createdAt": "2025-01-19T04:45:27.716Z"
+    },
+    {
+      "id": "6292",
+      "name": "somic s 16",
+      "description": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpAZFFum2NF4unRJWrgJWH9RpJ7N-gjiKaA&shttps://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpAZFFum2NF4unRJWrgJWH9RpJ7N-gjiKaA&s",
+      "price": 15,
+      "customerPrice": 280,
+      "quantity": 10,
+      "category": "1",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSpAZFFum2NF4unRJWrgJWH9RpJ7N-gjiKaA&s",
+      "rating": 0,
+      "seller_id": "2e61",
+      "reviews": [],
+      "approved": true,
+      "sold": 0,
+      "sale": 60,
+      "createdAt": "2025-01-19T04:50:22.093Z"
     }
   ],
   "orders": [
     {
-      "id": "5c39",
-      "userID": "1",
-      "totalPrice": 57.25,
-      "status": "deliverd",
+      "id": "7e5f",
+      "userID": "20bd",
+      "totalPrice": 50,
+      "status": "placed",
       "items": [
         {
-          "productID": "c315",
+          "productID": "953a",
           "quantity": 1
         }
       ],
       "address": {
-        "1": "address",
+        "1": "asdas",
         "2": ""
       },
       "phone": "01155991822",
-      "firstName": "Hussin",
-      "lastName": "Account",
+      "firstName": "asda",
+      "lastName": "asdas",
       "zipcode": "44554",
-      "orderDeleted": false
-    },
-    {
-      "id": "21d1",
-      "userID": "1",
-      "totalPrice": 625,
-      "status": "placed",
-      "items": [
-        {
-          "productID": "02c9",
-          "quantity": 25
-        }
-      ],
-      "address": {
-        "1": "zagazig",
-        "2": ""
-      },
-      "phone": "01155991822",
-      "firstName": "Hussin ",
-      "lastName": "Ahmed",
-      "zipcode": "44554",
-      "date": "2025-01-19T01:00:52.521Z",
+      "date": "2025-01-19T04:29:40.197Z",
       "orderCanceld": true
     },
     {
-      "id": "d5fc",
-      "userID": "1",
-      "totalPrice": 625,
+      "id": "73f7",
+      "userID": "2e61",
+      "totalPrice": 65,
       "status": "placed",
       "items": [
         {
-          "productID": "02c9",
-          "quantity": 25
-        }
-      ],
-      "address": {
-        "1": "asdasd",
-        "2": ""
-      },
-      "phone": "01155991822",
-      "firstName": "sadas",
-      "lastName": "dasdasd",
-      "zipcode": "14546",
-      "date": "2025-01-19T01:02:00.779Z"
-    },
-    {
-      "id": "7ac1",
-      "userID": "1",
-      "totalPrice": 375,
-      "status": "placed",
-      "items": [
+          "productID": "e78f",
+          "quantity": 1
+        },
         {
-          "productID": "c315",
-          "quantity": 15
+          "productID": "d7ca",
+          "quantity": 1
         }
       ],
       "address": {
-        "1": "asdasd",
+        "1": "شسيشسي",
         "2": ""
       },
       "phone": "01155991822",
-      "firstName": "asdas",
+      "firstName": "asdasd",
       "lastName": "asdasd",
       "zipcode": "44554",
-      "date": "2025-01-19T01:13:00.140Z"
-    },
-    {
-      "id": "dd0b",
-      "userID": "41cd",
-      "totalPrice": 150.5,
-      "status": "placed",
-      "items": [
-        {
-          "productID": "02c9",
-          "quantity": 1
-        },
-        {
-          "productID": "541b",
-          "quantity": 1
-        },
-        {
-          "productID": "a087",
-          "quantity": 1
-        }
-      ],
-      "address": {
-        "1": "dasdas",
-        "2": ""
-      },
-      "phone": "01155991822",
-      "firstName": "asd",
-      "lastName": "asdas",
-      "zipcode": "44554",
-      "date": "2025-01-19T03:48:51.276Z"
+      "date": "2025-01-19T04:43:18.029Z"
     }
   ],
   "categories": [
@@ -298,27 +183,17 @@
     {
       "userID": "1",
       "items": [],
-      "id": "e8ea"
+      "id": "1"
     },
     {
-      "userID": "63da",
+      "userID": "20bd",
       "items": [],
-      "id": "0290"
+      "id": "2c8f"
     },
     {
-      "userID": "41cd",
+      "userID": "2e61",
       "items": [],
-      "id": "51b8"
-    },
-    {
-      "id": "319c",
-      "userID": "0ac3",
-      "items": []
-    },
-    {
-      "id": "46f3",
-      "userID": "70ee",
-      "items": []
+      "id": "dc10"
     }
   ]
 }

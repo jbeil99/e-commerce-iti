@@ -14,7 +14,7 @@ const validateProductName = async (target, seller, skip = "") => {
         }
     });
     if (!exists) {
-        return validateName(target, "product name", 6);
+        return validateName(target, "product name", 2);
     }
     error.innerText = "product Already Exists";
     error.style.display = "block";
@@ -24,7 +24,6 @@ const validateProductName = async (target, seller, skip = "") => {
 
 const validatePrice = (price, custPrice = Number(price.value) * 1.2) => {
     const error = price.parentElement.querySelector("p");
-    console.log(custPrice, "cust", price.value, custPrice <= price.value);
     const errorMsg = {
         empty: "price cant be empty",
         less: "price cant be less than 1",

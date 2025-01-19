@@ -100,7 +100,6 @@ window.addEventListener("load", async () => {
 
         if (e.target.nodeName === "BUTTON") {
             if (e.target.classList.contains("wishlist")) {
-                console.log(e.target.value)
             }
         }
     });

@@ -3,7 +3,7 @@ import { getUser, deleteUser, updateUser, addUser } from "./api/user.js";
 import { addRoleGuard, checkUserAuth, editGuard } from "./guards/userGuard.js";
 import { displayMessage } from "./helpers/messageHelper.js";
 import { fillUserData } from "./helpers/fillForms.js";
-
+import { addUserCart } from "./api/cart.js";
 
 let currentUser = checkUserAuth();
 const userID = window.location.search.slice(1,).split("=")[1];
@@ -62,13 +62,7 @@ window.addEventListener("load", async () => {
                 const res = await deleteUser(user.id);
                 window.location.href = "/public/dashboard/admin.html";
             }
-            // TODO: SEE HOW can you fire and event to handle on the other page ????!!
-            // window.onload = () => {
-            //     console.log("hi");
-            //     message.innerText = `User ${res.username} Was Successfully Deleted`;
-            //     message.style.display = "block";
-            //     setTimeout(() => { message.style.display = "none" }, 5000)
-            // }
+
             return false
         }
 
@@ -77,7 +71,6 @@ window.addEventListener("load", async () => {
 
             if (vaild) {
                 const role = getRoleSelected(select, user)
-                console.log(role);
 
                 await updateUser(user.id, {
                     username: username.value,
@@ -116,8 +109,8 @@ window.addEventListener("load", async () => {
                 const user = await addUser(
                     body
                 );
-                await addUserCart(user.id)
-
+                confirm.log(await addUserCart(user.id)
+                )
                 window.location.href = "/public/dashboard/admin.html";
             }
         }

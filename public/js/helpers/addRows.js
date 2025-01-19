@@ -43,9 +43,7 @@ const addProductRow = async (data, table, addCheck = true) => {
     tr.appendChild(quantity);
     quantity.innerText = data.quantity;
     tr.appendChild(sellerName);
-    if (!seller) {
-        console.log(data)
-    }
+
     sellerName.innerText = `${seller.firstName} ${seller.lastName}`;
     tr.appendChild(image);
     image.innerHTML = `<img src="${data.image}" alt="${data.name}" />`;

@@ -6,7 +6,7 @@ import { getOrders } from "./api/order.js";
 import { getProduct } from "./api/product.js";
 const user = checkUserAuth();
 
-addRoleGuard(["seller"], "/shop.html");
+addRoleGuard(["seller"], "/index.html");
 const tab = window.location.search.slice(1,).split("=")[1];
 console.log(tab);
 const switchSections = (activeSection, ...disabledSections) => {

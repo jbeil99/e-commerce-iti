@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fafafa;
+        }
+
+        li:nth-child(even) {
+            background-color: #f0f0f5;
+        }
+
+        button {
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4500a3;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>My Wishlist</h1>
+    </header>
+
+    <div class="container">
+        <h1>Things I Want</h1>
+        <ul id="wishlist">
+            <li>
+                New Laptop
+                <button onclick="removeItem(this)">Remove</button>
+            </li>
+            <li>
+                Headphones
+                <button onclick="removeItem(this)">Remove</button>
+            </li>
+            <li>
+                A Trip to Japan
+                <button onclick="removeItem(this)">Remove</button>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function removeItem(button) {
+            const listItem = button.parentElement;
+            listItem.remove();
+        }
+    </script>
+</body>
+
+</html>

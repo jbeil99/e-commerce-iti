@@ -6,7 +6,6 @@ import { fillOrderHistory } from "./helpers/fillForms.js"
 
 let currentUser = checkUserAuth();
 const orderID = window.location.search.slice(1,).split("=")[1];
-addRoleGuard(['admin', 'manger'], "/public/pages/profile.html")
 
 window.addEventListener("load", async () => {
     const orderTable = document.querySelector("#order-table");
