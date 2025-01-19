@@ -142,7 +142,7 @@ const addUserRow = (data, table, seller = false) => {
     table.appendChild(tr);
 }
 
-const addOrdersRow = (data, table) => {
+const addOrdersRow = (data, table, seller = false) => {
     const tr = document.createElement("tr");
     const id = document.createElement("td");
     const price = document.createElement("td");
@@ -174,7 +174,12 @@ const addOrdersRow = (data, table) => {
     deleteBtn.value = data.id;
 
     deleteTd.appendChild(deleteBtn);
-    tr.append(id, price, name, num, status, edit, deleteTd);
+    if (seller) {
+        tr.append(id, price, name, num, status, edit);
+    } else {
+        tr.append(id, price, name, num, status, edit, deleteTd);
+
+    }
     table.appendChild(tr)
 }
 

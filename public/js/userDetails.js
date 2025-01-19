@@ -113,9 +113,11 @@ window.addEventListener("load", async () => {
 
             if (vaild) {
                 e.preventDefault();
-                await addUser(
+                const user = await addUser(
                     body
                 );
+                await addUserCart(user.id)
+
                 window.location.href = "/public/dashboard/admin.html";
             }
         }

@@ -1,7 +1,9 @@
-import { softDeleteProduct, getSellerProdcuts } from "./api/product.js"
+import { softDeleteProduct, getSellerProdcuts, getProdcuts } from "./api/product.js"
 import { checkUserAuth, addRoleGuard } from "./guards/userGuard.js";
 import { displayNothingFound } from "./helpers/messageHelper.js";
-import { addProductRow } from "./helpers/addRows.js";
+import { addProductRow, addOrdersRow } from "./helpers/addRows.js";
+import { getOrders } from "./api/order.js";
+import { getProduct } from "./api/product.js";
 const user = checkUserAuth();
 
 addRoleGuard(["seller"], "/shop.html");
@@ -34,15 +36,33 @@ window.addEventListener("load", async () => {
     const productsSection = document.querySelector("#products-section");
     const ordersSection = document.querySelector("#orders-section");
     const products = await getSellerProdcuts(user.id);
+    const ordersTable = document.querySelector("#orders tbody");
+    const orders = await getOrders();
 
     if (products.length === 0) {
         displayNothingFound(productsTable, "products")
     }
-    handleTabs(tab, productsSection, ordersSection, productNav, orderNav)
+    handleTabs(tab, productsSection, ordersSection, productNav, orderNav);
+
     products.forEach(product => {
         addProductRow(product, productsTable, false);
     })
 
+    orders.forEach(async (order) => {
+        let vaild = false;
+        for (const item of order.items) {
+            const product = await getProduct(item.productID);
+            if (product.seller_id === user.id) {
+                vaild = true;
+                break;
+            }
+        }
+
+        if (!order.orderDeleted && vaild) {
+            addOrdersRow(order, ordersTable, true);
+        }
+
+    })
     productNav.addEventListener("click", () => {
         window.location.search = "tab=products";
     });

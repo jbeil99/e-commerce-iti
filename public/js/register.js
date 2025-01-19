@@ -96,8 +96,7 @@ window.addEventListener("load", async () => {
             const user = await addUser(
                 body
             );
-            console.log(await addUserCart(user.id)
-            )
+            await addUserCart(user.id)
         }
     })
 });

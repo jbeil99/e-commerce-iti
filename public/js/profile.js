@@ -50,7 +50,7 @@ window.addEventListener("load", async () => {
     orders.forEach(order => {
         addUserOrderRows(order, orderTable)
     });
-
+    fillUserData(username, fname, email, lname, user)
     handleTabs(tab, orderSection, profileSection, profileNav, orderNav);
 
     profileNav.addEventListener("click", () => {

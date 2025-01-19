@@ -84,7 +84,7 @@
       "description": "Pokemon Goes PRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR",
       "price": 25,
       "customerPrice": 25,
-      "quantity": 0,
+      "quantity": -1,
       "category": "1",
       "image": "https://images.secretlab.co/theme/common/collab_pokemon_catalog_charizard-min.png",
       "rating": 5,
@@ -101,7 +101,7 @@
       "description": "asssssssssssssssssssssssssssssssssssssssssssssssssssss",
       "price": "15",
       "customerPrice": "25",
-      "quantity": "80",
+      "quantity": 79,
       "category": "1",
       "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full//133.png",
       "rating": 3,
@@ -118,7 +118,7 @@
       "description": "Charmander is a Fire-type Pokémon. It evolves into a Charmeleon starting at level 16. It is one of the three Starter Pokémon that can be chosen in the Kanto region.",
       "price": 90,
       "customerPrice": 105,
-      "quantity": 20,
+      "quantity": 19,
       "category": "1",
       "image": "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png",
       "rating": 0,
@@ -140,7 +140,7 @@
       "rating": 0,
       "seller_id": "1",
       "reviews": [],
-      "approved": true,
+      "approved": false,
       "sold": 0,
       "sale": 0,
       "createdAt": "2025-01-15T01:14:52.179Z"
@@ -231,6 +231,35 @@
       "lastName": "asdasd",
       "zipcode": "44554",
       "date": "2025-01-19T01:13:00.140Z"
+    },
+    {
+      "id": "dd0b",
+      "userID": "41cd",
+      "totalPrice": 150.5,
+      "status": "placed",
+      "items": [
+        {
+          "productID": "02c9",
+          "quantity": 1
+        },
+        {
+          "productID": "541b",
+          "quantity": 1
+        },
+        {
+          "productID": "a087",
+          "quantity": 1
+        }
+      ],
+      "address": {
+        "1": "dasdas",
+        "2": ""
+      },
+      "phone": "01155991822",
+      "firstName": "asd",
+      "lastName": "asdas",
+      "zipcode": "44554",
+      "date": "2025-01-19T03:48:51.276Z"
     }
   ],
   "categories": [
@@ -260,20 +289,7 @@
     },
     {
       "userID": "41cd",
-      "items": [
-        {
-          "productID": "02c9",
-          "quantity": 1
-        },
-        {
-          "productID": "541b",
-          "quantity": 1
-        },
-        {
-          "productID": "a087",
-          "quantity": 1
-        }
-      ],
+      "items": [],
       "id": "51b8"
     }
   ]

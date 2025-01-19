@@ -8,7 +8,7 @@ import { addProductCheckout } from "./helpers/addProduct.js";
 
 let currentUser = checkUserAuth();
 const orderID = window.location.search.slice(1,).split("=")[1];
-addRoleGuard(['admin', 'manger'], "/public/pages/profile.html")
+addRoleGuard(['admin', 'manger', "seller"], "/public/pages/profile.html")
 
 const getStatusSelected = (select, order) => {
     for (let r of select) {
@@ -39,6 +39,17 @@ window.addEventListener("load", async () => {
         for (const product of order.items) {
             await addProductCheckout(productsDiv, product)
         }
+    }
+
+    if (currentUser.role === "seller") {
+        phone.readOnly = true;
+        price.readOnly = true;
+        zipcode.readOnly = true;
+        lname.readOnly = true;
+        fname.readOnly = true;
+        address.readOnly = true;
+        address2.readOnly = true;
+
     }
 
     if (!order && orderID) {
